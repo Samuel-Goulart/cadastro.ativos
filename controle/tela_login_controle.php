@@ -23,8 +23,7 @@ $usuario= $_POST['usuario'];//puxa la da tela login usuario o valor inserido
  
  
  
- //NAO FUNCIONO ESSA MERDA 
- //ESTA VERIFICANDO A SENHA DE MODO ERRADO 
+  
  
  
  

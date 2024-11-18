@@ -10,7 +10,6 @@
         $dados=$result->fetch_all(MYSQLI_ASSOC);
         return $dados;
 
-
     };
 
 

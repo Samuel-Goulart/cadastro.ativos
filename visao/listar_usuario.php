@@ -37,7 +37,7 @@ $info_bd= busca_info_bd($conexao,'usuario');
                 </a>
             </td>
             <td>
-                <a href="alterar_usuario.php?id_usuario=<?php echo $user['idUsuario']?>">
+                <a href="alterar_usuario.php?id_usuario=<?php echo $user['idUsuario']?>"><!--puxa do banco -->
                 <?php echo $user['usuario'];?>
                 </a>
             </td>
