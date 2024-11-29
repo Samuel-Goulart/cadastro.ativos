@@ -1,4 +1,11 @@
+<?php
+session_start();
+include('../modelo/conecta_banco_dados.php');
+include('../controle/funcoes.php');
 
+
+
+?>
 <DOCTYPE html>  
     <head>
          

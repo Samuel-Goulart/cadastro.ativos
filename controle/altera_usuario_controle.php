@@ -1,4 +1,5 @@
 <?php
+include_once('../controle/controle_session.php');
 include('../modelo/conecta_banco_dados.php');
 
 $nome= $_POST['nome'];

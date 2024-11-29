@@ -1,7 +1,9 @@
 <?php
+include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
 include('cabecalho.php');
+include('menu_superior.php');
 
 $info_bd= busca_info_bd($conexao,'usuario');
 
@@ -30,7 +32,7 @@ $info_bd= busca_info_bd($conexao,'usuario');
     <?php
     foreach($info_bd as $user){
         ?>
-        <tr>
+        <tr>     
             <td>
                 <a href="alterar_usuario.php?id_usuario=<?php echo $user['idUsuario']?>">
                     <?php echo $user['nomeUsuario'];?>
