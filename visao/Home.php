@@ -4,8 +4,24 @@ include_once('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
 include('cabecalho.php');
 include('menu_superior.php');
-
+$marca= busca_info_bd($conexao,'marca');
 $info= busca_info_bd($conexao,'ativos');
+$sql="SELECT 
+`idAtivo`,
+`descriçaoAtivo`,
+`quantidadeAtivo`,
+`statusAtivo`,
+`observaçaoAtivo`,
+`dataCadastro`,
+`usuarioCadastro`,
+`idMarca`,
+`idTipo`,
+(SELECT descriçaoMarca FROM marca m WHERE m.idMarca = a.idMarca)as marca,
+(SELECT descriçaoTipo from tipo t where t.idTipo = a.idTipo) as tipo,
+(SELECT usuario from usuario u where u.idUsuario = a.usuarioCadastro) as usuario
+FROM `ativos` a WHERE 1";
+$result=mysqli_query($conexao,$sql)or die(false);
+$ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
 ?>
 <head> 
   <title>ativos cadastrados</title>
@@ -21,32 +37,24 @@ $info= busca_info_bd($conexao,'ativos');
       <th scope="col">data do cadastro</th>
       <th scope="col">observação</th>
       <th scope="col">status</th>
+      <th scope="col">tipo</th>
+      <th scope="col">marca</th>
 
     </tr>
     </thead>
     <body>
     <?php
-    foreach($info as $user){
+    foreach($ativos_bd as $i){
         ?>
         <tr>     
-        <td>
-                <?php echo $user['descriçaoAtivo'];?>
-        </td>
-        <td>    
-            <?php echo $user['quantidadeAtivo'];?>
-        </td>
-        <td>
-            <?php echo $user['usuarioCadastro'];?>
-        </td>
-        <td>
-            <?php echo $user['dataCadastro'];?>
-        </td>
-        <td>
-            <?php echo $user['observaçaoAtivo'];?>
-        </td>
-        <td>
-            <?php echo $user['statusAtivo'];?>
-        </td>
+        <td><?php echo $i['descriçaoAtivo'];?></td>
+        <td><?php echo $i['quantidadeAtivo'];?></td>
+        <td><?php echo $i['usuario'];?></td>
+        <td><?php echo $i['dataCadastro'];?></td>
+        <td><?php echo $i['observaçaoAtivo'];?></td>                                  
+        <td><?php echo $i['statusAtivo'];?></td>
+        <td><?php echo $i['tipo'];?></td>
+        <td><?php echo $i['marca'];?></td>
         
     </tr>
 <?php

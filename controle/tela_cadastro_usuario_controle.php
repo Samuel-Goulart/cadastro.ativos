@@ -27,7 +27,7 @@ $quarry="
 $result=mysqli_query($conexao,$quarry)or die(false);
 if($result){
     echo"<script> alert('usuario cadastrado')</script>";
-    header('../visao/listar_usuario.php');
+    header('../visao/home.php');
 }else{
     echo"<script> alert('falha no cadastro')</script>";
     header('../visao/tela_cadastro_usuario.php');
