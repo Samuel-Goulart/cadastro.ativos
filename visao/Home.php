@@ -25,9 +25,14 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
 ?>
 <head> 
   <title>ativos cadastrados</title>
+  <div class="container">
+  <h1>ATIVOS</h1> 
+  </div>
+  <link rel="stylesheet" href="home.css">
 </head>
+
     <body>
-       <div class="container">  
+       <div class="container" style="background-color: white">  
        <table class="table">
   <thead>
     <tr>
