@@ -5,6 +5,12 @@ $(document).ready(function(){
       let tipo = $("#tipo").val();
       let quantidade = $("#quantidade").val();
       let observaçao = $("#observaçao").val();
+      let idAtivo = $("#idAtivo").val();
+      if(idAtivo==""){
+        acao='inserir';
+      }else{
+        acao='update';
+      }
       $.ajax({
         type: "POST",
         url:'../controle/ativos_controller.php',
@@ -21,3 +27,19 @@ $(document).ready(function(){
       }});
     });
   });
+  function muda_status(status,idAtivo){
+    $.ajax({
+      type: "POST",
+      url:'../controle/ativos_controller.php',
+      data:{
+          acao:'muda_status',
+          status:status,
+          idAtivo:idAtivo
+          
+      },
+       success: function(result){
+        console.log(result)
+        alert(result);
+      //location.reload();
+    }});
+  }

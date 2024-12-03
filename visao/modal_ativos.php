@@ -19,6 +19,11 @@
         <label for="recipient-name" class="col-form-label">cadastrar ativo </label>
             <select id='marca' name='marca' class="form-select" aria-label="Default select example">
             <option selected>selecione a marca </option>
+            <?php
+            foreach($info as $user){
+              echo '<option value"'.$marca['idMarca'].'">'.$marca['descriçaoMarca'].'</option>';
+            }
+            ?>
             <option value="1">Lenovo</option>
             <option value="2">LG</option>
             <option value="2">Positivo</option>

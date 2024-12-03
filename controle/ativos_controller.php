@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors',0);
+error_reporting(E_ERROR);
 include('../modelo/conecta_banco_dados.php');
 include('controle_session.php');
 $ativo=$_POST['ativo'];
@@ -7,6 +9,10 @@ $tipo=$_POST['tipo'];
 $quantidade=$_POST['quantidade'];
 $observaçao=$_POST['observaçao'];
 $user=$_SESSION['id_user'];
+$tipo=$_POST['acao'];
+$idAtivo=$_POST['idAtivo'];
+
+if($acao== 'INSERT'){
 $quarry="
         INSERT INTO ATIVOS (
                            descriçaoAtivo,
@@ -28,8 +34,16 @@ $quarry="
                            NOW(),
                            '".$user."'
                             )";
-$result=mysqli_query($conexao,$quarry)or die(false);
+
+
+if($acao=='muda_status'){
+        $sql="
+        update ativo set statusAtivo='$statusAtivo' where idAtivo=$idAtivo
+        ";
+}
+$result=mysqli_query($conexao,$sql)or die(false);
 if($result){
-        echo"cadastro realizado";
+        echo"status alterado";
+}
 }
 ?>
