@@ -4,7 +4,7 @@ $(document).ready(function(){
       let marca = $("#marca").val();
       let tipo = $("#tipo").val();
       let quantidade = $("#quantidade").val();
-      let observaçao = $("#observaçao").val();
+      let observacao = $("#observacao").val();
       let idAtivo = $("#idAtivo").val();
       if(idAtivo==""){
         acao='inserir';
@@ -19,7 +19,9 @@ $(document).ready(function(){
             marca:marca,
             tipo:tipo,
             quantidade:quantidade,
-            observaçao:observaçao
+            observacao:observacao,
+            acao: acao,  // Envia a ação (inserir ou atualizar)
+            idAtivo: idAtivo
         },
          success: function(result){
         alert(result);
@@ -27,6 +29,7 @@ $(document).ready(function(){
       }});
     });
   });
+  // Função para mudar o status do ativo
   function muda_status(status,idAtivo){
     $.ajax({
       type: "POST",
@@ -40,6 +43,6 @@ $(document).ready(function(){
        success: function(result){
         console.log(result)
         alert(result);
-      //location.reload();
+       location.reload();
     }});
   }
