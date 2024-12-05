@@ -70,4 +70,41 @@ if ($acao == 'muda_status') {
         echo "Erro ao alterar status: " . mysqli_error($conexao);
     }
 }
+if($acao=='get_info'){
+     $sql= "
+    select
+     
+        descriçaoAtivo,
+        quantidadeAtivo,
+        observaçaoAtivo,
+        idMarca,
+        idTipo
+        from
+        ativos
+        where
+        idAtivo=$idAtivo
+        ";
+    
+$result=mysqli_query($conexao,$sql)or die(false);
+$ativo=$result->fetch_all(MYSQLI_ASSOC);
+echo json_encode($ativo);
+exit();
+
+}
+if($acao=='update'){
+    $sql="
+        UPDATE ATIVOs SET
+        descriçaoAtivo='$ativo',
+         idMarca='$marca',
+         idTipo='$tipo',
+         quantidadeAtivo='$quantidade',
+         observaçaoAtivo='$observacao'
+         where idAtivo=$idAtivo
+    ";
+
+$result=mysqli_query($conexao,$sql)or die(false);
+if($result){
+    echo"informaçoes Alteradas";
+}
+}
 ?>

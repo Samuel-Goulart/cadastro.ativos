@@ -30,7 +30,7 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
 
 <div style="display: flex;justify-content: space-between;">
 <?php  include('menu_superior.php');?>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >cadastrar ativos</button>
+<button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >cadastrar ativos</button>
 </div>
 
 
@@ -90,38 +90,9 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
                     ?>
                     
                 </div>
-                <div class="editar">
-                    <i class="bi bi-pencil-square"  data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@mdo"></i>
-                    <!-- Modal de edição de ativos -->
-                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel">Editar Ativo</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="formEdicao">
-                                <div class="mb-3">
-                                    <label for="descricaoEdit" class="form-label">Descrição</label>
-                                    <input type="text" class="form-control" id="descricaoEdit" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="quantidadeEdit" class="form-label">Quantidade</label>
-                                    <input type="number" class="form-control" id="quantidadeEdit" required>
-                                </div>
-                                <!-- Outros campos conforme necessário -->
-                                <input type="hidden" id="idAtivoEdit"> <!-- Campo escondido para ID do ativo -->
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                                </div>
-                                </form>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-
-
+                <div class="editar" onclick="editar('<?php echo $i['idAtivo']; ?>')">
+                    <i class="bi bi-pencil-square" id="btn_modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"></i>
+                    
                 </div>
             </div>
             

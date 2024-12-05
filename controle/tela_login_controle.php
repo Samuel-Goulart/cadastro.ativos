@@ -21,7 +21,7 @@ $usuario= $_POST['usuario'];//puxa la da tela login usuario o valor inserido
    $_SESSION['login_ok']=true;
    $_SESSION['controle_login']=true;
    $_SESSION['id_user']=$dados['idUsuario'];
-   header('location:../visao/home.php');
+   header('location:../visao/ativos.php');
  }else{
   $_SESSION['login_ok']=false;
   unset($_SESSION['controle_login']);

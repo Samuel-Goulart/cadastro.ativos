@@ -6,6 +6,7 @@ $(document).ready(function(){
       let quantidade = $("#quantidade").val();
       let observacao = $("#observacao").val();
       let idAtivo = $("#idAtivo").val();
+      
       if(idAtivo==""){
         acao='inserir';
       }else{
@@ -46,3 +47,42 @@ $(document).ready(function(){
        location.reload();
     }});
   }
+    function editar(idAtivo){
+
+      $('#idAtivo').val(idAtivo);
+      
+      $.ajax({
+        type: "POST",
+        url:'../controle/ativos_controller.php',
+        data:{
+            acao:'get_info',
+            
+            idAtivo:idAtivo
+            
+        },
+         success: function(result){
+          retorno=JSON.parse(result)
+      $('#btn_modal').click();
+      $("#ativo").val(retorno[0]['descriçaoAtivo']);
+      $("#marca").val(retorno[0]['idMarca']);
+      $("#tipo").val(retorno[0]['idTipo']);
+      $("#quantidade").val(retorno[0]['quantidadeAtivo']);
+      $("#observacao").val(retorno[0]['observaçaoAtivo']);
+      
+       
+
+      
+      console.log(retorno)
+          
+      }});
+    }
+    function limpar_modal(){
+      $("#ativo").val('');
+      //$("#marca").val('');
+      //$("#tipo").val('');
+      $("#quantidade").val('');
+      $("#observacao").val('');
+      $("#idAtivo").val('');
+
+
+    }
