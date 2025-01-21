@@ -2,41 +2,70 @@
 include_once('../controle/controle_session.php');
 include_once('cabecalho.php');
 ?>
-        
 
-    
-
-        <style>
+<head>
+    <link rel="stylesheet" href="../css/menu_superior.css">
+    <style>
         /* Faz o dropdown abrir no hover */
         .dropdown:hover .dropdown-menu {
             display: block;
         }
 
-        /* O menu deve estar oculto por padrão */
-        .dropdown-menu {
-            display: none;
+        /* Altera o estilo para uma faixa colorida */
+        .dropdown {
+            background-color: #007bff; /* Cor de fundo da faixa */
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%; /* Faz a faixa ocupar toda a largura disponível */
         }
-    </style>    
-        
-    </head>
-<body>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex;justify-content: space-between;">==</button>
 
-    <ul class="dropdown-menu">
-      <li> 
+        /* Estilo dos links dentro da faixa */
+        .dropdown-menu {
+            display: block;
+            background-color: #f8f9fa; /* Cor de fundo para os links */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .dropdown-menu a {
+            color: #007bff; /* Cor do texto dos links */
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #e9ecef; /* Cor de fundo quando o mouse passa sobre o link */
+        }
+
+        /* Estilo do título dentro da faixa */
+        .dropdown h7 {
+            color: #ffffff; /* Cor do texto do título */
+            margin: 0;
+        }
+
+        /* Estilo dos itens da lista 
+        .dropdown-menu li {
+            list-style: none;
+        }
+*/
+    </style>
+</head>
+<body>
+
+    <div class="dropdown">
+        <!-- Faixa com título -->
         <h7>USUARIO</h7>
-        <br>
-          <a href="tela_cadastro_usuario.php">cadastro</a>
-          <br>
-          <a href="listar_usuario.php">lista dos usuarios</a>
-          <br>
-          
-      </li>
-      
-    </ul>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+        <ul class="dropdown-menu">
+            <li><a href="tela_cadastro_usuario.php">Cadastro</a></li>
+            <li><a href="listar_usuario.php">Lista dos usuários</a></li>
+            <li><a href="ativos.php">Ativos cadastrados</a></li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
 </body>

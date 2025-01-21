@@ -8,6 +8,7 @@ include('../controle/funcoes.php');
 ?>
 <DOCTYPE html>  
     <head>
+      
          
         
         <!--links do bootstrep-->
