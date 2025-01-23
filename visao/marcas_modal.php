@@ -1,5 +1,15 @@
+<?php
+include('cabecalho.php');
+?>
+<head>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+  
+
+<body>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"  >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -20,3 +30,5 @@
     </div>
   </div>
 </div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+</body>

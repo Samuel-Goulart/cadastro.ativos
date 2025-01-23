@@ -3,20 +3,22 @@ ini_set('display_errors', 0);
 error_reporting(E_ERROR);
 include('../modelo/conecta_banco_dados.php');
 include('controle_session.php');
-header('Content-Type: application/json');
+header('Content-Type: text/plain');
 
-
-
-$marca = $_POST['marca'];
+$marca = isset($_POST['marca']) ? $_POST['marca'] : '';
 $user = $_SESSION['id_user'];
-$acao = $_POST['acao'];  // Agora a variável $acao é definida corretamente
-$idMarca = $_POST['idMarca'];  // Definindo o idAtivo para uso em 'muda_status'
+$acao = isset($_POST['acao']) ? $_POST['acao'] : '';
+$idMarca = isset($_POST['idMarca']) ? $_POST['idMarca'] : 0;
+$statusMarca = isset($_POST['status']) ? $_POST['status'] : '';
 
 // Ação de Inserção
 if ($acao == 'inserir') {
-    // Escapando dados para evitar injeção SQL
+    if ($marca == '') {
+        echo 'Marca não fornecida.';
+        exit();
+    }
+
     $marca = mysqli_real_escape_string($conexao, $marca);
-    $observacao = mysqli_real_escape_string($conexao, $observacao);
 
     // Query de inserção
     $query = "
@@ -26,71 +28,83 @@ if ($acao == 'inserir') {
             dataCadastro,
             usuarioCadastro
         ) VALUES (
-            ' " . $marca . "',
+            '$marca',
             'S',
             NOW(),
-            '" . $user . "'
-            
+            '$user'
         )";
 
     // Executando a query
     if (mysqli_query($conexao, $query)) {
-        echo "Marca inserido com sucesso.";
+        echo'Marca inserida com sucesso.';
     } else {
-        echo "Erro ao inserir Marca: " . mysqli_error($conexao);
+        echo'Erro ao inserir Marca: ';
     }
 }
 
 // Ação de Alteração de Status
 if ($acao == 'muda_status') {
-    // Escapando a variável de statusMarca
+    if ($statusMarca == '' || $idMarca == 0) {
+        echo 'Status ou ID da marca não fornecido.';
+        exit();
+    }
+
     $statusMarca = mysqli_real_escape_string($conexao, $statusMarca);
 
     // Query de atualização do status
     $sql = "
         UPDATE MARCA
-        SET statusMarca= '$statusMarca' 
-        WHERE idMarca= $idMarca
+        SET statusMarca = '$statusMarca'
+        WHERE idMarca = $idMarca
     ";
 
     // Executando a query
     if (mysqli_query($conexao, $sql)) {
-        echo "Status alterado com sucesso.";
+        echo 'Status alterado com sucesso.';
+        exit();
     } else {
-        echo "Erro ao alterar status: " . mysqli_error($conexao);
+        echo'Erro ao alterar status: ';
     }
 }
+
+// Ação de Obter Informações
 if ($acao == 'get_info') {
+    if ($idMarca == 0) {
+        echo'ID da marca não fornecido.';
+        exit();
+    }
+
     $sql = "
-    SELECT
-        descriçaoMarca
-    FROM
-        marca
-    WHERE
-        idMarca = $idMarca
-";
-
-
-    $result = mysqli_query($conexao, $sql) or die(false);
-    $marca = $result->fetch_all(MYSQLI_ASSOC);
-    echo json_encode($marca);
-    exit();
-}
-
-
-
-if ($acao == 'update') {
-    $sql = "
-        UPDATE 
-            marca 
-        SET
-            descriçaoMarca='$marca'
-        where 
-            idMarca=$idMarca
+        SELECT descriçaoMarca
+        FROM marca
+        WHERE idMarca = $idMarca
     ";
 
-    $result = mysqli_query($conexao, $sql) or die(false);
-    if ($result) {
-        echo "informaçoes Alteradas";
+    $result=mysqli_query($conexao,$sql)or die(false);
+$marca=$result->fetch_all(MYSQLI_ASSOC);
+echo json_encode($marca);
+exit();
+}
+
+// Ação de Update
+if ($acao == 'update') {
+    if ($marca == '' || $idMarca == 0) {
+        echo 'Marca ou ID não fornecido.';
+        exit();
+    }
+
+    $marca = mysqli_real_escape_string($conexao, $marca);
+
+    $sql = "
+        UPDATE marca 
+        SET descriçaoMarca = '$marca'
+        WHERE idMarca = $idMarca
+    ";
+
+    if (mysqli_query($conexao, $sql)) {
+        echo 'Informações alteradas com sucesso.';
+        exit();
+    } else {
+        echo 'Erro ao alterar informações: ';
     }
 }

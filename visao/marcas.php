@@ -2,11 +2,11 @@
 include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
-include('cabecalho.php');
+//include('cabecalho.php');
 $marcas = busca_info_bd($conexao, 'marca');
 include('menu_superior.php');
 ?>
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../css/home.css">
 
 <script src="../js/marcas.js"></script>
