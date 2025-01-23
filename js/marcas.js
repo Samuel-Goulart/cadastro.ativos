@@ -1,89 +1,114 @@
-$(document).ready(function() {
-  $(".salvar").click(function () {
-    let marca = $("#descricaoMarca").val();
-    let idMarca = $("#idMarca").val();
 
-    if (idMarca == "") {
-      acao = 'inserir';
-    } else {
-      acao = 'update';
-    }
-    $.ajax({
-      type: "POST",
-      url: '../controle/marcas_controller.php',
-      data: {
-        marca: marca,
-        acao: acao,  // Envia a ação (inserir ou atualizar)
-        idMarca: idMarca
-      },
-      success: function (result) {
-        alert(result);
-        location.reload();
+
+$(document).ready(function () {
+  $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+  })
+
+  $(".salvar").click(function() {
+      var marca = $('#descriçaoMarca').val();
+      var idMarca = $('#idMarca').val();
+
+      if (idMarca == "") {
+          alert('Campo da marca deve ser preenchido!')
+          return;
       }
-    });
+
+      var acao = (idMarca == '') ? 'insert' : 'update';
+
+      $.ajax({
+          type: "POST",
+          url: "../controle/marcas_controller.php",
+          data: {
+              acao: acao,
+              marca: marca,
+              idMarca: idMarca
+          },
+          success: function(response) {
+              console.log(response);
+              try {
+                  var data = JSON.parse(response);
+                  if (data.status === 'sucesso') {
+                      alert('Informação Salva');
+                      location.reload();
+                  } else {
+                      alert('Erro ao Salvar');
+                  }
+              } catch (e) {
+                  console.error("Erro ao analisar JSON:", e);
+                  alert('Erro ao processar a resposta');
+              }
+          },
+          error: function(e) {
+              console.log("ERROR : ", e);
+          },
+      });
   });
+
+  $(".editar").click(function() {
+      var idMarca = $(this).attr('data-reg');
+
+      $.ajax({
+          type: "POST",
+          url: "../controle/marcas_controller.php",
+          data: {
+              acao: 'busca_info',
+              idMarca: idMarca
+          },
+          success: function(response) {
+              console.log(response);
+              try {
+                  var info = JSON.parse(response);
+                  if (info.status === 'erro') {
+                      alert('Erro ao buscar Informações');
+                  } else {
+                      $('#idMarca').val(info[0].idMarca);
+                      $('#descriçaoMarca').val(info[0].descricaoMarca);
+                      $('.cadastrar').click();
+                  }
+              } catch (e) {
+                  console.error("Erro ao analisar JSON:", e);
+                  alert('Erro ao processar a resposta');
+              }
+          },
+          error: function(e) {
+              console.log("ERROR : ", e);
+          },
+      });
+  });
+
+  $(".fechar").click(function() {
+      $('#idMarca').val('');
+      $('#descriçaoMarca').val('');
+  });
+
 });
 
-
-// Função para mudar o status do ativo 
-function muda_status(status, idMarca) {
+function alterar_status(status, registro) {
   $.ajax({
-    type: "POST",
-    url: '../controle/marcas_controller.php',
-    data: {
-      acao: 'muda_status',
-      status: status,
-      idMarca: idMarca
-    },
-    success: function(result) {
-      console.log(result);  // Aqui você pode ver a resposta do servidor no console
-      
-      // Se a resposta for uma mensagem simples, apenas exiba um alerta
-      alert(result);  // Exibe a resposta, que pode ser uma string como "Status alterado com sucesso!"
-      
-      // Atualiza a página ou a parte necessária dela
-      location.reload();  // Isso recarrega a página, você pode usar outras abordagens dependendo da necessidade
-    },
-    error: function(xhr, status, error) {
-      alert('Erro na requisição: ' + error);  // Caso ocorra algum erro na requisição AJAX
-    }
+      type: "POST",
+      url: "../controle/marcas_controller.php",
+      data: {
+          acao: 'alterar_status',
+          idMarca: registro,
+          status: status
+      },
+      success: function(response) {
+          try {
+              var data = JSON.parse(response);
+              if (data.status === 'sucesso') {
+                  alert('Informação Salva');
+                  location.reload();
+              } else {
+                  alert('Erro ao Salvar');
+              }
+          } catch (e) {
+              console.error("Erro ao analisar JSON:", e);
+              alert('Erro ao processar a resposta');
+          }
+      },
+      error: function(e) {
+          console.log("ERROR : ", e);
+      },
   });
 }
-
-
-function editar(idMarca) {
-
-  $('#idMarca').val(idMarca);
-
-  $.ajax({
-    type: "POST",
-    url: '../controle/marcas_controller.php',
-    data: {
-      acao: 'get_info',
-
-      idMarca: idMarca
-
-    },
-    success: function (result) {
-      retorno = JSON.parse(result);
-      console.log(retorno);
-      $('#btn_modal').click();
-      $("#descricaoMarca").val(retorno[0]['descriçaoMarca']);
-      
-      
-      
-
-
-
-
-
-    }
-  });
-}
-// Quando o modal for exibido, move o foco para o campo de descrição
-$('#exampleModal').on('shown.bs.modal', function () {
-  $('#descricaoMarca').focus();
-});
-
-
-

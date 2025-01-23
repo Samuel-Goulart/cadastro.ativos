@@ -78,8 +78,8 @@ $(document).ready(function(){
     }
     function limpar_modal(){
       $("#ativo").val('');
-      //$("#marca").val('');
-      //$("#tipo").val('');
+      $("#marca").val('');
+      $("#tipo").val('');
       $("#quantidade").val('');
       $("#observacao").val('');
       $("#idAtivo").val('');

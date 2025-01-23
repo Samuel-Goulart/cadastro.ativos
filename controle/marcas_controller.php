@@ -1,110 +1,67 @@
 <?php
-ini_set('display_errors', 0);
-error_reporting(E_ERROR);
+session_start();
+date_default_timezone_set('America/Sao_Paulo');
 include('../modelo/conecta_banco_dados.php');
-include('controle_session.php');
-header('Content-Type: text/plain');
+$marca = mysqli_real_escape_string($conexao, $_POST['descriçaoMarca']);
+$idMarca = mysqli_real_escape_string($conexao, $_POST['idMarca']);
+header('Content-Type: application/json');
 
-$marca = isset($_POST['marca']) ? $_POST['marca'] : '';
-$user = $_SESSION['id_user'];
-$acao = isset($_POST['acao']) ? $_POST['acao'] : '';
-$idMarca = isset($_POST['idMarca']) ? $_POST['idMarca'] : 0;
-$statusMarca = isset($_POST['status']) ? $_POST['status'] : '';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+$acao = $_POST['acao'];
+$marca = $_POST['descriçaoMarca'];
+$idMarca = $_POST['idMarca'];
+$usuario = $_SESSION['id_user'];
+$status = $_POST['statusMarca'];
 
-// Ação de Inserção
-if ($acao == 'inserir') {
-    if ($marca == '') {
-        echo 'Marca não fornecida.';
-        exit();
-    }
-
-    $marca = mysqli_real_escape_string($conexao, $marca);
-
-    // Query de inserção
+if ($acao == 'insert') {
+    // Código para inserir a marca
     $query = "
-        INSERT INTO MARCA (
-            descriçaoMarca,
+        INSERT INTO marca (
+            descricaoMarca,
             statusMarca,
             dataCadastro,
             usuarioCadastro
         ) VALUES (
-            '$marca',
+            '" . $marca . "',
             'S',
             NOW(),
-            '$user'
-        )";
-
-    // Executando a query
-    if (mysqli_query($conexao, $query)) {
-        echo'Marca inserida com sucesso.';
-    } else {
-        echo'Erro ao inserir Marca: ';
-    }
-}
-
-// Ação de Alteração de Status
-if ($acao == 'muda_status') {
-    if ($statusMarca == '' || $idMarca == 0) {
-        echo 'Status ou ID da marca não fornecido.';
-        exit();
-    }
-
-    $statusMarca = mysqli_real_escape_string($conexao, $statusMarca);
-
-    // Query de atualização do status
-    $sql = "
-        UPDATE MARCA
-        SET statusMarca = '$statusMarca'
-        WHERE idMarca = $idMarca
+            '" . $usuario . "'
+        )
     ";
-
-    // Executando a query
-    if (mysqli_query($conexao, $sql)) {
-        echo 'Status alterado com sucesso.';
-        exit();
+    $result = mysqli_query($conexao, $query);
+    if ($result) {
+        echo json_encode(['status' => 'sucesso']); // Retorna sucesso como JSON
     } else {
-        echo'Erro ao alterar status: ';
+        echo json_encode(['status' => 'erro']); // Retorna erro como JSON
     }
-}
-
-// Ação de Obter Informações
-if ($acao == 'get_info') {
-    if ($idMarca == 0) {
-        echo'ID da marca não fornecido.';
-        exit();
-    }
-
-    $sql = "
-        SELECT descriçaoMarca
-        FROM marca
-        WHERE idMarca = $idMarca
-    ";
-
-    $result=mysqli_query($conexao,$sql)or die(false);
-$marca=$result->fetch_all(MYSQLI_ASSOC);
-echo json_encode($marca);
-exit();
-}
-
-// Ação de Update
-if ($acao == 'update') {
-    if ($marca == '' || $idMarca == 0) {
-        echo 'Marca ou ID não fornecido.';
-        exit();
-    }
-
-    $marca = mysqli_real_escape_string($conexao, $marca);
-
-    $sql = "
-        UPDATE marca 
-        SET descriçaoMarca = '$marca'
-        WHERE idMarca = $idMarca
-    ";
-
-    if (mysqli_query($conexao, $sql)) {
-        echo 'Informações alteradas com sucesso.';
-        exit();
+} elseif ($acao == 'update') {
+    // Código para atualizar a marca
+    $query = "UPDATE marca SET descricaoMarca = '$marca' WHERE idMarca = $idMarca";
+    $result = mysqli_query($conexao, $query);
+    if ($result) {
+        echo json_encode(['status' => 'sucesso']); // Retorna sucesso como JSON
     } else {
-        echo 'Erro ao alterar informações: ';
+        echo json_encode(['status' => 'erro']); // Retorna erro como JSON
+    }
+} elseif ($acao == 'busca_info') {
+    // Código para buscar informações da marca
+    $query = "SELECT idMarca, descricaoMarca FROM marca WHERE idMarca = $idMarca";
+    $result = mysqli_query($conexao, $query);
+    if ($result) {
+        $dados = $result->fetch_all(MYSQLI_ASSOC); // Pega todos os dados da consulta
+        echo json_encode($dados); // Retorna os dados da marca como JSON
+    } else {
+        echo json_encode(['status' => 'erro', 'message' => 'Erro ao buscar informações']); // Retorna erro como JSON
+    }
+} elseif ($acao == 'alterar_status') {
+    // Código para alterar o status da marca
+    $query = "UPDATE marca SET statusMarca = '$status' WHERE idMarca = $idMarca";
+    $result = mysqli_query($conexao, $query);
+    if ($result) {
+        echo json_encode(['status' => 'sucesso']); // Retorna sucesso como JSON
+    } else {
+        echo json_encode(['status' => 'erro']); // Retorna erro como JSON
     }
 }
+?>
