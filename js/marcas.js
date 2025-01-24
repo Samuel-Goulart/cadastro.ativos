@@ -9,7 +9,7 @@ $(document).ready(function () {
       var marca = $('#descriçaoMarca').val();
       var idMarca = $('#idMarca').val();
 
-      if (idMarca == "") {
+      if (marca == "") {
           alert('Campo da marca deve ser preenchido!')
           return;
       }
@@ -30,7 +30,7 @@ $(document).ready(function () {
                   var data = JSON.parse(response);
                   if (data.status === 'sucesso') {
                       alert('Informação Salva');
-                      location.reload();
+                     location.reload();
                   } else {
                       alert('Erro ao Salvar');
                   }
@@ -47,7 +47,7 @@ $(document).ready(function () {
 
   $(".editar").click(function() {
       var idMarca = $(this).attr('data-reg');
-
+      $('#idMarca').val(idMarca);
       $.ajax({
           type: "POST",
           url: "../controle/marcas_controller.php",
@@ -62,9 +62,9 @@ $(document).ready(function () {
                   if (info.status === 'erro') {
                       alert('Erro ao buscar Informações');
                   } else {
-                      $('#idMarca').val(info[0].idMarca);
-                      $('#descriçaoMarca').val(info[0].descricaoMarca);
                       $('.cadastrar').click();
+                      $('#descriçaoMarca').val(info[0].descriçaoMarca);
+                     
                   }
               } catch (e) {
                   console.error("Erro ao analisar JSON:", e);

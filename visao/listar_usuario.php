@@ -5,8 +5,8 @@ include('../controle/funcoes.php');
 include('cabecalho.php');
 include('menu_superior.php');
 
+$admin=$_SESSION['admin'];
 $info_bd= busca_info_bd($conexao,'usuario');
-
 ?>
 <DOCTYPE html>  
     <head>
@@ -27,26 +27,48 @@ $info_bd= busca_info_bd($conexao,'usuario');
       <th scope="col">turma</th>
       
     </tr>
-  </thead>
+  </thead>turmaUsuario
   <tbody>
     <?php
     foreach($info_bd as $user){
         ?>
         <tr>     
             <td>
+                <?php
+                if($admin=='S'){
+                ?>
                 <a href="alterar_usuario.php?id_usuario=<?php echo $user['idUsuario']?>">
-                    <?php echo $user['nomeUsuario'];?>
-                </a>
+                    <?php echo $user['nomeUsuario'];?></a>
+                <?php
+                }else{
+                    echo $user['nomeUsuario'];
+                }
+                ?>
+        
             </td>
             <td>
-                <a href="alterar_usuario.php?id_usuario=<?php echo $user['idUsuario']?>"><!--puxa do banco -->
-                <?php echo $user['usuario'];?>
-                </a>
+            <?php
+                if($admin=='S'){
+                ?>
+                <a href="alterar_usuario.php?id_usuario=<?php echo $user['idUsuario']?>">
+                    <?php echo $user['usuario'];?></a>
+                <?php
+                }else{
+                    echo $user['usuario'];
+                }
+                ?>
             </td>
             <td>
+            <?php
+                if($admin=='S'){
+                ?>
                 <a href="alterar_usuario.php?id_usuario=<?php echo $user['idUsuario']?>">
-                <?php echo $user['turmaUsuario'];?>
-                </a>
+                    <?php echo $user['usuario'];?></a>
+                <?php
+                }else{
+                    echo $user['turmaUsuario'];
+                }
+                ?>
             </td>
             
         </tr>

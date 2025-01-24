@@ -1,24 +1,25 @@
-<?php
+<?php 
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
 session_start();
 date_default_timezone_set('America/Sao_Paulo');
 include('../modelo/conecta_banco_dados.php');
-$marca = mysqli_real_escape_string($conexao, $_POST['descriçaoMarca']);
-$idMarca = mysqli_real_escape_string($conexao, $_POST['idMarca']);
-header('Content-Type: application/json');
+//$marca = mysqli_real_escape_string($conexao, $_POST['descriçaoMarca']);
+//$idMarca = mysqli_real_escape_string($conexao, $_POST['idMarca']);
+//header('Content-Type: application/json');
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+
 $acao = $_POST['acao'];
-$marca = $_POST['descriçaoMarca'];
+$marca = $_POST['marca'];
 $idMarca = $_POST['idMarca'];
 $usuario = $_SESSION['id_user'];
-$status = $_POST['statusMarca'];
+$status = $_POST['status'];
 
 if ($acao == 'insert') {
     // Código para inserir a marca
     $query = "
         INSERT INTO marca (
-            descricaoMarca,
+            descriçaoMarca,
             statusMarca,
             dataCadastro,
             usuarioCadastro
@@ -37,7 +38,7 @@ if ($acao == 'insert') {
     }
 } elseif ($acao == 'update') {
     // Código para atualizar a marca
-    $query = "UPDATE marca SET descricaoMarca = '$marca' WHERE idMarca = $idMarca";
+    $query = "UPDATE marca SET descriçaoMarca = '$marca' WHERE idMarca = $idMarca";
     $result = mysqli_query($conexao, $query);
     if ($result) {
         echo json_encode(['status' => 'sucesso']); // Retorna sucesso como JSON
@@ -46,14 +47,12 @@ if ($acao == 'insert') {
     }
 } elseif ($acao == 'busca_info') {
     // Código para buscar informações da marca
-    $query = "SELECT idMarca, descricaoMarca FROM marca WHERE idMarca = $idMarca";
+    $query = "SELECT idMarca, descriçaoMarca FROM marca WHERE idMarca = $idMarca";
     $result = mysqli_query($conexao, $query);
     if ($result) {
         $dados = $result->fetch_all(MYSQLI_ASSOC); // Pega todos os dados da consulta
         echo json_encode($dados); // Retorna os dados da marca como JSON
-    } else {
-        echo json_encode(['status' => 'erro', 'message' => 'Erro ao buscar informações']); // Retorna erro como JSON
-    }
+    } 
 } elseif ($acao == 'alterar_status') {
     // Código para alterar o status da marca
     $query = "UPDATE marca SET statusMarca = '$status' WHERE idMarca = $idMarca";

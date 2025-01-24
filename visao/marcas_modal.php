@@ -1,6 +1,5 @@
 
-
-<div class="modal fade" id="descriçaoMarca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">Cadastrar Marca</h1>
@@ -11,7 +10,7 @@
           <div class="mb-3">
             <label for="descriçaoMarca" class="col-form-label">Descrição Marca</label>
             <input type="text" class="form-control" id="descriçaoMarca">
-            <input type="hidden" class="form-control" id="descriçaoMarca">
+            <input type="hidden" class="form-control" id="idMarca">
           </div>
          
       </div>

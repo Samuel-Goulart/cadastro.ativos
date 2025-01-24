@@ -25,7 +25,9 @@ include('menu_superior.php');
         <div class="container">
             <div class="d-flex">
                 <h1 class="ml-5">Marca</h1> 
-                <button type="button" class="btn btn-primary cadastrar" data-bs-toggle="modal" data-bs-target="#exampleModal" >Cadastar Marca</button>
+                <button type="button" id="btn_modal" class="btn btn-primary cadastrar" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >Cadastar Marcas</button>
+</div>
+              
             </div> 
             
             <table class="table table-striped">

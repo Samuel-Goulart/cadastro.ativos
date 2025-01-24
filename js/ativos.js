@@ -49,7 +49,7 @@ $(document).ready(function(){
   }
     function editar(idAtivo){
 
-      $('#idAtivo').val(idAtivo);
+
       
       $.ajax({
         type: "POST",
@@ -63,6 +63,7 @@ $(document).ready(function(){
          success: function(result){
           retorno=JSON.parse(result)
       $('#btn_modal').click();
+      $('#idAtivo').val(idAtivo);
       $("#ativo").val(retorno[0]['descriçaoAtivo']);
       $("#marca").val(retorno[0]['idMarca']);
       $("#tipo").val(retorno[0]['idTipo']);
