@@ -55,14 +55,14 @@ if ($acao == 'inserir') {
 if ($acao == 'muda_status') {
     // Escapando a variável de statusAtivo
     $statusAtivo = mysqli_real_escape_string($conexao, $statusAtivo);
-    
+
     // Query de atualização do status
     $sql = "
         UPDATE ATIVOS 
         SET statusAtivo = '$statusAtivo' 
         WHERE idAtivo = $idAtivo
     ";
-    
+
     // Executando a query
     if (mysqli_query($conexao, $sql)) {
         echo "Status alterado com sucesso.";
@@ -70,8 +70,8 @@ if ($acao == 'muda_status') {
         echo "Erro ao alterar status: " . mysqli_error($conexao);
     }
 }
-if($acao=='get_info'){
-     $sql= "
+if ($acao == 'get_info') {
+    $sql = "
     select
      
         descriçaoAtivo,
@@ -84,15 +84,14 @@ if($acao=='get_info'){
         where
         idAtivo=$idAtivo
         ";
-    
-$result=mysqli_query($conexao,$sql)or die(false);
-$ativo=$result->fetch_all(MYSQLI_ASSOC);
-echo json_encode($ativo);
-exit();
 
+    $result = mysqli_query($conexao, $sql) or die(false);
+    $ativo = $result->fetch_all(MYSQLI_ASSOC);
+    echo json_encode($ativo);
+    exit();
 }
-if($acao=='update'){
-    $sql="
+if ($acao == 'update') {
+    $sql = "
         UPDATE ATIVOs SET
         descriçaoAtivo='$ativo',
          idMarca='$marca',
@@ -102,9 +101,8 @@ if($acao=='update'){
          where idAtivo=$idAtivo
     ";
 
-$result=mysqli_query($conexao,$sql)or die(false);
-if($result){
-    echo"informaçoes Alteradas";
+    $result = mysqli_query($conexao, $sql) or die(false);
+    if ($result) {
+        echo "informaçoes Alteradas";
+    }
 }
-}
-?>
