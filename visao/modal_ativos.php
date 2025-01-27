@@ -45,7 +45,7 @@
             </div>
             <div class="mb-1">
               <label for="recipient-name" class="col-form-label">Observaçao ativo</label>
-              <input type="text" class="form-control" id="observaçao" name='observaçao'>
+              <input type="text" class="form-control" id="observacao" name='observacao'>
             </div>
 
           </form>

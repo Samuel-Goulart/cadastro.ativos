@@ -1,5 +1,5 @@
 <?php
-include_once('../controle/controle_session.php');
+//include_once('../controle/controle_session.php');
 session_start();
 include('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
@@ -31,3 +31,4 @@ if ($dados['quantidade'] > 0) {
   unset($_SESSION['controle_login']);
   header('location:../visao/tela_login_usuario.php?error_auten=s');
 }
+var_dump($dados);
