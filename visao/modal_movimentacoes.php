@@ -3,8 +3,8 @@ include('cabecalho.php');
 
 ?>
 <h1>movimentaçoes</h1>
-<form action="../controle/ativos_controller.php" method="POST">
-  <div class="modal fade " id="movimentaçoes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form action="../controle/movimentacao.js" method="POST">
+  <div class="modal fade " id="movimentaçoes" tabindex="-1" aria-labelledby="exampleModalLabel salva" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

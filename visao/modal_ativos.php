@@ -1,4 +1,4 @@
-<?php var_dump($marcas); ?>
+
 <form action="../controle/ativos_controller.php" method="POST">
   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -21,7 +21,7 @@
                 <?php
 
                 foreach ($marcas as $marca) {
-                  echo '<option value"' . $marca['idMarca'] . '">' . $marca['descriçaoMarca'] . '</option>';
+                  echo '<option value ="' . $marca['idMarca'] . '">' . $marca['descriçaoMarca'] . '</option>';
                 }
                 ?>
 
@@ -32,7 +32,7 @@
               <select id='tipo' name='tipo' class="form-select" aria-label="Default select example">
                 <?php
                 foreach ($tipos as $tipo) {
-                  echo '<option value"' . $tipo['idTipo'] . '">' . $tipo['descriçaoTipo'] . '</option>';
+                  echo '<option value ="' . $tipo['idTipo'] . '">' . $tipo['descriçaoTipo'] . '</option>';
                 }
                 ?>
 

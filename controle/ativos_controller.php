@@ -73,7 +73,7 @@ if ($acao == 'muda_status') {
 if ($acao == 'get_info') {
     $sql = "
     select
-     
+        idAtivo,
         descriçaoAtivo,
         quantidadeAtivo,
         observaçaoAtivo,

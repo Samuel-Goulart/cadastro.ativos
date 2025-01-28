@@ -3,7 +3,7 @@ include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
 include('cabecalho.php');
-
+include('menu_superior.php');
 $marcas = busca_info_bd($conexao, 'marca');
 $tipos = busca_info_bd($conexao, 'tipo');
 
@@ -31,7 +31,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 <script src="../js/ativos.js"></script>
 
 <div style="display: flex;justify-content: space-between;">
-    <?php include('menu_superior.php'); ?>
+   
     <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">cadastrar ativos</button>
 </div>
 

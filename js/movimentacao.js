@@ -1,23 +1,23 @@
 $(document).ready(function(){
-    $("#salva_info").click(function(){
-      let descricao_ativo = $("#ativo").val();
-      let marca = $("#marca").val();
-      let tipo = $("#tipo").val();
+    $("#salva").click(function(){
+      let ativo = $("#ativo").val();
+      let tipo_mov = $("#tipo_mov").val();
       let quantidade = $("#quantidade").val();
-      let observacao = $("#observacao").val();
-      let idAtivo = $("#idAtivo").val();
+      let origem = $("#origem").val();
+      let destino = $("#destino").val();
+      let descricao = $("#descricao").val();
       
-      if(idAtivo==""){
-        acao='inserir';
-      }else{
-        acao='update';
+      if(ativo=="" || tipo_mov=="" || quantidade==""){
+        alert('campos obrigatorios nao preenchidos')
+        return;
       }
-      console.log(marca,tipo)
+      
       $.ajax({
         type: "POST",
-        url:'../controle/ativos_controller.php',
+        url:'../controle/movimentacoes.php',
         data:{
-            ativo:descricao_ativo,
+            descricao: descrisao,
+            ativo:ativo,
             marca:marca,
             tipo:tipo,
             quantidade:quantidade,

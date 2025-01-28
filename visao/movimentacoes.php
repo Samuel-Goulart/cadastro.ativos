@@ -1,7 +1,9 @@
 <?php
+session_start();
+date_default_timezone_set('America/Sao_Paulo');
 include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
-
+include('menu_superior.php');
 
 
 
@@ -10,7 +12,26 @@ include('cabecalho.php');
 $marca= busca_info_bd($conexao,'movimentaçao');
 $ativos= busca_info_bd($conexao,'ativos','statusAtivo','S');
 $tipo_mov= busca_info_bd($conexao,'movimentaçao');
+ini_set('display_errors',0);
+error_reporting(E_ERROR);
 
+$ativo = $_POST[ 'ativo'];
+$tipo_mov = $_POST[ 'tipo_mov'];
+$quantidade = $_POST[ 'quantidade'];
+$origem = $_POST[ 'origem' ];
+$destino = $_POST[ 'destino'];
+$descricao = $_POST[ 'descricao' ];
+$usuario = $_SESSION[ 'id_user'];
+$sqlTotal="
+select
+quantidadeAtivo 
+from
+ativo
+where
+idAtivo=$ativo";
+$result=mysqli_query($conexao,$sqlTotal) or die(false);
+$ativosTotal=$result->fetch_assoc();
+$quantidadeTotal=$ativosTotal['quantidadeAtivo'];
 /*$sql="SELECT 
 `idMovimentaçao`,
 `descriçaoMovimentaçao`,
@@ -115,8 +136,9 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
         <input type="hidden" id="idAtivo" value="">
         
         </body>
-    </div>
+    </div>*/
+    ?>
 <?php
-*/
+
 include('modal_movimentacoes.php');
 ?>
