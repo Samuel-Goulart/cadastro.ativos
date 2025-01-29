@@ -45,7 +45,7 @@ $(document).ready(function(){
        success: function(result){
         console.log(result)
         alert(result);
-       //location.reload();
+       location.reload();
     }});
   }
     function editar(idAtivo){

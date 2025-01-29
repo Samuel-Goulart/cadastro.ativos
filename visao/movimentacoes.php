@@ -1,5 +1,4 @@
 <?php
-session_start();
 date_default_timezone_set('America/Sao_Paulo');
 include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
@@ -9,29 +8,10 @@ include('menu_superior.php');
 
 include('../controle/funcoes.php');
 include('cabecalho.php');
-$marca= busca_info_bd($conexao,'movimentaçao');
-$ativos= busca_info_bd($conexao,'ativos','statusAtivo','S');
-$tipo_mov= busca_info_bd($conexao,'movimentaçao');
-ini_set('display_errors',0);
-error_reporting(E_ERROR);
 
-$ativo = $_POST[ 'ativo'];
-$tipo_mov = $_POST[ 'tipo_mov'];
-$quantidade = $_POST[ 'quantidade'];
-$origem = $_POST[ 'origem' ];
-$destino = $_POST[ 'destino'];
-$descricao = $_POST[ 'descricao' ];
-$usuario = $_SESSION[ 'id_user'];
-$sqlTotal="
-select
-quantidadeAtivo 
-from
-ativo
-where
-idAtivo=$ativo";
-$result=mysqli_query($conexao,$sqlTotal) or die(false);
-$ativosTotal=$result->fetch_assoc();
-$quantidadeTotal=$ativosTotal['quantidadeAtivo'];
+$ativos= busca_info_bd($conexao,'ativos','statusAtivo','S');
+
+
 /*$sql="SELECT 
 `idMovimentaçao`,
 `descriçaoMovimentaçao`,
@@ -57,6 +37,7 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
 <div style="display: flex;justify-content: space-between;">
 <?php  include('menu_superior.php');*/?>
 
+<script src="../js/movimentacao.js"></script>
 
 <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#movimentaçoes" data-bs-whatever="@mdo" >cadastrar movimentaçoes</button>
 </div>

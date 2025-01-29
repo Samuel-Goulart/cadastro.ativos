@@ -16,11 +16,11 @@ include('cabecalho.php');
             <div class="mb-1">
               <div class="mb-1">
                 <label for="recipient-name" class="col-form-label">Ativo</label>
-                <select id='marca' name='marca' class="form-select" aria-label="Default select example">
+                <select id='ativo' name='marca' class="form-select" aria-label="Default select example">
                   <option selected>selecione o ativo</option>
                   <?php
                   foreach ($ativos as $ativo) {
-                    echo '<option value"' . $ativo['idAtivo'] . '">' . $ativo['descriçaoAtivo'] . '</option>';
+                    echo '<option value="' . $ativo['idAtivo'] . '">' . $ativo['descriçaoAtivo'] . '</option>';
                   }
                   ?>
 
@@ -28,7 +28,7 @@ include('cabecalho.php');
               </div>
 
               <label for="recipient-name" class="col-form-label">cadastrar ativo </label>
-              <select id='marca' name='marca' class="form-select" aria-label="Default select example">
+              <select id='tipo_mov' name='marca' class="form-select" aria-label="Default select example">
                 <option selected>tipo de movimentação</option>
                 <option>adicionar</option>
                 <option>remover</option>
