@@ -20,7 +20,7 @@ ativos
 where
 idAtivo=$ativo";
 $result=mysqli_query($conexao,$sqlTotal) or die(false);
-$ativosTotal=$result->fetch_assoc();
+$ativosTotal = $result->fetch_assoc();
  $quantidadeTotal=$ativosTotal['quantidadeAtivo'];//$quantidadeTotal tudo q tem no estoque ou banco de dados 
  
 
@@ -35,30 +35,33 @@ $ativosTotal=$result->fetch_assoc();
  ";
  $resultUso=mysqli_query($conexao,$sqlUso) or die(false);
  $ativosUso= $resultUso->fetch_assoc();
+$quantidadeUso=isset($ativosUso['quantidadeUso'])?$ativosUso['quantidadeUso']:0;//$quantidadeTotal tudo q tem no estoque ou banco de dados 
 
  if($tipo_mov=='adicionar'){
-    $soma_quantidade=$ativosUso+$quantidadeMov;
- if($quantidadeTotal< $ $soma_quantidade){
+    $soma_quantidade=$quantidadeUso+$quantidade;
+ if($quantidadeTotal<  $soma_quantidade){
     echo"nao permitido realizar a movimentaçao.quantidade de ativos em uso mais a quantidade ultrapassa o total de ativos cadastrados";
     exit();
     }
  }else if($tipo_mov=='remover'){
-    if($quantidadeUso-$quantidadeMov< 0 ){
+    if($quantidadeUso-$quantidade< 0 ){
         echo"Não permitido realizar a movimentação.quantided";
         exit();
     }
-    $soma_quantidade=$quantidadeUso-$quantidadeMov;
+    $soma_quantidade=$quantidadeUso-$quantidade;
  }else{
-    if($quantidadeUso-$quantidadeMov <0){
+    if($quantidadeUso-$quantidade <0){
         echo"Não permitido realizar a movimentaçao.";
         exit();
     }
     $soma_quantidade=$quantidadeUso;
  }
+ 
  $queryUpdate="update movimentaçao
  set statusMov='N'
  where idAtivo=$ativo";
- $result="insert into movimentaçao(
+ $result=mysqli_query($conexao,$queryUpdate)or die (false);
+ $query="insert into movimentaçao(
                         idUsuario,
                         idAtivo,
                         localOrigem,
@@ -79,9 +82,16 @@ $ativosTotal=$result->fetch_assoc();
                               '" . $soma_quantidade . "',
                               'S',
                                '" . $tipo_mov . "',
-                                '" . $quantidadeMov . "',
+                                '" . $quantidade . "'
 )
 ";
+$result=mysqli_query($conexao,$query) or die(false);
+if($result){
+   echo'sucesso';
+}else{
+   echo'erro';
+
+}
 
 
 

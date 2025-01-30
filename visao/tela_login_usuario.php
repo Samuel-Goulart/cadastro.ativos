@@ -14,7 +14,9 @@ include_once('../modelo/conecta_banco_dados.php');
 
 <DOCTYPE html>  
 <head>
-         
+         <a>
+           <img src="../css/imagens/logo-SENAC.png">
+         </a>
         
          <!--links do bootstrep-->
         

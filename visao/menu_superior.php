@@ -10,36 +10,78 @@
     <style>
         /* Estilizando os links de navegação (nav-link) */
         .nav-link {
-            color: white; /* Cor branca para os links */
-            min-width: 130px; /* Largura mínima para os links, para garantir um tamanho consistente */
+            color: white;
+            /* Cor branca para os links */
+            min-width: 130px;
+            /* Largura mínima para os links, para garantir um tamanho consistente */
         }
 
         /* Estilos aplicados quando o link de navegação é hover (passa o mouse) ou está ativo */
         .nav-link:hover,
         .nav-link.active,
         .navbar-nav .nav-link.show {
-            color: white !important; /* Garante que a cor dos links permaneça branca, mesmo em hover */
+            color: white !important;
+            /* Garante que a cor dos links permaneça branca, mesmo em hover */
         }
 
         /* Fazendo o dropdown (menu suspenso) aparecer ao passar o mouse */
         .dropdown:hover .dropdown-menu {
-            display: block; /* Exibe o menu suspenso quando o mouse passa sobre o dropdown */
+            display: block;
+            /* Exibe o menu suspenso quando o mouse passa sobre o dropdown */
         }
 
         /* Estilizando a barra de navegação (navbar-nav) */
         .navbar-nav {
             /* display: flex; */
-            justify-content: space-around; /* Distribui os itens de navegação de forma espaçada */
-            margin: 0 6% auto; /* Margem ao redor da navbar (ajustando para ficar centralizado) */
+            justify-content: space-around;
+            /* Distribui os itens de navegação de forma espaçada */
+            margin: 0 6% auto;
+            /* Margem ao redor da navbar (ajustando para ficar centralizado) */
         }
     </style>
-</head>
+    
+    <html lang="pt-BR">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Logout</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+
+            .logout-btn {
+                background-color: #f44336;
+                /* Cor vermelha para o botão */
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+                margin: 20px;
+                text-decoration: none;
+            }
+
+            .logout-btn:hover {
+                background-color: #e53935;
+            }
+        </style>
+    </head>
+
+
+   
+
+
 
 <body>
     <!-- Barra de navegação principal -->
     <nav class="navbar navbar-expand-lg navbar-light px-5" style="background-color: #17264d;color: white;">
         <!-- Logo do site -->
-        <a class="navbar-brand" href="../visao/listar_usuario.php">
+        <a class="navbar-brand" href="../visao/ativos.php">
             <img src="../css/imagens/logo-SENAC.png" width="80" class="d-inline-block align-top" alt="Logo"> <!-- Logo -->
         </a>
 
@@ -66,24 +108,25 @@
                 <!-- Menu dropdown "Cadastros" (não tem submenu no momento) -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_submenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cadastros 
+                        Cadastros
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown_submenu">
                         <li><a class="dropdown-item" href="ativos.php">ativos </a></li>
-                        <li><a class="dropdown-item" href="marcas.php">marcas</a></li> 
+                        <li><a class="dropdown-item" href="marcas.php">marcas</a></li>
                         <li><a class="dropdown-item" href="tipos.php">tipos</a></li>
                     </ul>
-                   
+
                 </li>
 
                 <!-- Link simples para "Movimentações" -->
                 <li class="nav-item">
                     <a class="nav-link" href="movimentacoes.php">Movimentações</a> <!-- Link para a página de movimentações -->
                 </li>
-
+                <a href="../controle/logout.php" class="logout-btn">Sair</a> <!-- Botão de logout -->
             </ul>
         </div>
     </nav>
+
 </body>
 
 </html>
