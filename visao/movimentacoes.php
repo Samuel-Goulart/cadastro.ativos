@@ -2,12 +2,13 @@
 date_default_timezone_set('America/Sao_Paulo');
 include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
+include('cabecalho.php');
 include('menu_superior.php');
 
 
 
 include('../controle/funcoes.php');
-include('cabecalho.php');
+
 
 $ativos = busca_info_bd($conexao, 'ativos', 'statusAtivo', 'S');
 
@@ -35,9 +36,10 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
 
 
 <div style="display: flex;justify-content: space-between;">
-<?php  include('menu_superior.php'); ?>
+
 
 <script src="../js/movimentacao.js"></script>
+<h1>movimentaçoes</h1>
 
 <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#movimentaçoes" data-bs-whatever="@mdo">cadastrar movimentaçoes</button>
 </div>
@@ -66,15 +68,15 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
         foreach($ativos_bd as $i){
             ?>
             <tr>     
-            <td><?php echo $i['descriçaoAtivo'];?></td>
+            <td><?php echo $i['ativos'];?></td>
             <td><?php echo $i['usuario'];?></td>
             <td><?php echo $i['tipoMovimentacao'];?></td>
             <td><?php echo $i['quantidadeUso'];?></td>
             <td><?php echo $i['quantidadeMov'];?></td>                                  
             <td><?php echo $i['localOrigem'];?></td>
             <td><?php echo $i['localDestino'];?></td>
-            <td><?php echo $i['descriçaoModificaçao'];?></td>
-            <td><?php echo $i['dataModificaçao'];?></td>
+            <td><?php echo $i['descriçaoMovimentaçao'];?></td>
+            <td><?php echo $i['dataMovimentaçao'];?></td>
             
             </tr>        
     <?php
@@ -86,7 +88,7 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
         
         </body>
     </div>
-?>
+
 <?php
 
 include('modal_movimentacoes.php');

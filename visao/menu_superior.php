@@ -10,9 +10,9 @@
     <style>
         /* Estilizando os links de navegação (nav-link) */
         .nav-link {
-            color: white;
+            color: white!important;
             /* Cor branca para os links */
-            min-width: 130px;
+            min-width: 150px;
             /* Largura mínima para os links, para garantir um tamanho consistente */
         }
 
@@ -39,41 +39,43 @@
             /* Margem ao redor da navbar (ajustando para ficar centralizado) */
         }
     </style>
-    
+
     <html lang="pt-BR">
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Logout</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-            }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-            .logout-btn {
-                background-color: #f44336;
-                /* Cor vermelha para o botão */
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-                border-radius: 5px;
-                margin: 20px;
-                text-decoration: none;
-            }
+        .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: solid 1px white;
+            /* padding: 10px 19px; */
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 2px;
+            text-decoration: none;
+            height: 39px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+        }
 
-            .logout-btn:hover {
-                background-color: #e53935;
-            }
-        </style>
-    </head>
+        
+    </style>
+</head>
 
 
-   
+
 
 
 
@@ -122,9 +124,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="movimentacoes.php">Movimentações</a> <!-- Link para a página de movimentações -->
                 </li>
-                <a href="../controle/logout.php" class="logout-btn">Sair</a> <!-- Botão de logout -->
+                <li class="nav-item">
+                <a class="nav-link" href="filtros_relatorio.php">Relatório</a> <!-- Link para a página de movimentações -->
+                </li>
             </ul>
+
         </div>
+        <a href="../controle/logout.php" class="logout-btn">Sair</a> <!-- Botão de logout -->
     </nav>
 
 </body>
