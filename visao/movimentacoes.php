@@ -22,10 +22,11 @@ quantidadeUso,
 tipoMovimentacao,
 quantidadeMov,
 (SELECT usuario from usuario u where u.idUsuario= m.idUsuario) as usuario,
-(SELECT descriçaoAtivo from ativos a where a.idAtivo= m.idAtivo) as ativos
+(SELECT descriçaoAtivo from ativos a where a.idAtivo= m.idAtivo) as ativos,
+(select quantidadeAtivo from ativos a where a.idAtivo = m.idAtivo) as quantidadeTotalAtivo
 FROM
  movimentaçao m 
-where m.statusMov = 'S';
+where m.statusMov= 'S';
 ";
 $result=mysqli_query($conexao,$sql)or die(false);
 $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
@@ -53,14 +54,13 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
     <thead>
         <tr>
         <th scope="col">descrisao do ativo</th>
-        <th scope="col">quantidade</th>
-        <th scope="col">usuario do cadastro</th>
-        <th scope="col">data do cadastro</th>
-        <th scope="col">observação</th>
-        <th scope="col">status</th>
         <th scope="col">tipo</th>
-        <th scope="col">marca</th>
-        <th style="text-align:center;">ações</th>
+        <th scope="col">qtd uso</th>
+        <th scope="col">qtd mov</th>
+        <th scope="col">local origem</th>
+        <th scope="col">local destino</th>
+        <th scope="col">descrição</th>
+        <th style="text-align:center;">data do cadastro</th>
         </tr>
         </thead>
         <tbody>
@@ -68,8 +68,7 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
         foreach($ativos_bd as $i){
             ?>
             <tr>     
-            <td><?php echo $i['ativos'];?></td>
-            <td><?php echo $i['usuario'];?></td>
+            <td><?php echo $i['ativos'];?></td> 
             <td><?php echo $i['tipoMovimentacao'];?></td>
             <td><?php echo $i['quantidadeUso'];?></td>
             <td><?php echo $i['quantidadeMov'];?></td>                                  
