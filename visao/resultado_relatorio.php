@@ -17,8 +17,7 @@ $tipoMov = $_POST['tipoMov'];
 $sql = "
     SELECT
         (SELECT descriçaoAtivo from ativos a where a.idAtivo= m.idAtivo) as ativos,
-        (SELECT usuario from usuario u where u.idUsuario= m.id) as usuario,
-        SELECT 
+        (SELECT usuario from usuario u where u.idUsuario= m.idUsuario) as usuario, 
             localOrigem,
             localDestino,
             dataMovimentaçao,
@@ -31,28 +30,77 @@ $sql = "
 WHERE
 idAtivo is not null
 ";
-$sql .= "AND idAtivo=$ativo";
+
 if ($ativo != '' && $ativo != null) {
-    $sql .= "AND idAtivo=$ativo";
+    $sql .= " AND m.idAtivo=$ativo";
 } else {
     if ($marca != "" && $marca != null) {
-        $sql .= "and idAtivo in(SELECT idAtivo from ativos a where a.idMarca=$marca )";
+        $sql .= " and m.idAtivo in(SELECT idAtivo from ativos a where a.idMarca=$marca )";
     }
     if ($tipo != "" && $tipo != null) {
-        $sql .= "and idAtivo in(SELECT idAtivo from ativos a where a.idTipo=$tipo )";
+        $sql .= " and m.idAtivo in(SELECT idAtivo from ativos a where a.idTipo=$tipo )";
     }
 }
 if ($user != '' && $user != null) {
-    $sql .= "AND m.idUsuario=$user";
+    $sql .= " AND m.idUsuario=$user";
 }
 if ($tipoMov != '' && $tipoMov != null) {
-    $sql .= "AND m.tipoMovimentacao=$tipoMov";
+    $sql .= " AND m.tipoMovimentacao='$tipoMov'";
 }
 if ($dataIni != '' && $dataIni != null) {
-    $sql .= "AND m.dataMovimentaçao > '$dataIni'";
+    $sql .= " AND m.dataMovimentaçao >= '$dataIni'";
 }
 if ($dataFim != '' && $dataFim != null) {
-    $sql .= "AND m.dataMovimentaçao < '$dataFim'";
+    $sql .= " AND m.dataMovimentaçao <= '$dataFim'";
 }
 
-//exit();
+$result = mysqli_query($conexao, $sql) or die(false);
+$dados = $result->fetch_all(MYSQLI_ASSOC);
+
+?>
+<body>
+    <div class="container" >  
+        <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">descrisao do ativo</th>
+        <th scope="col">tipo</th>
+        <th scope="col">local Origem</th>
+        <th scope="col">local destino</th>
+        <th scope="col">data movimentaçao</th>
+        <th scope="col">descriçao movimentacao</th>
+        <th scope="col">quantidade uso</th>
+        <th scope="col">tipo movimentaçao</th>
+        <th scope="col">quantidade movimentaçao</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach($dados as $i){
+            ?>
+            <tr>     
+            <td><?php echo $i['ativos'];?></td> 
+            <td><?php echo $i['usuario'];?></td>
+            <td><?php echo $i['localOrigem'];?></td>
+            <td><?php echo $i['localDestino'];?></td>                                  
+            <td><?php echo $i['dataMovimentaçao'];?></td>
+            <td><?php echo $i['descriçaoMovimentaçao'];?></td>
+            <td><?php echo $i['quantidadeUso'];?></td>
+            <td><?php echo $i['tipoMovimentacao'];?></td>
+            <td><?php echo $i['quantidadeMov'];?></td>
+            
+            </tr>        
+    <?php
+    }
+    ?>
+        </tbody>                                 
+        </table>
+        <input type="hidden" id="idAtivo" value="">
+        
+        </body>
+    </div>
+
+<?php
+
+include('modal_movimentacoes.php');
+?>

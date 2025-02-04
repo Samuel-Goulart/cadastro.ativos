@@ -26,7 +26,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <head>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <script src="../js/ativos.js"></script>
 
