@@ -5,6 +5,7 @@ include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
 $title = 'Relatorio gerado';
 include_once('menu_superior.php');
+include('cabecalho.php');
 
 $ativo = $_POST['ativo'];
 $dataIni = $_POST['dataIni'];
@@ -58,47 +59,49 @@ $result = mysqli_query($conexao, $sql) or die(false);
 $dados = $result->fetch_all(MYSQLI_ASSOC);
 
 ?>
+
 <body>
-    <div class="container" >  
-        <table class="table">
-    <thead>
-        <tr>
-        <th scope="col">descrisao do ativo</th>
-        <th scope="col">tipo</th>
-        <th scope="col">local Origem</th>
-        <th scope="col">local destino</th>
-        <th scope="col">data movimentaçao</th>
-        <th scope="col">descriçao movimentacao</th>
-        <th scope="col">quantidade uso</th>
-        <th scope="col">tipo movimentaçao</th>
-        <th scope="col">quantidade movimentaçao</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        foreach($dados as $i){
-            ?>
-            <tr>     
-            <td><?php echo $i['ativos'];?></td> 
-            <td><?php echo $i['usuario'];?></td>
-            <td><?php echo $i['localOrigem'];?></td>
-            <td><?php echo $i['localDestino'];?></td>                                  
-            <td><?php echo $i['dataMovimentaçao'];?></td>
-            <td><?php echo $i['descriçaoMovimentaçao'];?></td>
-            <td><?php echo $i['quantidadeUso'];?></td>
-            <td><?php echo $i['tipoMovimentacao'];?></td>
-            <td><?php echo $i['quantidadeMov'];?></td>
-            
-            </tr>        
-    <?php
-    }
-    ?>
-        </tbody>                                 
-        </table>
-        <input type="hidden" id="idAtivo" value="">
-        
-        </body>
-    </div>
+    <!--<script src="../js/relatorio.js"></script> -->
+        <div class="container">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">descrisao do ativo</th>
+                        <th scope="col">tipo</th>
+                        <th scope="col">local Origem</th>
+                        <th scope="col">local destino</th>
+                        <th scope="col">data movimentaçao</th>
+                        <th scope="col">descriçao movimentacao</th>
+                        <th scope="col">quantidade uso</th>
+                        <th scope="col">tipo movimentaçao</th>
+                        <th scope="col">quantidade movimentaçao</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($dados as $i) {
+                    ?>
+                        <tr>
+                            <td><?php echo $i['ativos']; ?></td>
+                            <td><?php echo $i['usuario']; ?></td>
+                            <td><?php echo $i['localOrigem']; ?></td>
+                            <td><?php echo $i['localDestino']; ?></td>
+                            <td><?php echo $i['dataMovimentaçao']; ?></td>
+                            <td><?php echo $i['descriçaoMovimentaçao']; ?></td>
+                            <td><?php echo $i['quantidadeUso']; ?></td>
+                            <td><?php echo $i['tipoMovimentacao']; ?></td>
+                            <td><?php echo $i['quantidadeMov']; ?></td>
+
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <input type="hidden" id="idAtivo" value="">
+
+</body>
+</div>
 
 <?php
 

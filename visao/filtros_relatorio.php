@@ -98,3 +98,4 @@ $usuarios = busca_info_bd($conexao, 'usuario');
     </div>
   </form>
 </div>
+<script src="../js/relatorio.js"></script>

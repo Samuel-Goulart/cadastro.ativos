@@ -14,6 +14,9 @@ include_once('../modelo/conecta_banco_dados.php');
 
 <DOCTYPE html>  
 <head>
+<meta charset="UTF-8">
+    <title>Estilizando o Link</title>
+    
          <a>
            <img src="../css/imagens/logo-SENAC.png">
          </a>
@@ -48,6 +51,9 @@ include_once('../modelo/conecta_banco_dados.php');
                 <input type="text" required name ='senha'class="form-control" id="senha"class="form-control">
               </div>
             
+              
+              <a class="nav-link" href="tela_cadastro_usuario.php">cadastre-se</a>
+             
             <button type="submit" class="btn btn-primary">enviar</button>
           </form>
         </div>

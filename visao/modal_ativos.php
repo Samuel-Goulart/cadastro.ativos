@@ -1,4 +1,3 @@
-
 <form action="../controle/ativos_controller.php" method="POST">
   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -14,6 +13,7 @@
                 <label for="recipient-name" class="col-form-label">descrisao ativo</label>
                 <input type="text" class="form-control" id="ativo" name="ativo">
               </div>
+              
 
               <label for="recipient-name" class="col-form-label">cadastrar ativo </label>
               <select id='marca' name='marca' class="form-select" aria-label="Default select example">
@@ -47,6 +47,10 @@
               <label for="recipient-name" class="col-form-label">Observaçao ativo</label>
               <input type="text" class="form-control" id="observacao" name='observacao'>
             </div>
+            <div class="mb-3">
+                <label class="form-label" for="formfile">imagem</label>
+                <input  class="form-control" accept="image/png, image/jpeg" type="file" id="imgAtivo">
+              </div>
 
           </form>
         </div>
