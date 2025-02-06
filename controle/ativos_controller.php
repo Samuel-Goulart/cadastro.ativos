@@ -14,6 +14,10 @@ $user = $_SESSION['id_user'];
 $acao = $_POST['acao'];  // Agora a variável $acao é definida corretamente
 $idAtivo = $_POST['idAtivo'];  // Definindo o idAtivo para uso em 'muda_status'
 $statusAtivo = $_POST['status'];  // Definindo a variável statusAtivo, que estava ausente
+$img=$_FILES['img'];
+
+var_dump($img);
+
 
 // Ação de Inserção
 if ($acao == 'inserir') {

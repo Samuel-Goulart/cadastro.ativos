@@ -32,7 +32,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 
 <div style="display: flex;justify-content: space-between;">
    
-    <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">cadastrar ativos</button>
+    <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">cadastrar ativos1</button>
 </div>
 
 

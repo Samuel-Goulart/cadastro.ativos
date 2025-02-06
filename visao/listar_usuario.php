@@ -14,7 +14,7 @@ $info_bd= busca_info_bd($conexao,'usuario');
     <title> lista de usuarios</title>
     <!--usa a tag container pra ficar ajeitado na tela-->
         <div class="container"> 
-        <h2>CADASTRO</h2>
+        <h2>usuarios cadastrados</h2>
     
     </head>
     <body>
@@ -27,7 +27,7 @@ $info_bd= busca_info_bd($conexao,'usuario');
       <th scope="col">turma</th>
       
     </tr>
-  </thead>turmaUsuario
+  </thead>
   <tbody>
     <?php
     foreach($info_bd as $user){

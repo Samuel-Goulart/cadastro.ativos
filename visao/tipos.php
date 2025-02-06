@@ -8,6 +8,9 @@ $title="tipos";
 include('menu_superior.php');
 
 ?>
+<head>
+    <link rel="stylesheet" href="../css/tipos.css">
+</head>
 <script src="../js/tipos.js"></script>
 <style>
     svg{

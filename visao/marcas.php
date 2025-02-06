@@ -4,10 +4,13 @@ include_once('../controle/funcoes.php');
 include('../modelo/conecta_banco_dados.php');
 $info_bd = busca_info_bd($conexao,'marca');
 $title="Marcas";
-
+include('cabecalho.php');
 include('menu_superior.php');
 
 ?>
+<head>
+    <link rel="stylesheet" href="../css/marcas.css">
+</head>
 <script src="../js/marcas.js"></script>
 <style>
     svg{

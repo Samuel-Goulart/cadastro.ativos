@@ -7,30 +7,42 @@ $(document).ready(function(){
       let observacao = $("#observacao").val();
       let idAtivo = $("#idAtivo").val();
       
+      let imgAtivo= $('#imgAtivo');
+      let img=imgAtivo[0].files[0];
       if(idAtivo==""){
         acao='inserir';
       }else{
         acao='update';
       }
+      var formData = new FormData();
+      formData.append('acao',acao);
+      formData.append('descricao_ativo',descricao_ativo);
+      formData.append('marca',marca);
+      formData.append('tipo',tipo);
+      formData.append('quantidade',quantidade);
+      formData.append('observacao',observacao);
+      formData.append('idAtivo',idAtivo);
+      formData.append('img',img);
+
+
+
+
+
+
       console.log(marca,tipo)
       $.ajax({
         type: "POST",
         url:'../controle/ativos_controller.php',
-        data:{
-            ativo:descricao_ativo,
-            marca:marca,
-            tipo:tipo,
-            quantidade:quantidade,
-            observacao:observacao,
-            acao: acao,  // Envia a ação (inserir ou atualizar)
-            idAtivo: idAtivo
-        },
+        data:formData,
+        processData:false,
+        contentType:false,
+       
          success: function(result){
         alert(result);
         location.reload();
-      }});
+      }
     });
-  });
+  })});
   // Função para mudar o status do ativo
   function muda_status(status,idAtivo){
     $.ajax({
