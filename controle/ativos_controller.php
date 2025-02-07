@@ -16,11 +16,26 @@ $idAtivo = $_POST['idAtivo'];  // Definindo o idAtivo para uso em 'muda_status'
 $statusAtivo = $_POST['status'];  // Definindo a variável statusAtivo, que estava ausente
 $img=$_FILES['img'];
 
-var_dump($img);
 
+ if($acao=='inserir'){
+    $pasta_base=$_SERVER['DOCUMENT_ROOT'].'/projeto_final/cadastro.ativos/img_ativo/';
+    if(!file_exists($pasta_base)){
+        mkdir($pasta_base);
+    }
+    $data= date("YmdHis");
+    $tipoImagem=$img ['type'];
+    $quebraTipo= explode('/',$tipoImagem);
+    $extensao = $quebraTipo[1];
 
-// Ação de Inserção
-if ($acao == 'inserir') {
+    $result=move_uploaded_file($img['tmp_name'],$pasta_base . $date . '.' . $extensao);
+    if ($result== false){
+        echo"falha ao mover arquivo";
+        exit();
+    }
+    $urlImg= 'projeto_final/cadastro.ativos/img_ativo/'. $data . '.' . $extensao;
+ 
+
+ 
     // Escapando dados para evitar injeção SQL
     $ativo = mysqli_real_escape_string($conexao, $ativo);
     $observacao = mysqli_real_escape_string($conexao, $observacao);
@@ -32,6 +47,7 @@ if ($acao == 'inserir') {
             quantidadeAtivo,
             statusAtivo,
             observaçaoAtivo,
+            urlImagem,
             idMarca,
             idTipo,
             dataCadastro,
@@ -41,6 +57,7 @@ if ($acao == 'inserir') {
             $quantidade,
             'S',
             '$observacao',
+           ' $urlImg',
             $marca,
             $tipo,
             NOW(),
