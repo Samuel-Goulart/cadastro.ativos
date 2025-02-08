@@ -6,6 +6,7 @@ include('cabecalho.php');
 include('menu_superior.php');
 $marcas = busca_info_bd($conexao, 'marca');
 $tipos = busca_info_bd($conexao, 'tipo');
+$ativos = busca_info_bd($conexao, 'ativos');
 
 $sql = "SELECT 
 `idAtivo`,
@@ -16,6 +17,7 @@ $sql = "SELECT
 `dataCadastro`,
 `usuarioCadastro`,
 `idMarca`,
+`urlImagem`,
 `idTipo`,
 (SELECT descriçaoMarca FROM marca m WHERE m.idMarca = a.idMarca)as marca,
 (SELECT descriçaoTipo from tipo t where t.idTipo = a.idTipo) as tipo,
@@ -26,6 +28,17 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <head>
+    <!-- Estilos para garantir que a imagem não afete o layout -->
+<style>
+    /* Arquivo estilos.css */
+    table {
+    border: none; /* Remove a borda da tabela */
+    border-collapse: collapse; /* Isso faz com que as bordas das células não se sobreponham */
+}
+
+
+
+</style>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <script src="../js/ativos.js"></script>
@@ -52,6 +65,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                     <th scope="col">tipo</th>
                     <th scope="col">marca</th>
                     <th style="text-align:center;">ações</th>
+                    <th style="text-align:center;">imagem</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,6 +81,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                         <td><?php echo $i['statusAtivo']; ?></td>
                         <td><?php echo $i['tipo']; ?></td>
                         <td><?php echo $i['marca']; ?></td>
+                        
                         <td>
                             <div class="acoes" style="display: flex;justify-content: space-between;">
                                 <div class="muda_status">
@@ -97,10 +112,13 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 
                                 </div>
                             </div>
-
-                        </td>
-
+                            </td>
+                        <td style="text-align:center;">
+                        <img src="http://localhost:8080/<?php echo$i['urlImagem']; ?>" alt="Imagem do ativo" style="width: 50px; height: auto;">
+                    </td>
+                        
                     </tr>
+                    
 
                 <?php
                 }
@@ -111,6 +129,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 
 </body>
 </div>
+
 <?php
 
 include('modal_ativos.php');

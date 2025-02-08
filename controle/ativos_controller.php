@@ -27,7 +27,7 @@ $img=$_FILES['img'];
     $quebraTipo= explode('/',$tipoImagem);
     $extensao = $quebraTipo[1];
 
-    $result=move_uploaded_file($img['tmp_name'],$pasta_base . $date . '.' . $extensao);
+    $result=move_uploaded_file($img['tmp_name'],$pasta_base . $data . '.' . $extensao);
     if ($result== false){
         echo"falha ao mover arquivo";
         exit();
@@ -57,7 +57,7 @@ $img=$_FILES['img'];
             $quantidade,
             'S',
             '$observacao',
-           ' $urlImg',
+           '$urlImg',
             $marca,
             $tipo,
             NOW(),
@@ -99,11 +99,13 @@ if ($acao == 'get_info') {
         quantidadeAtivo,
         observaçaoAtivo,
         idMarca,
-        idTipo
+        idTipo,
+        urlImagem
         from
         ativos
         where
         idAtivo=$idAtivo
+
         ";
 
     $result = mysqli_query($conexao, $sql) or die(false);

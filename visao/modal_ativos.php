@@ -13,7 +13,7 @@
                 <label for="recipient-name" class="col-form-label">descrisao ativo</label>
                 <input type="text" class="form-control" id="ativo" name="ativo">
               </div>
-              
+
 
               <label for="recipient-name" class="col-form-label">cadastrar marca</label>
               <select id='marca' name='marca' class="form-select" aria-label="Default select example">
@@ -47,10 +47,11 @@
               <label for="recipient-name" class="col-form-label">Observaçao ativo</label>
               <input type="text" class="form-control" id="observacao" name='observacao'>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="formfile">imagem</label>
-                <input  class="form-control" accept="image/png, image/jpeg" type="file" id="imgAtivo">
-              </div>
+            <div class="mb-3 div_previer" style="display:none">
+              <label class="form-label" for="formfile">imagem</label>
+              <img id="img_previer" style="width:150px; position:relative;left:20%;">
+              
+            </div>
 
           </form>
         </div>

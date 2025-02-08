@@ -82,6 +82,13 @@ $(document).ready(function(){
       $("#tipo").val(retorno[0]['idTipo']);
       $("#quantidade").val(retorno[0]['quantidadeAtivo']);
       $("#observacao").val(retorno[0]['observaçaoAtivo']);
+      if(retorno[0]['urlImagem'] !=""){
+        $("#img_previer").attr('src', window.location.protocol+"//"+
+          window.location.host+'/'+retorno[0]['urlImagem']);
+        $(".div_previer").attr('style','display:block');
+      }else{
+        $(".div_previer").attr('style','display:none');
+      }
       
        
 
