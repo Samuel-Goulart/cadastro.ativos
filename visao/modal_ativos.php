@@ -47,12 +47,16 @@
               <label for="recipient-name" class="col-form-label">Observaçao ativo</label>
               <input type="text" class="form-control" id="observacao" name='observacao'>
             </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Imagem Ativo</label>
+              <input class="form-control" accept="image/png, image/jpeg" type="file" id="imgAtivo">
+            </div>
+
             <div class="mb-3 div_previer" style="display:none">
               <label class="form-label" for="formfile">imagem</label>
               <img id="img_previer" style="width:150px; position:relative;left:20%;">
-              
-            </div>
 
+            </div>
           </form>
         </div>
         <div class="modal-footer">

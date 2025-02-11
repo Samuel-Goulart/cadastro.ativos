@@ -29,22 +29,21 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 
 <head>
     <!-- Estilos para garantir que a imagem não afete o layout -->
-<style>
-    /* Arquivo estilos.css */
-    table {
-    border: none; /* Remove a borda da tabela */
-    border-collapse: collapse; /* Isso faz com que as bordas das células não se sobreponham */
-}
-
-
-
-</style>
+    <style>
+        /* Arquivo estilos.css */
+        table {
+            border: none;
+            /* Remove a borda da tabela */
+            border-collapse: collapse;
+            /* Isso faz com que as bordas das células não se sobreponham */
+        }
+    </style>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <script src="../js/ativos.js"></script>
 
 <div style="display: flex;justify-content: space-between;">
-   
+
     <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">cadastrar ativos1</button>
 </div>
 
@@ -81,7 +80,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                         <td><?php echo $i['statusAtivo']; ?></td>
                         <td><?php echo $i['tipo']; ?></td>
                         <td><?php echo $i['marca']; ?></td>
-                        
+
                         <td>
                             <div class="acoes" style="display: flex;justify-content: space-between;">
                                 <div class="muda_status">
@@ -112,13 +111,13 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 
                                 </div>
                             </div>
-                            </td>
+                        </td>
                         <td style="text-align:center;">
-                        <img src="http://localhost:8080/<?php echo$i['urlImagem']; ?>" alt="Imagem do ativo" style="width: 50px; height: auto;">
-                    </td>
-                        
+                            <img src="http://localhost:8080/<?php echo $i['urlImagem']; ?>" alt="Imagem do ativo" style="width: 50px; height: auto;">
+                        </td>
+
                     </tr>
-                    
+
 
                 <?php
                 }

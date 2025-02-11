@@ -110,7 +110,7 @@ h1 {
 }
 
 .ativo {
-    color: #28a745;
+    color: #a72828;
 }
 
 .ativo:hover {
@@ -118,7 +118,7 @@ h1 {
 }
 
 .inativo {
-    color: #dc3545;
+    color: #64dc35;
 }
 
 .inativo:hover {
