@@ -18,6 +18,7 @@ $sql = "SELECT
 `usuarioCadastro`,
 `idMarca`,
 `urlImagem`,
+`quantidadeMinAtivo`,
 `idTipo`,
 (SELECT descriçaoMarca FROM marca m WHERE m.idMarca = a.idMarca)as marca,
 (SELECT descriçaoTipo from tipo t where t.idTipo = a.idTipo) as tipo,
@@ -55,16 +56,17 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">descrisao do ativo</th>
-                    <th scope="col">quantidade</th>
-                    <th scope="col">usuario do cadastro</th>
-                    <th scope="col">data do cadastro</th>
-                    <th scope="col">observação</th>
-                    <th scope="col">status</th>
-                    <th scope="col">tipo</th>
-                    <th scope="col">marca</th>
+                    <th style="text-align:center;">descrisao do ativo</th>
+                    <th style="text-align:center;">quantidade</th>
+                    <th style="text-align:center;">usuario do cadastro</th>
+                    <th style="text-align:center;">data do cadastro</th>
+                    <th style="text-align:center;">observação</th>
+                    <th style="text-align:center;">status</th>
+                    <th style="text-align:center;">tipo</th>
+                    <th style="text-align:center;">marca</th>
+                    <th style="text-align:center;">quantidade minima</th>
                     <th style="text-align:center;">ações</th>
-                    <th style="text-align:center;">imagem</th>
+                    <th scope="col">imagem</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,14 +74,15 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                 foreach ($ativos_bd as $i) {
                 ?>
                     <tr>
-                        <td><?php echo $i['descriçaoAtivo']; ?></td>
-                        <td><?php echo $i['quantidadeAtivo']; ?></td>
-                        <td><?php echo $i['usuario']; ?></td>
-                        <td><?php echo $i['dataCadastro']; ?></td>
-                        <td><?php echo $i['observaçaoAtivo']; ?></td>
-                        <td><?php echo $i['statusAtivo']; ?></td>
-                        <td><?php echo $i['tipo']; ?></td>
-                        <td><?php echo $i['marca']; ?></td>
+                        <td  style="text-align:center;"><?php echo $i['descriçaoAtivo']; ?></td>
+                        <td  style="text-align:center;"><?php echo $i['quantidadeAtivo']; ?></td>
+                        <td  style="text-align:center;"><?php echo $i['usuario']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['dataCadastro']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['observaçaoAtivo']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['statusAtivo']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['tipo']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['marca']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['quantidadeMinAtivo']; ?></td>
 
                         <td>
                             <div class="acoes" style="display: flex;justify-content: space-between;">

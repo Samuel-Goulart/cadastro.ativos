@@ -7,6 +7,7 @@ $(document).ready(function () {
     let observacao = $("#observacao").val();
     let idAtivo = $("#idAtivo").val();
 
+    let quantidadeMin = $("#quantidadeMin").val();
     let imgAtivo = $("#imgAtivo");
     let img = imgAtivo[0].files[0];
     if (idAtivo == "") {
@@ -20,6 +21,7 @@ $(document).ready(function () {
     formData.append("marca", marca);
     formData.append("tipo", tipo);
     formData.append("quantidade", quantidade);
+    formData.append("quantidadeMin", quantidadeMin);
     formData.append("observacao", observacao);
     formData.append("idAtivo", idAtivo);
     formData.append("img", img);
@@ -73,6 +75,7 @@ function editar(idAtivo) {
       $("#marca").val(retorno[0]["idMarca"]);
       $("#tipo").val(retorno[0]["idTipo"]);
       $("#quantidade").val(retorno[0]["quantidadeAtivo"]);
+      $("#quantidadeMin").val(retorno[0]["quantidadeMinAtivo"]);
       $("#observacao").val(retorno[0]["observaçaoAtivo"]);
       if (retorno[0]["urlImagem"] != "") {
         $("#img_previer").attr(
@@ -100,6 +103,7 @@ function limpar_modal() {
   $("#observacao").val("");
   $("#idAtivo").val("");
 
+  $("#imgAtivo").val("");
   $("#img_previer").attr("src", ""); // Limpa a visualização da imagem
   $(".div_previer").hide(); // Esconde a div de pré-visualização de imagem
 }

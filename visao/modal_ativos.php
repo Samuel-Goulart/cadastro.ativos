@@ -1,5 +1,5 @@
 <form action="../controle/ativos_controller.php" method="POST">
-  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -42,6 +42,10 @@
             <div class="mb-1">
               <label for="recipient-name" class="col-form-label">quantidade</label>
               <input type="text" class="form-control" id="quantidade" name='quantidade'>
+            </div>
+            <div class="mb-1">
+              <label for="recipient-name" class="col-form-label">quantidade minima</label>
+              <input type="text" class="form-control" id="quantidadeMin" name='quantidadeMin'>
             </div>
             <div class="mb-1">
               <label for="recipient-name" class="col-form-label">Observaçao ativo</label>

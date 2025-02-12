@@ -9,9 +9,10 @@ $ativo = $_POST['descricao_ativo'];
 $marca = $_POST['marca'];
 $tipo = $_POST['tipo'];
 $quantidade = $_POST['quantidade'];
+$quantidadeMin = $_POST['quantidadeMin'];
 $observacao = $_POST['observacao'];
 $user = $_SESSION['id_user'];
-$acao = $_POST['acao'];  // Agora a variável $acao é definida corretamente
+$acao = $_POST['acao'];
 $idAtivo = $_POST['idAtivo'];  // Definindo o idAtivo para uso em 'muda_status'
 $statusAtivo = $_POST['status'];  // Definindo a variável statusAtivo, que estava ausente
 $img = $_FILES['img'];
@@ -42,27 +43,30 @@ if ($acao == 'inserir') {
 
     // Query de inserção
     $query = "
-        INSERT INTO ATIVOS (
-            descriçaoAtivo,
-            quantidadeAtivo,
-            statusAtivo,
-            observaçaoAtivo,
-            urlImagem,
-            idMarca,
-            idTipo,
-            dataCadastro,
-            usuarioCadastro
-        ) VALUES (
-            '$ativo',
-            $quantidade,
-            'S',
-            '$observacao',
-           '$urlImg',
-            $marca,
-            $tipo,
-            NOW(),
-            '$user'
-        )";
+    INSERT INTO ATIVOS (
+        descriçaoAtivo,
+        quantidadeAtivo,
+        quantidadeMinAtivo,
+        statusAtivo,
+        observaçaoAtivo,
+        urlImagem,
+        idMarca,
+        idTipo,
+        dataCadastro,
+        usuarioCadastro
+    ) VALUES (
+        '$ativo',               
+        $quantidade,           
+        '$quantidadeMin',      
+        'S',                    
+        '$observacao',          
+        '$urlImg',              
+        $marca,                 
+        $tipo,                  
+        NOW(),                  
+        '$user'                
+    )";
+
 
     // Executando a query
     if (mysqli_query($conexao, $query)) {
@@ -97,6 +101,7 @@ if ($acao == 'get_info') {
         idAtivo,
         descriçaoAtivo,
         quantidadeAtivo,
+        quantidadeMinAtivo,	
         observaçaoAtivo,
         idMarca,
         idTipo,
@@ -115,33 +120,33 @@ if ($acao == 'get_info') {
 }
 if ($acao == 'update') {
 
-    if($img != null){
+    if ($img != null) {
         $sql_remove = "SELECT urlImagem FROM ativos WHERE idAtivo = $idAtivo";
-        $result_remove = mysqli_query($conexao, $sql_remove) or die (false);
+        $result_remove = mysqli_query($conexao, $sql_remove) or die(false);
         $info = $result_remove->fetch_all(MYSQLI_ASSOC);
-        $ativos_bd = $result_remove->fetch_all(MYSQLI_ASSOC);  
+        
 
-        $img_antiga=$_SERVER['DOCUMENT_ROOT'].'/'.$INFO[0][''];
+        $img_antiga = $_SERVER['DOCUMENT_ROOT'] . '/' . $info[0]['urlImagem'];
         unlink($img_antiga);
 
         $pasta_base = $_SERVER['DOCUMENT_ROOT'] . '/projeto_final/cadastro.ativos/img_ativo/';
-        
+
         $data = date("YmdHis");
         $tipoImagem = $img['type'];
         $quebraTipo = explode('/', $tipoImagem);
         $extensao = $quebraTipo[1];
-    
+
         $result = move_uploaded_file($img['tmp_name'], $pasta_base . $data . '.' . $extensao);
         if ($result == false) {
             echo "falha ao mover arquivo";
             exit();
         }
-        $urlImg='/projeto_final/cadastro.ativos/img_ativo/'. $data. '.'. $extensao;
-        $completa_sql=", urlImagem='$urlImg'";
-    }else{
-        $completa_sql="";
+        $urlImg = '/projeto_final/cadastro.ativos/img_ativo/' . $data . '.' . $extensao;
+        $completa_sql = ", urlImagem='$urlImg'";
+    } else {
+        $completa_sql = "";
     }
-   
+
 
 
 
@@ -153,8 +158,8 @@ if ($acao == 'update') {
          idTipo='$tipo',
          quantidadeAtivo='$quantidade',
          observaçaoAtivo='$observacao'";
-         $sql.=$completa_sql;
-         $sql .="
+    $sql .= $completa_sql;
+    $sql .= "
          where idAtivo=$idAtivo
     ";
 
