@@ -157,6 +157,7 @@ if ($acao == 'update') {
          idMarca='$marca',
          idTipo='$tipo',
          quantidadeAtivo='$quantidade',
+         quantidadeMinAtivo='$quantidadeMin',
          observaçaoAtivo='$observacao'";
     $sql .= $completa_sql;
     $sql .= "
