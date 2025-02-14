@@ -8,7 +8,7 @@
 /* Corpo da página */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f6f9;
+    background-color: #383c3d;
     color: #333;
 }
 
@@ -17,9 +17,9 @@ body {
     width: 80%;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ddd9d9;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Cabeçalho */
@@ -34,7 +34,7 @@ h1 {
     margin: 20px auto;
     border-collapse: collapse;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para a tabela */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .table thead {
@@ -43,29 +43,24 @@ h1 {
     text-align: left;
 }
 
-.table th {
-    padding: 12px;
-    font-size: 14px;
-    border-bottom: 2px solid #ddd;
-}
-
+.table th,
 .table td {
     padding: 12px;
-    border: 1px solid #ddd;
-    font-size: 13px;
-    text-align: left;
+    font-size: 14px;
+    border: 2px solid #f4f4f4;
+    background-color: #ddd9d9;
 }
 
 .table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #110072;
 }
 
 .table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #040a64;
     cursor: pointer;
 }
 
-/* Botões de ação */
+/* Botões */
 .btn {
     padding: 8px 16px;
     border: none;
@@ -75,19 +70,12 @@ h1 {
 }
 
 .btn-primary {
-    background-color: #007bff;
+    background-color: #ff2600;
     color: #fff;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
-}
-
-/* Botões de ações na tabela */
-.acoes {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
 }
 
 /* Ícones de ação */
@@ -144,16 +132,11 @@ h1 {
     color: #333;
 }
 
-.modal-body {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
 .modal-footer {
-    border-top: 1px solid #ddd;
-    padding-top: 15px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 15px;
 }
 
 .modal-footer button {
@@ -164,23 +147,15 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-.modal-footer .btn-primary {
+/*.modal-footer .btn-primary {
     background-color: #007bff;
     color: #fff;
-    border: none;
 }
 
 .modal-footer .btn-primary:hover {
     background-color: #0056b3;
 }
-
-.modal-footer {
-    display: flex;
-    justify-content: center; /* Centraliza os botões */
-    gap: 10px;
-    padding-top: 15px;
-}
-
+*/
 /* Estilo para os ícones de editar e status */
 .status, .editar {
     cursor: pointer;
@@ -188,5 +163,40 @@ h1 {
 }
 
 .status:hover, .editar:hover {
-    transform: scale(1.05); /* Leve aumento de tamanho ao passar o mouse */
+    transform: scale(1.05);
+}
+/* Garante que o contêiner ocupe a altura necessária */
+html, body {
+    height: 100%; /* A altura do html e body continua a mesma */
+    margin: 0;    /* Remove qualquer margem */
+}
+
+/* Garante que o contêiner ocupe toda a altura da tela */
+html, body {
+    height: 100%;  /* Certifique-se de que o body e html tenham 100% da altura da tela */
+    margin: 0;     /* Remove qualquer margem */
+}
+
+.centralizado {
+    display: flex;
+    justify-content: center;  /* Centraliza horizontalmente */
+    align-items: center;      /* Centraliza verticalmente */
+    height: auto;             /* Altura automática para que o conteúdo não ocupe a tela inteira */
+   /* padding: 10px;            /* Diminui o espaço ao redor */
+}
+
+.btn-primary {
+    background-color: #17264d;
+    color: #fff;
+    padding: 15px 60px;    /* Ajusta o tamanho do botão */
+    font-size: 14px;        /* Tamanho da fonte */
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(247, 247, 247, 0.699);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #ccc6c6;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
 }

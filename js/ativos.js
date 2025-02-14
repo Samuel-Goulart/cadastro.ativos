@@ -102,6 +102,7 @@ function limpar_modal() {
   $("#quantidade").val("");
   $("#observacao").val("");
   $("#idAtivo").val("");
+  $("#quantidadeMin").val("");
 
   $("#imgAtivo").val("");
   $("#img_previer").attr("src", ""); // Limpa a visualização da imagem

@@ -27,7 +27,14 @@ FROM `ativos` a WHERE 1";
 $result = mysqli_query($conexao, $sql) or die(false);
 $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 ?>
+<!--<div class="centralizado">
+<input type="hidden" id="idAtivo" value="">
 
+<form method="GET" action="../controle/requisiçao_cUrl.php" class="form-busca">
+    <input type="text" name="busca" placeholder="Buscar produto no Mercado Livre" required>
+    <button type="submit">Buscar</button>
+</form>
+</div>-->
 <head>
     <!-- Estilos para garantir que a imagem não afete o layout -->
     <style>
@@ -43,9 +50,9 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 </head>
 <script src="../js/ativos.js"></script>
 
-<div style="display: flex;justify-content: space-between;">
+<div class="centralizado">
 
-    <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">cadastrar ativos1</button>
+    <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">cadastrar ativos</button>
 </div>
 
 
@@ -74,9 +81,9 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                 foreach ($ativos_bd as $i) {
                 ?>
                     <tr>
-                        <td  style="text-align:center;"><?php echo $i['descriçaoAtivo']; ?></td>
-                        <td  style="text-align:center;"><?php echo $i['quantidadeAtivo']; ?></td>
-                        <td  style="text-align:center;"><?php echo $i['usuario']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['descriçaoAtivo']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['quantidadeAtivo']; ?></td>
+                        <td style="text-align:center;"><?php echo $i['usuario']; ?></td>
                         <td style="text-align:center;"><?php echo $i['dataCadastro']; ?></td>
                         <td style="text-align:center;"><?php echo $i['observaçaoAtivo']; ?></td>
                         <td style="text-align:center;"><?php echo $i['statusAtivo']; ?></td>
@@ -127,7 +134,6 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                 ?>
             </tbody>
         </table>
-        <input type="hidden" id="idAtivo" value="">
 
 </body>
 </div>
