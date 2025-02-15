@@ -1,0 +1,96 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ddd9d9; /* Cor de fundo suave */
+    color: #333;
+}
+
+/* Container dos produtos */
+.produto-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;  /* Deixa os produtos com um espaço entre eles */
+    gap: 20px;  /* Espaçamento maior entre os produtos */
+    padding: 50px;
+    margin-top: 50px;  /* Espaço superior */
+}
+
+/* Produto individual */
+.produto {
+    background-color: #fff;
+    border-radius: 12px;  /* Bordas arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 22%;  /* Tamanho fixo do produto */
+    box-sizing: border-box;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    text-align: center;  /* Centraliza o texto */
+    display: grid;
+    align-items: end;
+}
+
+/* Efeito ao passar o mouse sobre o produto */
+.produto:hover {
+    transform: translateY(-10px);  /* Leve ele para cima ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* Sombra mais forte */
+}
+
+/* Centralização da imagem */
+.center {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 20px;  /* Espaçamento entre a imagem e o texto */
+}
+
+.center img {
+    width: 120px;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Título do produto */
+.produto h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Preço do produto */
+.produto p {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #03630b;  /* Cor vibrante para o preço */
+    margin: 10px 0;
+}
+
+/* Link para o Mercado Livre */
+.produto a {
+    display: inline-block;
+    background-color: #17264d; /* Cor de fundo verde */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.produto a:hover {
+    background-color: #c0710a; /* Cor mais escura quando passa o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .produto {
+        width: 45%; /* Coloca 2 produtos por linha */
+    }
+}
+
+@media (max-width: 480px) {
+    .produto {
+        width: 100%; /* Coloca 1 produto por linha */
+    }
+}
