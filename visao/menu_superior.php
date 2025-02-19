@@ -127,6 +127,9 @@
                 <li class="nav-item">
                 <a class="nav-link" href="filtros_relatorio.php">Relatório</a> <!-- Link para a página de movimentações -->
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="busca_prod_ml.php">produtos</a> <!-- Link para a página de movimentações -->
+                </li>
             </ul>
 
         </div>

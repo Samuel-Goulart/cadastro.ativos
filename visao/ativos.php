@@ -143,3 +143,4 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 include('modal_ativos.php');
 
 ?>
+<input type="hidden" id="idAtivo">

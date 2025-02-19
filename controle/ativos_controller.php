@@ -19,7 +19,7 @@ $img = $_FILES['img'];
 
 
 if ($acao == 'inserir') {
-    $pasta_base = $_SERVER['DOCUMENT_ROOT'] . '/projeto_final/cadastro.ativos/img_ativo/';
+    $pasta_base = $_SERVER['DOCUMENT_ROOT'] . '/cadastro.ativos/img_ativo/';
     if (!file_exists($pasta_base)) {
         mkdir($pasta_base);
     }
@@ -33,7 +33,7 @@ if ($acao == 'inserir') {
         echo "falha ao mover arquivo";
         exit();
     }
-    $urlImg = 'projeto_final/cadastro.ativos/img_ativo/' . $data . '.' . $extensao;
+    $urlImg = 'cadastro.ativos/img_ativo/' . $data . '.' . $extensao;
 
 
 
@@ -129,7 +129,7 @@ if ($acao == 'update') {
         $img_antiga = $_SERVER['DOCUMENT_ROOT'] . '/' . $info[0]['urlImagem'];
         unlink($img_antiga);
 
-        $pasta_base = $_SERVER['DOCUMENT_ROOT'] . '/projeto_final/cadastro.ativos/img_ativo/';
+        $pasta_base = $_SERVER['DOCUMENT_ROOT'] . '/cadastro.ativos/img_ativo/';
 
         $data = date("YmdHis");
         $tipoImagem = $img['type'];
@@ -141,7 +141,7 @@ if ($acao == 'update') {
             echo "falha ao mover arquivo";
             exit();
         }
-        $urlImg = '/projeto_final/cadastro.ativos/img_ativo/' . $data . '.' . $extensao;
+        $urlImg = 'cadastro.ativos/img_ativo/' . $data . '.' . $extensao;
         $completa_sql = ", urlImagem='$urlImg'";
     } else {
         $completa_sql = "";

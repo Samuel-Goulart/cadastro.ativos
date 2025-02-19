@@ -36,7 +36,7 @@ $(document).ready(function () {
 
       success: function (result) {
         alert(result);
-        location.reload();
+        //location.reload();
       },
     });
   });
@@ -54,7 +54,7 @@ function muda_status(status, idAtivo) {
     success: function (result) {
       console.log(result);
       alert(result);
-      location.reload();
+      //location.reload();
     },
   });
 }

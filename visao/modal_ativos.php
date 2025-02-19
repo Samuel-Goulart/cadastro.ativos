@@ -17,9 +17,8 @@
 
               <label for="recipient-name" class="col-form-label">cadastrar marca</label>
               <select id='marca' name='marca' class="form-select" aria-label="Default select example">
-                <option selected>selecione a marca </option>
+                <option value="">selecione a marca </option>
                 <?php
-
                 foreach ($marcas as $marca) {
                   echo '<option value ="' . $marca['idMarca'] . '">' . $marca['descriçaoMarca'] . '</option>';
                 }
@@ -30,6 +29,7 @@
             <div class="mb-1">
               <label for="recipient-name" class="col-form-label">tipo</label>
               <select id='tipo' name='tipo' class="form-select" aria-label="Default select example">
+              <option value="">selecione o tipo </option>
                 <?php
                 foreach ($tipos as $tipo) {
                   echo '<option value ="' . $tipo['idTipo'] . '">' . $tipo['descriçaoTipo'] . '</option>';
