@@ -20,7 +20,7 @@ function busca_prod_ml($pesquisa)
     include('../modelo/conecta_banco_dados.php');
     include('controle_session.php');
 
-    $termo = urlencode('celular');
+    $termo = urlencode($pesquisa);
     $url = "https://api.mercadolibre.com/sites/MLB/search?q=$termo";
 
     $ch = curl_init();

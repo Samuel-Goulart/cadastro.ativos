@@ -1,5 +1,3 @@
-
-
 <DOCTYPE html>  
 
     <!--links do bootstrep-->

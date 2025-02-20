@@ -6,6 +6,27 @@ body {
     background-color: #ddd9d9; /* Cor de fundo suave */
     color: #333;
 }
+/* Estilo para o título h1 */
+h1 {
+    font-family: 'Arial', sans-serif; /* Definindo a fonte, pode mudar para qualquer outra */
+    font-size: 36px;
+    font-weight: bold;
+    color: #4CAF50; /* Cor verde para destaque */
+    text-align: center; /* Alinha o texto ao centro */
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-transform: uppercase; /* Deixa o texto em maiúsculas */
+    letter-spacing: 2px; /* Aumenta o espaçamento entre as letras */
+}
+
+/* Exemplo de como mudar a fonte com Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+/* Para usar a fonte Roboto, caso queira alterar */
+h1 {
+    font-family: 'Roboto', sans-serif; /* Usando a fonte Roboto */
+}
+
 
 /* Container dos produtos */
 .produto-container {

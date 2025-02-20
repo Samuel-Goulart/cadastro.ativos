@@ -32,3 +32,21 @@ if ($result) {
     echo "<script> alert('falha no cadastro')</script>";
     header('../visao/tela_cadastro_usuario.php');
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $senha = $_POST['senha'];
+
+    // Validação da senha no lado do servidor (também pode ser feita com a mesma regex)
+    if (preg_match('/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/', $senha)) {
+        // A senha é válida
+        echo "Senha válida!";  // Aqui você pode continuar o processamento, como salvar no banco de dados
+        
+        // Criptografando a senha para armazenar de forma segura
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+        // Aqui você pode salvar a senha criptografada no banco de dados
+        // Exemplo: salvarSenhaNoBanco($senhaHash);
+    } else {
+        // A senha não atende aos requisitos
+        echo "A senha deve ter pelo menos 8 caracteres, uma letra maiúscula e um número.";
+    }
+}

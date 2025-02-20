@@ -26,8 +26,8 @@ include('menu_superior.php');
 </style>
 <body> <!-- corpo da pagina -->
         <div class="container">
-            <div class="d-flex">
-                <h1 class="ml-5">tipo</h1> 
+            <div class="centralizado">
+      
                 <button type="button" id="btn_modal" class="btn btn-primary cadastrar" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >Cadastar tipos</button>
 </div>
               

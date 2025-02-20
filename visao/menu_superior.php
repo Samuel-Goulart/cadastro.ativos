@@ -14,6 +14,7 @@
             /* Cor branca para os links */
             min-width: 150px;
             /* Largura mínima para os links, para garantir um tamanho consistente */
+            text-align: center;
         }
 
         /* Estilos aplicados quando o link de navegação é hover (passa o mouse) ou está ativo */

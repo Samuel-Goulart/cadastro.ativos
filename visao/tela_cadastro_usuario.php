@@ -50,6 +50,7 @@ include('../controle/funcoes.php');
             
             <button type="submit" class="btn btn-primary">enviar</button>
           </form>
+          <script src="../js/validaSenha.js"></script> 
         </div>
     
     </body>
