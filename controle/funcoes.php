@@ -21,7 +21,7 @@ function busca_prod_ml($pesquisa)
     include('controle_session.php');
 
     $termo = urlencode($pesquisa);
-    $url = "https://api.mercadolibre.com/sites/MLB/search?q=$termo";
+    $url = "https://api.mercadolibre.com/sites/MLB/search?q=".$termo.'&condition=new&status=active&sort=best_seller&limit=8';
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
