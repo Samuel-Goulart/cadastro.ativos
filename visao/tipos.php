@@ -17,12 +17,7 @@ include('menu_superior.php');
         width: 22px;
         height: 22px;
     }
-    .cadastrar{
-        position: relative;
-        margin-left: 5%;
-        height: 41px;
-        margin-top: 10px;
-    }
+    
 </style>
 <body> <!-- corpo da pagina -->
         <div class="container">

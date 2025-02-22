@@ -2,6 +2,7 @@
 session_start();
 include('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
+if
 
 
 
@@ -30,7 +31,7 @@ include('../controle/funcoes.php');
        
        
        <!--layalt da tela pre pronto do bootstrep-->
-        <form action="../controle/tela_cadastro_usuario_controle.php" method="POST">
+        <form id="form" action="../controle/tela_cadastro_usuario_controle.php" method="POST">
             
             <div class="mb-3">
               <label for="turma" class="form-label">turma</label>
@@ -47,12 +48,13 @@ include('../controle/funcoes.php');
               <label for="nome" class="form-label">nome</label>
               <input type="text" required name ='nome'class="form-control" id="nome"class="form-control">
             </div>
+            <div class="mb-3" id="erroSenha"></div>
             
-            <button type="submit" class="btn btn-primary">enviar</button>
+            <button onclick="validarSenha()" type="button" class="btn btn-primary">enviar</button>
           </form>
-          <script src="../js/validaSenha.js"></script> 
-        </div>
     
+        </div>
+        <script src="../js/validaSenha.js"></script>
     </body>
     
     

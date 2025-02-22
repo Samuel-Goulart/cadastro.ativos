@@ -32,15 +32,15 @@ $result=mysqli_query($conexao,$sql)or die(false);
 $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
 ?>
 <head> 
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/movimentacao.css">
 </head>
 
 
-<div style="display: flex;justify-content: space-between;">
+<div class="centralizado">
 
 
 <script src="../js/movimentacao.js"></script>
-<h1>movimentaçoes</h1>
+<!--<h1 style=" color: #ffffff">movimentaçoes</h1>-->
 
 <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#movimentaçoes" data-bs-whatever="@mdo">cadastrar movimentaçoes</button>
 </div>

@@ -39,7 +39,7 @@ include_once('../modelo/conecta_banco_dados.php');
 
 
       <!--layalt da tela pre pronto do bootstrep-->
-      <form action="../controle/tela_login_controle.php" method="POST">
+      <form id="form" action="../controle/tela_login_controle.php" method="POST">
         <!--(action) diz pra onde vai mandar as informaçoes da tela -->
 
         <div class="mb-3">
@@ -51,12 +51,12 @@ include_once('../modelo/conecta_banco_dados.php');
           <input type="text" required name='senha' class="form-control" id="senha" class="form-control">
         </div>
 
-
+        <div class="mb-3" id="erroSenha"></div>
         <a class="nav-link" href="tela_cadastro_usuario.php">cadastre-se</a>
 
-        <button type="submit" class="btn btn-primary">enviar</button>
+        <button onclick="validarSenha()" type="button" class="btn btn-primary">enviar</button>
       </form>
     </div>
-
+    <script src="../js/validaSenha.js"></script>
   </body>
 </DOCTYPE>

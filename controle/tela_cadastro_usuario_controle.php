@@ -39,3 +39,40 @@ if ($result) {
 }
 
 
+
+session_start();
+include('../modelo/conecta_banco_dados.php');
+include('../controle/funcoes.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recebe os dados do formulário
+    $usuario = $_POST['usuario'];
+    $senha = $_POST['senha'];
+    $nome = $_POST['nome'];
+    $turma = $_POST['turma'];
+
+    // Função para validar a senha (regras do lado do servidor)
+    if (!validarSenha($senha)) {
+        $_SESSION['erro'] = 'A senha não atende aos requisitos de segurança.';
+        header('Location: ../view/cadastro.php');
+        exit();
+    }
+
+    
+    $senhaCriptografada = password_hash($senha, PASSWORD_BCRYPT);
+
+    
+    $query = "INSERT INTO usuarios (usuario, senha, nome, turma) VALUES ('$usuario', '$senhaCriptografada', '$nome', '$turma')";
+    $result = mysqli_query($conexao, $query);
+
+    if ($result) {
+        $_SESSION['sucesso'] = 'Cadastro realizado com sucesso!';
+        header('Location: ../view/sucesso.php');
+    } else {
+        $_SESSION['erro'] = 'Erro ao cadastrar usuário. Tente novamente!';
+        header('Location: ../view/cadastro.php');
+    }
+}
+
+
+?>

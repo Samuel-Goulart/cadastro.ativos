@@ -19,22 +19,17 @@ include('menu_superior.php');
         height: 22px;
     }
 
-    .cadastrar {
-        position: relative;
-        margin-left: 5%;
-        height: 41px;
-        margin-top: 10px;
-    }
+    
 </style>
 
 <body> <!-- corpo da pagina -->
-    <div class="container">
+    
         <div class="centralizado">
             <!--  <h1 class="ml-5">Marca</h1>-->
             <button type="button" id="btn_modal" class="btn btn-primary cadastrar" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Cadastar Marcas</button>
         </div>
 
-    </div>
+   
 
     <table class="table table-striped">
         <thead>
