@@ -124,7 +124,7 @@ if ($acao == 'update') {
         $sql_remove = "SELECT urlImagem FROM ativos WHERE idAtivo = $idAtivo";
         $result_remove = mysqli_query($conexao, $sql_remove) or die(false);
         $info = $result_remove->fetch_all(MYSQLI_ASSOC);
-        
+
 
         $img_antiga = $_SERVER['DOCUMENT_ROOT'] . '/' . $info[0]['urlImagem'];
         unlink($img_antiga);
@@ -163,6 +163,18 @@ if ($acao == 'update') {
     $sql .= "
          where idAtivo=$idAtivo
     ";
+
+    $result = mysqli_query($conexao, $sql) or die(false);
+    if ($result) {
+        echo "informaçoes Alteradas";
+    }
+}
+
+if ($_POST['acao'] == 'deletar') {
+    $idAtivo = $_POST['idAtivo'];
+    $sql = "
+    DELETE FROM ativos WHERE idAtivo = '$idAtivo'
+";
 
     $result = mysqli_query($conexao, $sql) or die(false);
     if ($result) {

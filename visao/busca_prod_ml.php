@@ -1,9 +1,8 @@
-
 <head>
     <title>Produtos com Baixo Estoque</title>
-    
+
     <link rel="stylesheet" href="../css/requisicao_cUrl.css">
-   
+
 </head>
 <?php
 //ini_set('display_errors', 1);
@@ -11,9 +10,15 @@
 include_once('../modelo/conecta_banco_dados.php');
 include_once('../controle/funcoes.php');
 include_once('../controle/controle_session.php');
-include_once('menu_superior.php');?>
+include_once('menu_superior.php'); ?>
+
 <body>
-<h1>Produtos com Baixo Estoque</h1>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+    <div class="h1">
+        <h1 style="margin-top: 40px; font-family: 'Montserrat', sans-serif;">Produtos com Baixo Estoque</h1>
+
+    </div>
 </body>
 <?php
 $sql = "
@@ -32,10 +37,10 @@ $resultado = "";
 
 foreach ($ativos as $ativo) {
     $quantidade_disponivel = $ativo['quantidadeAtivo'] - $ativo['quantidade_uso'];
-    
+
     // Corrigido para comparar corretamente
-    if ($quantidade_disponivel < $ativo['quantidadeMinAtivo'] ) {
-         $termo_busca = $ativo['descriçaoAtivo'] . ' ' . $ativo['descr_marca'];
+    if ($quantidade_disponivel < $ativo['quantidadeMinAtivo']) {
+        $termo_busca = $ativo['descriçaoAtivo'] . ' ' . $ativo['descr_marca'];
         $resultado .= busca_prod_ml($termo_busca);
     }
 }

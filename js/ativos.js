@@ -95,6 +95,28 @@ function editar(idAtivo) {
     },
   });
 }
+// Função para deletar um ativo
+function deletar(idAtivo) {
+  // Confirmação antes de realizar a exclusão
+  if (confirm("Tem certeza que deseja excluir este ativo?")) {
+    $.ajax({
+      type: "POST",
+      url: "../controle/ativos_controller.php",
+      data: {
+        acao: "deletar",
+        idAtivo: idAtivo,
+      },
+      success: function (result) {
+        alert(result);
+        location.reload();
+      },
+      error: function () {
+        alert("Erro ao tentar excluir o ativo.");
+      },
+    });
+  }
+}
+
 function limpar_modal() {
   $("#ativo").val("");
   $("#marca").val("");

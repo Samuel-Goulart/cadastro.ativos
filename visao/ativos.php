@@ -35,6 +35,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
     <button type="submit">Buscar</button>
 </form>
 </div>-->
+
 <head>
     <!-- Estilos para garantir que a imagem não afete o layout -->
     <style>
@@ -118,6 +119,10 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                                 </div>
                                 <div class="editar" onclick="editar('<?php echo $i['idAtivo']; ?>')">
                                     <i class="bi bi-pencil-square" id="btn_modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"></i>
+
+                                </div>
+                                <div class="deletar" onclick="deletar('<?php echo $i['idAtivo']; ?>')">
+                                <i class="bi bi-trash" ></i>
 
                                 </div>
                             </div>
