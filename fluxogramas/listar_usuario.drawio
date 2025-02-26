@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
   <diagram name="Página-1" id="Ak9r02H6mfEe0BIQiKck">
-    <mxGraphModel dx="462" dy="821" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,7 +8,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="-8xBnZcwmEysZHi2TS6a-1" value="inicio" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-          <mxGeometry x="40" y="40" width="80" height="80" as="geometry" />
+          <mxGeometry x="30" y="80" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="-8xBnZcwmEysZHi2TS6a-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="-8xBnZcwmEysZHi2TS6a-2" target="-8xBnZcwmEysZHi2TS6a-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -16,7 +16,7 @@
         <mxCell id="-8xBnZcwmEysZHi2TS6a-2" value="lista usuário" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="160" y="90" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x1cvdb_2SPTPcETXyPyy-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="-8xBnZcwmEysZHi2TS6a-4" target="-8xBnZcwmEysZHi2TS6a-8">
+        <mxCell id="x1cvdb_2SPTPcETXyPyy-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="-8xBnZcwmEysZHi2TS6a-4" target="-8xBnZcwmEysZHi2TS6a-8" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="530" y="110" />
@@ -26,7 +26,7 @@
         <mxCell id="-8xBnZcwmEysZHi2TS6a-4" value="nome, usuário e turma" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="90" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="x1cvdb_2SPTPcETXyPyy-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="-8xBnZcwmEysZHi2TS6a-8" target="-8xBnZcwmEysZHi2TS6a-28">
+        <mxCell id="x1cvdb_2SPTPcETXyPyy-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="-8xBnZcwmEysZHi2TS6a-8" target="-8xBnZcwmEysZHi2TS6a-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="-8xBnZcwmEysZHi2TS6a-8" value="direcionar para a paginacom as informaçoes do usuario" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">

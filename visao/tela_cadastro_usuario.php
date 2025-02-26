@@ -2,11 +2,11 @@
 session_start();
 include('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
-if
-
 
 
 ?>
+
+
 <DOCTYPE html>  
     <head>
       
