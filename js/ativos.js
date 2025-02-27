@@ -116,6 +116,48 @@ function deletar(idAtivo) {
     });
   }
 }
+function mostrarMaisInformacoes(idAtivo) {
+  $.ajax({
+    type: "POST",
+    url: "../controle/ativos_controller.php", // Altere para o caminho correto do seu PHP
+    data: {
+      acao: "get_info",  // Define a ação para pegar as informações
+      idAtivo: idAtivo,  // Envia o ID do ativo
+    },
+    success: function (result) {
+      // Aqui, o resultado é retornado como JSON
+      let retorno = JSON.parse(result);
+
+      // Verifica se a consulta retornou algum dado
+      if (retorno.length > 0) {
+        // Pega os dados do primeiro ativo retornado (pois a consulta retorna um array de ativos)
+        let ativo = retorno[0];
+
+        // Preenche os campos com as informações do ativo
+        $("#detalhesModal_" + idAtivo + " .descricaoAtivo").text(ativo.descriçaoAtivo);
+        $("#detalhesModal_" + idAtivo + " .quantidadeAtivo").text(ativo.quantidadeAtivo);
+        $("#detalhesModal_" + idAtivo + " .quantidadeMinAtivo").text(ativo.quantidadeMinAtivo);
+        $("#detalhesModal_" + idAtivo + " .observacaoAtivo").text(ativo.observaçaoAtivo);
+
+        // Preencher a imagem do ativo, se houver
+        if (ativo.urlImagem != "") {
+          $("#detalhesModal_" + idAtivo + " .imgAtivo").attr("src", window.location.protocol + "//" + window.location.host + "/" + ativo.urlImagem);
+        } else {
+          $("#detalhesModal_" + idAtivo + " .imgAtivo").attr("src", ""); // Limpar a imagem caso não tenha URL
+        }
+
+        // Abre o modal com as informações carregadas
+        $("#detalhesModal_" + idAtivo).modal('show');
+      } else {
+        alert("Nenhuma informação encontrada para este ativo.");
+      }
+    },
+    error: function () {
+      alert("Erro ao tentar buscar as informações.");
+    }
+  });
+}
+
 
 function limpar_modal() {
   $("#ativo").val("");
