@@ -102,6 +102,8 @@ if ($acao == 'get_info') {
         descriçaoAtivo,
         quantidadeAtivo,
         quantidadeMinAtivo,	
+        dataCadastro,
+        statusAtivo,
         observaçaoAtivo,
         idMarca,
         idTipo,

@@ -119,46 +119,42 @@ function deletar(idAtivo) {
 function mostrarMaisInformacoes(idAtivo) {
   $.ajax({
     type: "POST",
-    url: "../controle/ativos_controller.php", // Altere para o caminho correto do seu PHP
+    url: "../controle/ativos_controller.php",
     data: {
-      acao: "get_info",  // Define a ação para pegar as informações
-      idAtivo: idAtivo,  // Envia o ID do ativo
+      acao: "get_info",
+
+      idAtivo: idAtivo,
     },
     success: function (result) {
-      // Aqui, o resultado é retornado como JSON
-      let retorno = JSON.parse(result);
-
-      // Verifica se a consulta retornou algum dado
-      if (retorno.length > 0) {
-        // Pega os dados do primeiro ativo retornado (pois a consulta retorna um array de ativos)
-        let ativo = retorno[0];
-
-        // Preenche os campos com as informações do ativo
-        $("#detalhesModal_" + idAtivo + " .descricaoAtivo").text(ativo.descriçaoAtivo);
-        $("#detalhesModal_" + idAtivo + " .quantidadeAtivo").text(ativo.quantidadeAtivo);
-        $("#detalhesModal_" + idAtivo + " .quantidadeMinAtivo").text(ativo.quantidadeMinAtivo);
-        $("#detalhesModal_" + idAtivo + " .observacaoAtivo").text(ativo.observaçaoAtivo);
-
-        // Preencher a imagem do ativo, se houver
-        if (ativo.urlImagem != "") {
-          $("#detalhesModal_" + idAtivo + " .imgAtivo").attr("src", window.location.protocol + "//" + window.location.host + "/" + ativo.urlImagem);
-        } else {
-          $("#detalhesModal_" + idAtivo + " .imgAtivo").attr("src", ""); // Limpar a imagem caso não tenha URL
-        }
-
-        // Abre o modal com as informações carregadas
-        $("#detalhesModal_" + idAtivo).modal('show');
+      retorno = JSON.parse(result);
+      $("#exampleModal").click();
+      $("#idAtivo").val(idAtivo);
+      $("#ativo").val(retorno[0]["descriçaoAtivo"]);
+      $("#marca").val(retorno[0]["idMarca"]);
+      $("#tipo").val(retorno[0]["idTipo"]);
+      $("#quantidade").val(retorno[0]["quantidadeAtivo"]);
+      $("#quantidadeMin").val(retorno[0]["quantidadeMinAtivo"]);
+      $("#data").val(retorno[0]["dataCadastro"]);
+      $("#status").val(retorno[0]["statusAtivo"]);
+      $("#observacao").val(retorno[0]["observaçaoAtivo"]);
+      if (retorno[0]["urlImagem"] != "") {
+        $("#img_previer").attr(
+          "src",
+          window.location.protocol +
+            "//" +
+            window.location.host +
+            "/" +
+            retorno[0]["urlImagem"]
+        );
+        $(".div_previer").attr("style", "display:block");
       } else {
-        alert("Nenhuma informação encontrada para este ativo.");
+        $(".div_previer").attr("style", "display:none");
       }
+
+      console.log(retorno);
     },
-    error: function () {
-      alert("Erro ao tentar buscar as informações.");
-    }
   });
 }
-
-
 function limpar_modal() {
   $("#ativo").val("");
   $("#marca").val("");
