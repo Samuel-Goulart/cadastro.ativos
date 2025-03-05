@@ -1,59 +1,100 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
   <diagram id="26EMkZlg8-GxgkMBtVY-" name="Página-1">
-    <mxGraphModel dx="1434" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ltcoZ4d-lcAb8agZyAOL-1">
+        <mxCell id="ltcoZ4d-lcAb8agZyAOL-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ltcoZ4d-lcAb8agZyAOL-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="250" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-1" value="inicio" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="ltcoZ4d-lcAb8agZyAOL-1" value="inicio" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="120" y="70" width="90" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-27" value="menu superior" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="ltcoZ4d-lcAb8agZyAOL-27" value="menu superior" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="250" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="ltcoZ4d-lcAb8agZyAOL-30" target="ltcoZ4d-lcAb8agZyAOL-27">
+        <mxCell id="ltcoZ4d-lcAb8agZyAOL-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="ltcoZ4d-lcAb8agZyAOL-30" target="ltcoZ4d-lcAb8agZyAOL-27" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ltcoZ4d-lcAb8agZyAOL-30" target="ltcoZ4d-lcAb8agZyAOL-33">
+        <mxCell id="ltcoZ4d-lcAb8agZyAOL-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ltcoZ4d-lcAb8agZyAOL-30" target="ltcoZ4d-lcAb8agZyAOL-33" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="420" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ltcoZ4d-lcAb8agZyAOL-30" target="ltcoZ4d-lcAb8agZyAOL-40">
+        <mxCell id="ltcoZ4d-lcAb8agZyAOL-30" value="busca produtos com base na quantidade minima" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ltcoZ4d-lcAb8agZyAOL-33" target="ktyfQOYZLbUDJOHbsSV_-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-30" value="tela com os produtos com baixo estoque retornados de uma api do mercado livre" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="80" width="120" height="60" as="geometry" />
+        <mxCell id="ltcoZ4d-lcAb8agZyAOL-33" value="utiliza uma api do mercado livre para retornar os produtos&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="80" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ltcoZ4d-lcAb8agZyAOL-33" target="ltcoZ4d-lcAb8agZyAOL-35">
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ktyfQOYZLbUDJOHbsSV_-1" target="ktyfQOYZLbUDJOHbsSV_-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-1" value="verifica os produtos de acordo com os parametros passados" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ktyfQOYZLbUDJOHbsSV_-3" target="ktyfQOYZLbUDJOHbsSV_-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ktyfQOYZLbUDJOHbsSV_-3" target="ktyfQOYZLbUDJOHbsSV_-21">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="590" y="110" as="targetPoint" />
+            <mxPoint x="570" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-33" value="apresenta varias fileiras de produtos com quatro produtos em cada fileira&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="414" y="80" width="120" height="60" as="geometry" />
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-3" value="verifica" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="290" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ltcoZ4d-lcAb8agZyAOL-35" target="ltcoZ4d-lcAb8agZyAOL-36">
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-5" value="busca com base nos produtos" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ktyfQOYZLbUDJOHbsSV_-7" target="ktyfQOYZLbUDJOHbsSV_-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-7" value="busca" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="360" width="120" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-8" value="produtos com status ativo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="ktyfQOYZLbUDJOHbsSV_-7">
+          <mxGeometry y="30" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-9" value="melhores vendedores" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="ktyfQOYZLbUDJOHbsSV_-7">
+          <mxGeometry y="60" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-10" value="limite de 8 itens" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="ktyfQOYZLbUDJOHbsSV_-7">
+          <mxGeometry y="90" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-11" value="somente com a condição novo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="ktyfQOYZLbUDJOHbsSV_-7">
+          <mxGeometry y="120" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ktyfQOYZLbUDJOHbsSV_-13" target="ktyfQOYZLbUDJOHbsSV_-14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-35" value="produto fica dentro de uma caixa que nela contem uma descriçao do produto&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="80" width="120" height="60" as="geometry" />
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-13" value="produtos retornados com as seguintes informaçoes&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="555" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ltcoZ4d-lcAb8agZyAOL-36" target="ltcoZ4d-lcAb8agZyAOL-38">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-14" value="informações" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="660" width="140" height="150" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-36" value="abaixo da descrião do produto temos uma foto do ativo&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="170" width="120" height="60" as="geometry" />
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-15" value="descrição do produto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="ktyfQOYZLbUDJOHbsSV_-14">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-38" value="depois temos o preço e um link que leva para o anuncio no mercado livre&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="580" y="260" width="120" height="60" as="geometry" />
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-16" value="imagem" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="ktyfQOYZLbUDJOHbsSV_-14">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="ltcoZ4d-lcAb8agZyAOL-40" value="cada ativo com baixo estoque o site retorna oito anuncios no mercado livre&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="220" width="120" height="60" as="geometry" />
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-17" value="preço&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="ktyfQOYZLbUDJOHbsSV_-14">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-18" value="botão que direciona ao anuncio no mercado livre&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="ktyfQOYZLbUDJOHbsSV_-14">
+          <mxGeometry y="120" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ktyfQOYZLbUDJOHbsSV_-21" value="produtos não encontrados&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="300" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
