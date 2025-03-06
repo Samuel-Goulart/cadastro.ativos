@@ -26,14 +26,38 @@
 <script src="https://cdn.datatables.net/buttons/3.2.1/js/buttons.print.min.js"></script>
  
  
- <script>
- $(document).ready( function () {
-    new DataTable('#example', {
+<script>
+$(document).ready(function () {
+    new DataTable('.tabela_export', {
         layout: {
             topStart: {
                 buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
             }
+        },
+        language: {
+            
+            "sEmptyTable": "Nenhum dado disponível na tabela",
+            "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+            "sInfoFiltered": "(filtrado de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing": "Processando...",
+            "sSearch": "Buscar:",
+            "sZeroRecords": "Nenhum registro encontrado",
+            "oPaginate": {
+                "sFirst": "Primeiro",
+                "sLast": "Último",
+                "sNext": "Próximo",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Ativar para ordenar a coluna de forma ascendente",
+                "sSortDescending": ": Ativar para ordenar a coluna de forma descendente"
+            }
         }
+ 
     });
-} );
+});
 </script>

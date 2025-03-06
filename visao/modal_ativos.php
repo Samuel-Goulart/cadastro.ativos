@@ -1,3 +1,4 @@
+<body>
 <form action="../controle/ativos_controller.php" method="POST" enctype="multipart/form-data"> <!-- Adiciona o enctype -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog">
@@ -61,53 +62,38 @@
             <img id="img_previer" style="width:150px; position:relative; left:20%;">
           </div>
         </div>
-        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id='salva_info'>Send </button>
+        </div>
      
-                    <!-- Modal de Mais Informações para cada ativo -->
-                    <div class="modal fade" id="detalhesModal_<?php echo $i['idAtivo']; ?>" tabindex="-1" aria-labelledby="detalhesModalLabel_<?php echo $i['idAtivo']; ?>" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="detalhesModalLabel_<?php echo $i['idAtivo']; ?>">Detalhes do Ativo</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <table class="table">
-                                        <tr>
-                                            <th>Descrição</th>
-                                            <td><?php echo $i['descriçaoAtivo']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Quantidade</th>
-                                            <td><?php echo $i['quantidadeAtivo']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Marca</th>
-                                            <td><?php echo $i['marca']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Tipo</th>
-                                            <td><?php echo $i['tipo']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Observação</th>
-                                            <td><?php echo $i['observaçaoAtivo']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Data de Cadastro</th>
-                                            <td><?php echo $i['dataCadastro']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Usuário Cadastro</th>
-                                            <td><?php echo $i['usuario']; ?></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
       </div>
     </div>
   </div>
 </form>
+</div>
+<script>
+document.getElementById('salva_info').addEventListener('click', function() {
+    var form = document.querySelector('form');
+    
+    // Verifica se o formulário é válido
+    if (form.checkValidity()) {
+        // Verifica se a imagem foi selecionada
+        var imgInput = document.getElementById('imgAtivo');
+        if (imgInput.files.length === 0) {
+            alert('Por favor, selecione uma imagem para o ativo.');
+            return; // Impede o envio do formulário
+        }
+        
+        // Se tudo estiver correto, envia o formulário
+        form.submit();
+    } else {
+        alert('Por favor, preencha todos os campos obrigatórios!');
+    }
+});
+</script>
+</body>
+        
+     
+

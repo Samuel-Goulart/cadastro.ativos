@@ -49,7 +49,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 
 <body>
     <div class="container">
-        <table id="example" class="table">
+        <table id="example" class="tabela_export">
             <thead>
                 <tr>
                     <th style="text-align:center;">Descrição do Ativo</th>

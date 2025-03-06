@@ -12,14 +12,14 @@ include_once('../controle/funcoes.php');
 include_once('../controle/controle_session.php');
 include_once('menu_superior.php'); ?>
 
-<body>
+<body style="background-color: rgb(165 168 169);">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
 
     <div class="h1">
         <h1 style="margin-top: 40px; font-family: 'Montserrat', sans-serif;">Produtos com Baixo Estoque</h1>
 
     </div>
-</body>
+
 <?php
 $sql = "
 SELECT
@@ -45,3 +45,4 @@ foreach ($ativos as $ativo) {
     }
 }
 ?>
+</body>

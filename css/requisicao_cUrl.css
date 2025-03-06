@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ddd9d9; /* Cor de fundo suave */
+    background-color: rgb(91, 95, 97); /* Cor de fundo suave */
     color: #333;
 }
 /* Estilo para o título h1 */

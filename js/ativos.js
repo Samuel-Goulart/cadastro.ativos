@@ -116,7 +116,7 @@ function deletar(idAtivo) {
     });
   }
 }
-function mostrarMaisInformacoes(idAtivo) {
+/*function mostrarMaisInformacoes(idAtivo) {
   $.ajax({
     type: "POST",
     url: "../controle/ativos_controller.php",
@@ -154,7 +154,7 @@ function mostrarMaisInformacoes(idAtivo) {
       console.log(retorno);
     },
   });
-}
+}*/
 function limpar_modal() {
   $("#ativo").val("");
   $("#marca").val("");
