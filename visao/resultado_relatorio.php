@@ -63,7 +63,7 @@ $dados = $result->fetch_all(MYSQLI_ASSOC);
 <body>
     <!--<script src="../js/relatorio.js"></script> -->
         <div class="container">
-            <table id="example" class="display" style="width:100%">
+            <table id=".tabela_export" class="tabela_export" style="width:100%">
                 <thead>
                     <tr>
                         <th scope="col">descrisao do ativo</th>

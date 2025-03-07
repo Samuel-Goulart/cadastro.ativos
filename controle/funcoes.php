@@ -35,21 +35,21 @@ function busca_prod_ml($pesquisa)
     }
     curl_close($ch);
     $resultados = json_decode($response, true);
+    $retorno="";
 
     if (!empty($resultados['results'])) {
-        echo "<div class='produto-container'>"; // Abre o container dos produtos
+        
         foreach ($resultados['results'] as $produto) {
-            echo "<div class='produto'>";
-            echo "<h3>" . htmlspecialchars($produto['title']) . "</h3>";
-            echo "<div class='center'>";
-            echo "<img src='" . htmlspecialchars($produto['thumbnail']) . "' alt='Imagem do Produto'>";
-            echo "</div>";
-            echo "<p>Preço: R$" . number_format($produto['price'], 2, ',', '.') . "</p>";
-            echo "<a href='" . htmlspecialchars($produto['permalink']) . "' target='_blank'>Ver no Mercado Livre</a>";
-            echo "</div>";
+            $retorno.= "<div class='produto'>";
+            $retorno.= "<h3>" . htmlspecialchars($produto['title']) . "</h3>";
+            $retorno.= "<div class='center'>";
+            $retorno.= "<img src='" . htmlspecialchars($produto['thumbnail']) . "' alt='Imagem do Produto'>";
+            $retorno.= "</div>";
+            $retorno.= "<p>Preço: R$" . number_format($produto['price'], 2, ',', '.') . "</p>";
+            $retorno.= "<a href='" . htmlspecialchars($produto['permalink']) . "' target='_blank'>Ver no Mercado Livre</a>";
+            $retorno.= "</div>";
         }
-        echo "</div>"; // Fecha o container dos produtos
-    } else {
-        echo "<p>Nenhum produto encontrado.</p>";
+        
     }
+    return $retorno;
 }

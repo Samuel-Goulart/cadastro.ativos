@@ -45,4 +45,11 @@ foreach ($ativos as $ativo) {
     }
 }
 ?>
+<div class='produto-container'>
+    <?php ($resultado);
+    if($resultado==""){
+        echo'sem ativos para repor';
+    }else{
+        echo $resultado;
+    } ?> </div>
 </body>

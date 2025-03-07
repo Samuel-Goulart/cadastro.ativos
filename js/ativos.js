@@ -1,4 +1,56 @@
 $(document).ready(function () {
+  $("#salva_info").click(function (event) {
+      event.preventDefault();  // Evita o envio automático do formulário
+      
+      let descricao_ativo = $("#ativo").val();
+      let marca = $("#marca").val();
+      let tipo = $("#tipo").val();
+      let quantidade = $("#quantidade").val();
+      let quantidadeMin = $("#quantidadeMin").val();
+      let observacao = $("#observacao").val();
+      let idAtivo = $("#idAtivo").val();
+      let imgAtivo = $("#imgAtivo")[0].files[0];  // Obtendo a imagem
+      let acao = idAtivo == "" ? "inserir":  "update";
+      // Validar campos obrigatórios
+      if (!descricao_ativo || !marca || !tipo || !quantidade || !quantidadeMin || !observacao ) {
+          alert('Por favor, preencha todos os campos obrigatórios!');
+          return false;  // Impede o envio do formulário
+      }
+      if(!imgAtivo && acao=='inserir'){
+        alert( 'campo imagem e obrigatorio');
+        return false;
+      }
+      
+      var formData = new FormData();
+      formData.append("acao", acao);
+      formData.append("descricao_ativo", descricao_ativo);
+      formData.append("marca", marca);
+      formData.append("tipo", tipo);
+      formData.append("quantidade", quantidade);
+      formData.append("quantidadeMin", quantidadeMin);
+      formData.append("observacao", observacao);
+      formData.append("idAtivo", idAtivo);
+      formData.append("img", imgAtivo);
+
+      // Envia via AJAX
+      $.ajax({
+          type: "POST",
+          url: "../controle/ativos_controller.php",
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (result) {
+              alert(result);
+              location.reload();  // Atualiza a página após sucesso
+          },
+          error: function (error) {
+              alert('Erro ao salvar ativo!');
+          }
+      });
+  });
+});
+/*
+$(document).ready(function () {
   $("#salva_info").click(function () {
     let descricao_ativo = $("#ativo").val();
     let marca = $("#marca").val();
@@ -41,6 +93,7 @@ $(document).ready(function () {
     });
   });
 });
+*/
 // Função para mudar o status do ativo
 function muda_status(status, idAtivo) {
   $.ajax({
@@ -116,45 +169,7 @@ function deletar(idAtivo) {
     });
   }
 }
-/*function mostrarMaisInformacoes(idAtivo) {
-  $.ajax({
-    type: "POST",
-    url: "../controle/ativos_controller.php",
-    data: {
-      acao: "get_info",
 
-      idAtivo: idAtivo,
-    },
-    success: function (result) {
-      retorno = JSON.parse(result);
-      $("#exampleModal").click();
-      $("#idAtivo").val(idAtivo);
-      $("#ativo").val(retorno[0]["descriçaoAtivo"]);
-      $("#marca").val(retorno[0]["idMarca"]);
-      $("#tipo").val(retorno[0]["idTipo"]);
-      $("#quantidade").val(retorno[0]["quantidadeAtivo"]);
-      $("#quantidadeMin").val(retorno[0]["quantidadeMinAtivo"]);
-      $("#data").val(retorno[0]["dataCadastro"]);
-      $("#status").val(retorno[0]["statusAtivo"]);
-      $("#observacao").val(retorno[0]["observaçaoAtivo"]);
-      if (retorno[0]["urlImagem"] != "") {
-        $("#img_previer").attr(
-          "src",
-          window.location.protocol +
-            "//" +
-            window.location.host +
-            "/" +
-            retorno[0]["urlImagem"]
-        );
-        $(".div_previer").attr("style", "display:block");
-      } else {
-        $(".div_previer").attr("style", "display:none");
-      }
-
-      console.log(retorno);
-    },
-  });
-}*/
 function limpar_modal() {
   $("#ativo").val("");
   $("#marca").val("");

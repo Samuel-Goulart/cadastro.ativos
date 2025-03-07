@@ -94,9 +94,12 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                                 </div>
 
                                 <!-- Botão de "Mais Informações" -->
-                                <div class="mais_informacoes" onclick="mostrarMaisInformacoes('<?php echo $i['idAtivo']; ?>')">
-                                    <i class="bi bi-info-circle"  id="detalhesModal_" data-bs-toggle="modal" data-bs-target="#detalhesModal_" data-bs-whatever="@mdo"></i> 
+                                <div class="mais_informacoes" >
+                                    <i class="bi bi-info-circle"     data-bs-toggle="modal" data-bs-target="#detalhesModal_<?php echo $i['idAtivo']; ?>" data-bs-whatever="@mdo"></i> 
                                 </div>
+                                <?php
+                                include("tela_info_ativo.php");
+                                ?>
                             </div>
                         </td>
                         <td style="text-align:center;">
@@ -113,5 +116,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
 
     <!-- Modal para Inserir/Editar Ativos -->
     <?php include('modal_ativos.php'); ?>
+    <input type="hidden" id="idAtivo">
+</body>
 
 </body>
