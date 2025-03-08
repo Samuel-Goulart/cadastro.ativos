@@ -3,6 +3,7 @@ $(document).ready(function () {
       event.preventDefault();  // Evita o envio automático do formulário
       
       let descricao_ativo = $("#ativo").val();
+      let campo_extra = $("#campo_extra").val();
       let marca = $("#marca").val();
       let tipo = $("#tipo").val();
       let quantidade = $("#quantidade").val();
@@ -31,6 +32,8 @@ $(document).ready(function () {
       formData.append("observacao", observacao);
       formData.append("idAtivo", idAtivo);
       formData.append("img", imgAtivo);
+      formData.append("campo_extra", campo_extra);
+
 
       // Envia via AJAX
       $.ajax({
@@ -117,7 +120,6 @@ function editar(idAtivo) {
     url: "../controle/ativos_controller.php",
     data: {
       acao: "get_info",
-
       idAtivo: idAtivo,
     },
     success: function (result) {
@@ -128,8 +130,11 @@ function editar(idAtivo) {
       $("#marca").val(retorno[0]["idMarca"]);
       $("#tipo").val(retorno[0]["idTipo"]);
       $("#quantidade").val(retorno[0]["quantidadeAtivo"]);
+      $("#campo_extra").val(retorno[0]["observacaoQuantidade"]);
       $("#quantidadeMin").val(retorno[0]["quantidadeMinAtivo"]);
       $("#observacao").val(retorno[0]["observaçaoAtivo"]);
+      
+     
       if (retorno[0]["urlImagem"] != "") {
         $("#img_previer").attr(
           "src",
@@ -145,12 +150,42 @@ function editar(idAtivo) {
       }
 
       console.log(retorno);
+      
+    
+      $("#quantidade").on("input", function() {
+        var valorAtual = $(this).val();
+        
+        if (valorAtual !== valorInicialCampoExtra) {
+          adicionarModulo();
+        }
+       
+      });
     },
   });
 }
-// Função para deletar um ativo
+
+function adicionarModulo() {
+
+  $("#campo_extra").on("input", function() {
+    var valorAtual = $(this).val();
+  
+    // Verifica se o valor foi alterado
+    if (valorAtual !== valorInicialCampoExtra) {
+      // Se o valor foi alterado, mostra o campo extra
+      $(this).css("display", "block");
+      console.log("Valor alterado, campo mostrado!");
+    } else {
+      // Se o valor não foi alterado, esconde o campo extra
+      $(this).css("display", "none");
+      console.log("Valor não alterado, campo ocultado!");
+    }
+  });
+  
+}
+
+
 function deletar(idAtivo) {
-  // Confirmação antes de realizar a exclusão
+
   if (confirm("Tem certeza que deseja excluir este ativo?")) {
     $.ajax({
       type: "POST",
@@ -180,6 +215,6 @@ function limpar_modal() {
   $("#quantidadeMin").val("");
 
   $("#imgAtivo").val("");
-  $("#img_previer").attr("src", ""); // Limpa a visualização da imagem
-  $(".div_previer").hide(); // Esconde a div de pré-visualização de imagem
+  $("#img_previer").attr("src", ""); 
+  $(".div_previer").hide(); 
 }

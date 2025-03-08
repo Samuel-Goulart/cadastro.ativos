@@ -41,7 +41,10 @@
               <label for="recipient-name" class="col-form-label">Quantidade</label>
               <input type="text" class="form-control" id="quantidade" name="quantidade" required>
             </div>
-
+            <div class="novo-modulo" style="display: none;">
+              <label for="campo_extra">Observação Quantidade:</label>
+              <input type="text" id="campo_extra" class="form-control" />
+            </div>
             <div class="mb-1">
               <label for="recipient-name" class="col-form-label">Quantidade Mínima</label>
               <input type="text" class="form-control" id="quantidadeMin" name="quantidadeMin" required>

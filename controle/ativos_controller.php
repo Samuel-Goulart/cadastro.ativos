@@ -6,6 +6,7 @@ include('controle_session.php');
 
 
 $ativo = $_POST['descricao_ativo'];
+$observacaoQuantidade = $_POST['campo_extra'];
 $marca = $_POST['marca'];
 $tipo = $_POST['tipo'];
 $quantidade = $_POST['quantidade'];
@@ -103,6 +104,7 @@ if ($acao == 'get_info') {
         quantidadeAtivo,
         quantidadeMinAtivo,	
         dataCadastro,
+        observacaoQuantidade,
         statusAtivo,
         observaçaoAtivo,
         idMarca,
@@ -156,6 +158,7 @@ if ($acao == 'update') {
     $sql = "
         UPDATE ATIVOs SET
         descriçaoAtivo='$ativo',
+        observacaoQuantidade='$observacaoQuantidade',
          idMarca='$marca',
          idTipo='$tipo',
          quantidadeAtivo='$quantidade',
