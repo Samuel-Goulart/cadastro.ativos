@@ -1,9 +1,10 @@
 $(document).ready(function () {
+  // Quando o botão de salvar for clicado
   $("#salva_info").click(function (event) {
-      event.preventDefault();  // Evita o envio automático do formulário
-      
+      event.preventDefault(); // Impede o envio automático do formulário
+
+      // Obtém os valores dos campos
       let descricao_ativo = $("#ativo").val();
-      let campo_extra = $("#campo_extra").val();
       let marca = $("#marca").val();
       let tipo = $("#tipo").val();
       let quantidade = $("#quantidade").val();
@@ -11,17 +12,19 @@ $(document).ready(function () {
       let observacao = $("#observacao").val();
       let idAtivo = $("#idAtivo").val();
       let imgAtivo = $("#imgAtivo")[0].files[0];  // Obtendo a imagem
-      let acao = idAtivo == "" ? "inserir":  "update";
-      // Validar campos obrigatórios
-      if (!descricao_ativo || !marca || !tipo || !quantidade || !quantidadeMin || !observacao ) {
+      let acao = idAtivo == "" ? "inserir" : "update";
+      let campo_extra = $("#campo_extra").val();  // Captura o valor do campo extra
+
+      // Valida os campos obrigatórios
+      if (!descricao_ativo || !marca || !tipo || !quantidade || !quantidadeMin || !observacao) {
           alert('Por favor, preencha todos os campos obrigatórios!');
           return false;  // Impede o envio do formulário
       }
-      if(!imgAtivo && acao=='inserir'){
-        alert( 'campo imagem e obrigatorio');
-        return false;
+      if (!imgAtivo && acao == 'inserir') {
+          alert('Campo imagem é obrigatório');
+          return false;
       }
-      
+
       var formData = new FormData();
       formData.append("acao", acao);
       formData.append("descricao_ativo", descricao_ativo);
@@ -32,10 +35,9 @@ $(document).ready(function () {
       formData.append("observacao", observacao);
       formData.append("idAtivo", idAtivo);
       formData.append("img", imgAtivo);
-      formData.append("campo_extra", campo_extra);
+      formData.append("campo_extra", campo_extra); // Adiciona o valor de campo_extra ao formData
 
-
-      // Envia via AJAX
+      // Envia os dados via AJAX
       $.ajax({
           type: "POST",
           url: "../controle/ativos_controller.php",
@@ -51,7 +53,42 @@ $(document).ready(function () {
           }
       });
   });
+
+  // Evento para a quantidade mudar
+  $("#quantidade").on("input", function () {
+      var valorAtual = $(this).val();
+      if (valorAtual !== valorInicialCampoExtra) {
+          adicionarModulo();  // Chama a função para mostrar o campo extra
+      }
+  });
 });
+
+function adicionarModulo() {
+  // Mostra o campo extra se necessário
+  $("#campo_extra").css("display", "block");
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const quantidadeInput = document.getElementById('quantidadeAtivo');
+  const campoExtraInput = document.getElementById('campo_extra');
+
+  // Função que atualiza a observação com base na quantidade
+  quantidadeInput.addEventListener('input', function() {
+      // Define a observação com base na nova quantidade
+      const quantidade = quantidadeInput.value;
+
+      // Chama a função para mostrar o campo extra, se necessário
+      if (quantidade > 0) {
+          adicionarModulo();
+      } else {
+          campoExtraInput.style.display = "none"; // Esconde o campo extra se quantidade for 0 ou menor
+      }
+      
+      campoExtraInput.value = `A quantidade foi alterada para ${quantidade}`; // Exemplo de mensagem
+  });
+});
+
+
 /*
 $(document).ready(function () {
   $("#salva_info").click(function () {

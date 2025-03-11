@@ -6,7 +6,7 @@ include('controle_session.php');
 
 
 $ativo = $_POST['descricao_ativo'];
-$observacaoQuantidade = $_POST['campo_extra'];
+$campo_extra = $_POST['campo_extra'] ?? '';
 $marca = $_POST['marca'];
 $tipo = $_POST['tipo'];
 $quantidade = $_POST['quantidade'];
@@ -123,55 +123,74 @@ if ($acao == 'get_info') {
     exit();
 }
 if ($acao == 'update') {
-
+    // 1. Verificar se uma nova imagem foi enviada
     if ($img != null) {
+        // Remove a imagem antiga
         $sql_remove = "SELECT urlImagem FROM ativos WHERE idAtivo = $idAtivo";
         $result_remove = mysqli_query($conexao, $sql_remove) or die(false);
         $info = $result_remove->fetch_all(MYSQLI_ASSOC);
 
-
+        // Caminho para a imagem antiga
         $img_antiga = $_SERVER['DOCUMENT_ROOT'] . '/' . $info[0]['urlImagem'];
         unlink($img_antiga);
 
+        // Diretório para a nova imagem
         $pasta_base = $_SERVER['DOCUMENT_ROOT'] . '/cadastro.ativos/img_ativo/';
 
+        // Gerar nome para a imagem com base na data
         $data = date("YmdHis");
         $tipoImagem = $img['type'];
         $quebraTipo = explode('/', $tipoImagem);
         $extensao = $quebraTipo[1];
 
+        // Mover o arquivo para o diretório correto
         $result = move_uploaded_file($img['tmp_name'], $pasta_base . $data . '.' . $extensao);
         if ($result == false) {
-            echo "falha ao mover arquivo";
+            echo "Falha ao mover arquivo";
             exit();
         }
+        // Atualizar o caminho da imagem
         $urlImg = 'cadastro.ativos/img_ativo/' . $data . '.' . $extensao;
         $completa_sql = ", urlImagem='$urlImg'";
     } else {
         $completa_sql = "";
     }
 
+    
+    $campo_extra = $_POST['campo_extra'] ?? ''; 
 
+    
+    $ativo = $_POST['descricaoAtivo'] ?? '';   
+    $quantidade = $_POST['quantidadeAtivo'] ?? 0;  
+    $quantidadeMin = $_POST['quantidadeMinAtivo'] ?? 0;  
+    $observacao = $_POST['observacaoAtivo'] ?? '';
+    $marca = $_POST['idMarca'] ?? 0;  
+    $tipo = $_POST['idTipo'] ?? 0;   
 
-
-
+  
     $sql = "
-        UPDATE ATIVOs SET
-        descriçaoAtivo='$ativo',
-        observacaoQuantidade='$observacaoQuantidade',
-         idMarca='$marca',
-         idTipo='$tipo',
-         quantidadeAtivo='$quantidade',
-         quantidadeMinAtivo='$quantidadeMin',
-         observaçaoAtivo='$observacao'";
-    $sql .= $completa_sql;
-    $sql .= "
-         where idAtivo=$idAtivo
-    ";
+        UPDATE ATIVOS SET
+            descriçaoAtivo='$ativo',
+            observacaoQuantidade='$campo_extra',  // Atualizando o campo extra
+            idMarca='$marca',
+            idTipo='$tipo',
+            quantidadeAtivo='$quantidade',
+            quantidadeMinAtivo='$quantidadeMin',
+            observaçaoAtivo='$observacao'";
 
+
+    $sql .= $completa_sql;
+
+    // Adicionar a condição de onde a atualização ocorrerá (pelo ID do ativo)
+    $sql .= " WHERE idAtivo=$idAtivo";
+
+    // 4. Executar a consulta SQL
     $result = mysqli_query($conexao, $sql) or die(false);
+
     if ($result) {
-        echo "informaçoes Alteradas";
+        echo "Informações alteradas com sucesso!";
+    } else {
+        echo "Erro ao atualizar as informações.";
     }
 }
 
@@ -186,3 +205,28 @@ if ($_POST['acao'] == 'deletar') {
         echo "informaçoes Alteradas";
     }
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $idAtivo = $_POST['idAtivo'];
+    $quantidade = $_POST['quantidadeAtivo'];
+    $campo_extra = $_POST['campo_extra']; // A observação do usuário
+
+    // Conecta ao banco de dados
+    include('conexao.php'); // Ajuste o caminho da sua conexão com o banco, se necessário
+
+    // Atualiza os dados no banco de dados
+    $sql = "UPDATE ATIVOS SET
+            quantidadeAtivo='$quantidade',
+            observacaoQuantidade='$campo_extra' 
+            WHERE idAtivo=$idAtivo";
+
+    // Executa a consulta
+    $result = mysqli_query($conexao, $sql);
+
+    // Responde com uma mensagem dependendo do sucesso ou falha da atualização
+    if ($result) {
+        echo "Informações atualizadas com sucesso!";
+    } else {
+        echo "Erro ao atualizar as informações.";
+    }
+}
+
