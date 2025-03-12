@@ -26,7 +26,7 @@ function busca_prod_ml($pesquisa)
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch,CURLOPT_HTTPHEADER,['APP_USR-5176664781153841-031020-ee202582e3b44597edb5a14e22d61322-455111381',"accept:application/json",]);
+    curl_setopt($ch,CURLOPT_HTTPHEADER,["Authorization:Bearer APP_USR-5176664781153841-031118-d130da0190774f7d13a23a75f18c867c-455111381","Accept:application/json",]);
     $response = curl_exec($ch);
 
     if ($response === false) {

@@ -1,9 +1,9 @@
 $(document).ready(function () {
-  // Quando o botão de salvar for clicado
+  
   $("#salva_info").click(function (event) {
-      event.preventDefault(); // Impede o envio automático do formulário
+      event.preventDefault(); 
 
-      // Obtém os valores dos campos
+      
       let descricao_ativo = $("#ativo").val();
       let marca = $("#marca").val();
       let tipo = $("#tipo").val();
@@ -11,14 +11,13 @@ $(document).ready(function () {
       let quantidadeMin = $("#quantidadeMin").val();
       let observacao = $("#observacao").val();
       let idAtivo = $("#idAtivo").val();
-      let imgAtivo = $("#imgAtivo")[0].files[0];  // Obtendo a imagem
+      let imgAtivo = $("#imgAtivo")[0].files[0];  
       let acao = idAtivo == "" ? "inserir" : "update";
-      let campo_extra = $("#campo_extra").val();  // Captura o valor do campo extra
+      let campo_extra = $("#campo_extra").val();  
 
-      // Valida os campos obrigatórios
       if (!descricao_ativo || !marca || !tipo || !quantidade || !quantidadeMin || !observacao) {
           alert('Por favor, preencha todos os campos obrigatórios!');
-          return false;  // Impede o envio do formulário
+          return false; 
       }
       if (!imgAtivo && acao == 'inserir') {
           alert('Campo imagem é obrigatório');
@@ -35,7 +34,7 @@ $(document).ready(function () {
       formData.append("observacao", observacao);
       formData.append("idAtivo", idAtivo);
       formData.append("img", imgAtivo);
-      formData.append("campo_extra", campo_extra); // Adiciona o valor de campo_extra ao formData
+      formData.append("campo_extra", campo_extra); 
 
       // Envia os dados via AJAX
       $.ajax({
@@ -57,36 +56,19 @@ $(document).ready(function () {
   // Evento para a quantidade mudar
   $("#quantidade").on("input", function () {
       var valorAtual = $(this).val();
-      if (valorAtual !== valorInicialCampoExtra) {
-          adicionarModulo();  // Chama a função para mostrar o campo extra
+      var editar = $('.modal_ativos').attr('editar');
+      if(editar=='S'){
+         if (valorAtual !== valorInicialCampoExtra) {
+            adicionarModulo();  // Chama a função para mostrar o campo extra
+        }
       }
+    
   });
 });
 
 function adicionarModulo() {
-  // Mostra o campo extra se necessário
   $("#campo_extra").css("display", "block");
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  const quantidadeInput = document.getElementById('quantidadeAtivo');
-  const campoExtraInput = document.getElementById('campo_extra');
-
-  // Função que atualiza a observação com base na quantidade
-  quantidadeInput.addEventListener('input', function() {
-      // Define a observação com base na nova quantidade
-      const quantidade = quantidadeInput.value;
-
-      // Chama a função para mostrar o campo extra, se necessário
-      if (quantidade > 0) {
-          adicionarModulo();
-      } else {
-          campoExtraInput.style.display = "none"; // Esconde o campo extra se quantidade for 0 ou menor
-      }
-      
-      campoExtraInput.value = `A quantidade foi alterada para ${quantidade}`; // Exemplo de mensagem
-  });
-});
 
 
 /*
@@ -134,7 +116,7 @@ $(document).ready(function () {
   });
 });
 */
-// Função para mudar o status do ativo
+
 function muda_status(status, idAtivo) {
   $.ajax({
     type: "POST",
@@ -185,11 +167,12 @@ function editar(idAtivo) {
       } else {
         $(".div_previer").attr("style", "display:none");
       }
-
+      $('.modal_ativos').attr('editar','S')
+      $('.campo_extra').attr('atributoData','campo_extra')
       console.log(retorno);
       
     
-      $("#quantidade").on("input", function() {
+     /* $("#quantidade").on("input", function() {
         var valorAtual = $(this).val();
         
         if (valorAtual !== valorInicialCampoExtra) {
@@ -197,29 +180,30 @@ function editar(idAtivo) {
         }
        
       });
+      */
     },
   });
 }
 
-function adicionarModulo() {
+/*function adicionarModulo() {
 
   $("#campo_extra").on("input", function() {
     var valorAtual = $(this).val();
   
-    // Verifica se o valor foi alterado
+    
     if (valorAtual !== valorInicialCampoExtra) {
-      // Se o valor foi alterado, mostra o campo extra
+      
       $(this).css("display", "block");
       console.log("Valor alterado, campo mostrado!");
     } else {
-      // Se o valor não foi alterado, esconde o campo extra
+      
       $(this).css("display", "none");
       console.log("Valor não alterado, campo ocultado!");
     }
   });
   
 }
-
+*/
 
 function deletar(idAtivo) {
 
@@ -254,4 +238,5 @@ function limpar_modal() {
   $("#imgAtivo").val("");
   $("#img_previer").attr("src", ""); 
   $(".div_previer").hide(); 
+  $('.modal_ativos').attr('editar','N')
 }

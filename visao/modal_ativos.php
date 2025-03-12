@@ -1,6 +1,6 @@
 <body>
   <form action="../controle/ativos_controller.php" method="POST" enctype="multipart/form-data"> <!-- Adiciona o enctype -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal fade modal_ativos" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
