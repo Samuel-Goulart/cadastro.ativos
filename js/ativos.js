@@ -168,7 +168,7 @@ function editar(idAtivo) {
         $(".div_previer").attr("style", "display:none");
       }
       $('.modal_ativos').attr('editar','S')
-      $('.campo_extra').attr('atributoData','campo_extra')
+      $('.campo_extra').attr('atributoData',campo_extra)
       console.log(retorno);
       
     
