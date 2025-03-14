@@ -8,8 +8,15 @@ class carro
 
  public function setstatus_porta($status_porta){
 $this->status_porta=$status_porta;
+}
+public function setmodelo($modelo){
+    $this->modelo=$modelo;
  }
-    public function andar()
+    
+ 
+ 
+ 
+ public function andar()
     {
         if ($this->status_porta == 'aberta') {
             echo 'carro não pode andar, porta aberta <br>';
