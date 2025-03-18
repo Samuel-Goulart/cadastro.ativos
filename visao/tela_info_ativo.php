@@ -41,11 +41,11 @@
                     </tr>
                     <tr>
 
-                        <th>Quantidade Mínima:</th>
+                        <th>Imagem:</th>
                         <td>
                             <!-- Imagem com fallback em caso de erro -->
-                            <img src="http://localhost/<?php echo $i['urlImagem']; ?>" alt="Imagem do Ativo" width="150px" onerror="this.onerror=null;this.src='http:localhost/cadastro.ativos/img_ativo/default.jpg';">
-                        </td>
+                            <img src="http://localhost:8080/<?php echo $i['urlImagem']; ?>" alt="Imagem do Ativo" width="150px" onerror="this.onerror=null;this.src='http://localhost/cadastro.ativos/img_ativo/default.jpg';">
+                            </td>
 
                     </tr>
                 </table>

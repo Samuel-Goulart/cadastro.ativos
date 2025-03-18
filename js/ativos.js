@@ -23,7 +23,7 @@ $(document).ready(function () {
           alert('Campo imagem é obrigatório');
           return false;
       }
-
+console.log(marca,tipo);
       var formData = new FormData();
       formData.append("acao", acao);
       formData.append("descricao_ativo", descricao_ativo);
@@ -36,7 +36,7 @@ $(document).ready(function () {
       formData.append("img", imgAtivo);
       formData.append("campo_extra", campo_extra); 
 
-      // Envia os dados via AJAX
+      
       $.ajax({
           type: "POST",
           url: "../controle/ativos_controller.php",
@@ -45,7 +45,7 @@ $(document).ready(function () {
           contentType: false,
           success: function (result) {
               alert(result);
-              location.reload();  // Atualiza a página após sucesso
+              location.reload(); 
           },
           error: function (error) {
               alert('Erro ao salvar ativo!');
@@ -53,13 +53,14 @@ $(document).ready(function () {
       });
   });
 
-  // Evento para a quantidade mudar
+  
   $("#quantidade").on("input", function () {
       var valorAtual = $(this).val();
       var editar = $('.modal_ativos').attr('editar');
+      var valorInicialCampoExtra = $('#quantidade').attr('valor-original');
       if(editar=='S'){
          if (valorAtual !== valorInicialCampoExtra) {
-            adicionarModulo();  // Chama a função para mostrar o campo extra
+            adicionarModulo();  
         }
       }
     
@@ -67,7 +68,7 @@ $(document).ready(function () {
 });
 
 function adicionarModulo() {
-  $("#campo_extra").css("display", "block");
+  $("#campo_extra_div").attr('style',"display:block");
 }
 
 
@@ -168,7 +169,8 @@ function editar(idAtivo) {
         $(".div_previer").attr("style", "display:none");
       }
       $('.modal_ativos').attr('editar','S')
-      $('.campo_extra').attr('atributoData',campo_extra)
+      $("#quantidade").attr('valor-original',retorno[0]["quantidadeAtivo"]);
+      $('#campo_extra').attr('valor-original',retorno[0]["observacaoQuantidade"])
       console.log(retorno);
       
     

@@ -156,24 +156,26 @@ if ($acao == 'update') {
         $completa_sql = "";
     }
 
-    
-    $campo_extra = $_POST['campo_extra'] ?? ''; 
 
-    
-    $ativo = $_POST['descricaoAtivo'] ?? '';   
-    $quantidade = $_POST['quantidadeAtivo'] ?? 0;  
-    $quantidadeMin = $_POST['quantidadeMinAtivo'] ?? 0;  
-    $observacao = $_POST['observacaoAtivo'] ?? '';
-    $marca = $_POST['idMarca'] ?? 0;  
-    $tipo = $_POST['idTipo'] ?? 0;   
+    $campo_extra = $_POST['campo_extra'] ;
 
-  
+
+    $ativo = $_POST['descricao_ativo'];
+    $quantidade = $_POST['quantidade'] ;
+    $quantidadeMin = $_POST['quantidadeMin'];
+    $observacao = $_POST['observacao'] ;
+    $observacaoQuantidade = $_POST['observacaoQuantidade'];
+    $idMarca = $_POST['marca'] ;
+    $idTipo = $_POST['tipo'];
+    $campo_extra = $_POST['campo_extra'];
+
     $sql = "
         UPDATE ATIVOS SET
             descriçaoAtivo='$ativo',
-            observacaoQuantidade='$campo_extra',  // Atualizando o campo extra
-            idMarca='$marca',
-            idTipo='$tipo',
+            observacaoQuantidade='$campo_extra',  
+            idMarca='$idMarca',
+            idTipo='$idTipo',
+            observacaoQuantidade='$campo_extra',
             quantidadeAtivo='$quantidade',
             quantidadeMinAtivo='$quantidadeMin',
             observaçaoAtivo='$observacao'";
@@ -183,6 +185,7 @@ if ($acao == 'update') {
 
     // Adicionar a condição de onde a atualização ocorrerá (pelo ID do ativo)
     $sql .= " WHERE idAtivo=$idAtivo";
+   
 
     // 4. Executar a consulta SQL
     $result = mysqli_query($conexao, $sql) or die(false);
@@ -197,36 +200,10 @@ if ($acao == 'update') {
 if ($_POST['acao'] == 'deletar') {
     $idAtivo = $_POST['idAtivo'];
     $sql = "
-    DELETE FROM ativos WHERE idAtivo = '$idAtivo'
-";
+    DELETE FROM ativos WHERE idAtivo = '$idAtivo'";
 
     $result = mysqli_query($conexao, $sql) or die(false);
     if ($result) {
         echo "informaçoes Alteradas";
     }
 }
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $idAtivo = $_POST['idAtivo'];
-    $quantidade = $_POST['quantidadeAtivo'];
-    $campo_extra = $_POST['campo_extra']; // A observação do usuário
-
-    // Conecta ao banco de dados
-    include('conexao.php'); // Ajuste o caminho da sua conexão com o banco, se necessário
-
-    // Atualiza os dados no banco de dados
-    $sql = "UPDATE ATIVOS SET
-            quantidadeAtivo='$quantidade',
-            observacaoQuantidade='$campo_extra' 
-            WHERE idAtivo=$idAtivo";
-
-    // Executa a consulta
-    $result = mysqli_query($conexao, $sql);
-
-    // Responde com uma mensagem dependendo do sucesso ou falha da atualização
-    if ($result) {
-        echo "Informações atualizadas com sucesso!";
-    } else {
-        echo "Erro ao atualizar as informações.";
-    }
-}
-
