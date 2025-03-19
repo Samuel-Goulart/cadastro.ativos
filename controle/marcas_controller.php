@@ -4,9 +4,6 @@ error_reporting(E_ALL);
 session_start();
 date_default_timezone_set('America/Sao_Paulo');
 include('../modelo/conecta_banco_dados.php');
-//$marca = mysqli_real_escape_string($conexao, $_POST['descriçaoMarca']);
-//$idMarca = mysqli_real_escape_string($conexao, $_POST['idMarca']);
-//header('Content-Type: application/json');
 
 
 $acao = $_POST['acao'];

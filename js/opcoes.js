@@ -6,23 +6,27 @@ $(document).ready(function () {
     })
   
     $(".salvar").click(function() {
-        var marca = $('#descricaoOpcao').val();
-        var idMarca = $('#idMarca').val();
+        var opcao = $('#descricaoOpcao').val();
+        var idOpcao = $('#idOpcao').val();
+        var nivelOpcao_js = $('#nivelOpcao_js').val();
+        var url = $('#url').val();
   
-        if (marca == "") {
-            alert('Campo da marca deve ser preenchido!')
+        if (opcao == "") {
+            alert('Campo da opcao deve ser preenchido!')
             return;
         }
   
-        var acao = (idMarca == '') ? 'insert' : 'update';
+        var acao = (idOpcao == '') ? 'insert' : 'update';
   
         $.ajax({
             type: "POST",
             url: "../controle/opcoes_controller.php",
             data: {
                 acao: acao,
-                marca: marca,
-                idMarca: idMarca
+                opcao: opcao,
+                idOpcao: idOpcao,
+                nivelOpcao_js : nivelOpcao_js,
+                url:url
             },
             success: function(response) {
                 console.log(response);
@@ -30,7 +34,7 @@ $(document).ready(function () {
                     var data = JSON.parse(response);
                     if (data.status === 'sucesso') {
                         alert('Informação Salva');
-                       location.reload();
+                       //location.reload();
                     } else {
                         alert('Erro ao Salvar');
                     }
@@ -46,14 +50,14 @@ $(document).ready(function () {
     });
   
     $(".editar").click(function() {
-        var idMarca = $(this).attr('data-reg');
-        $('#idMarca').val(idMarca);
+        var idOpcao = $(this).attr('data-reg');
+        $('#idOpcao').val(idOpcao);
         $.ajax({
             type: "POST",
             url: "../controle/opcoes_controller.php",
             data: {
                 acao: 'busca_info',
-                idMarca: idMarca
+                idOpcao: idOpcao
             },
             success: function(response) {
                 console.log(response);
@@ -78,19 +82,19 @@ $(document).ready(function () {
     });
   
     $(".fechar").click(function() {
-        $('#idMarca').val('');
+        $('#idOpcao').val('');
         $('#descricaoOpcao').val('');
     });
   
   });
   
-  function alterar_status(status, registro) {
+  function alterar_status(status, idOpcao) {
     $.ajax({
         type: "POST",
         url: "../controle/opcoes_controller.php",
         data: {
             acao: 'alterar_status',
-            idMarca: registro,
+            idOpcao: idOpcao,
             status: status
         },
         success: function(response) {
@@ -134,3 +138,17 @@ function deletar(idOpcao) {
     }
   }
   
+function limpar_modal() {
+    $("#idOpcao").val("");
+    $("#descricaoOpcao").val("");
+    $("#nivelOpcao_js").val("");
+    $("#url").val("");
+    $("#observacao").val("");
+    $("#idAtivo").val("");
+    $("#quantidadeMin").val("");
+  
+    $("#imgAtivo").val("");
+    $("#img_previer").attr("src", ""); 
+    $(".div_previer").hide(); 
+    $('.modal_ativos').attr('editar','N')
+  }
