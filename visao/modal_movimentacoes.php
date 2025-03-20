@@ -22,7 +22,7 @@
                 </select>
               </div>
 
-              <label for="recipient-name" class="col-form-label">cadastrar ativo </label>
+              <label for="recipient-name" class="col-form-label">cadastrar movimentação </label>
               <select id='tipo_mov' name='marca' class="form-select" aria-label="Default select example">
                 <option selected>tipo de movimentação</option>
                 <option>adicionar</option>

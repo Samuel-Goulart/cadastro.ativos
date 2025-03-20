@@ -41,11 +41,11 @@
               <label for="recipient-name" class="col-form-label">Quantidade</label>
               <input type="text" class="form-control" id="quantidade" name="quantidade" required>
             </div>
-           <!-- Este campo será exibido dinamicamente -->
-           <div class="novo-modulo" style="display: none;" id="campo_extra_div">
-  <label for="campo_extra">Observação:</label>  
-  <input type="text" name="campo_extra" id="campo_extra" value="<?= isset($ativo['observacaoQuantidade']) ? $ativo['observacaoQuantidade'] : '' ?>" required>
-</div>
+            
+            <div class="novo-modulo" style="display: none;" id="campo_extra_div">
+              <label for="campo_extra">Observação:</label>
+              <input type="text" name="campo_extra" id="campo_extra" value="<?= isset($ativo['observacaoQuantidade']) ? $ativo['observacaoQuantidade'] : '' ?>" required>
+            </div>
 
             <div class="mb-1">
               <label for="recipient-name" class="col-form-label">Quantidade Mínima</label>

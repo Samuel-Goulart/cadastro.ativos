@@ -8,7 +8,7 @@ $(document).ready(function () {
     $(".salvar").click(function() {
         var opcao = $('#descricaoOpcao').val();
         var idOpcao = $('#idOpcao').val();
-        var nivelOpcao_js = $('#nivelOpcao_js').val();
+        var idNivel = $('#idNivel').val();
         var url = $('#url').val();
   
         if (opcao == "") {
@@ -25,7 +25,7 @@ $(document).ready(function () {
                 acao: acao,
                 opcao: opcao,
                 idOpcao: idOpcao,
-                nivelOpcao_js : nivelOpcao_js,
+                idNivel : idNivel,
                 url:url
             },
             success: function(response) {
@@ -68,6 +68,7 @@ $(document).ready(function () {
                     } else {
                         $('.cadastrar').click();
                         $('#descricaoOpcao').val(info[0].descricaoOpcao);
+                        $('#url').val(info[0].urlOpcao);
                        
                     }
                 } catch (e) {
@@ -122,7 +123,7 @@ function deletar(idOpcao) {
     if (confirm("Tem certeza que deseja excluir este ativo?")) {
       $.ajax({
         type: "POST",
-        url: "../controle/ativos_controller.php",
+        url: "../controle/opcoes_controller.php",
         data: {
           acao: "deletar",
           idOpcao: idOpcao,

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/03/2025 às 02:00
+-- Tempo de geração: 20/03/2025 às 00:10
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -39,16 +39,20 @@ CREATE TABLE `ativos` (
   `idTipo` int(11) NOT NULL,
   `marca` varchar(85) NOT NULL,
   `urlImagem` varchar(100) NOT NULL,
-  `quantidadeMinAtivo` int(11) NOT NULL
+  `quantidadeMinAtivo` int(11) NOT NULL,
+  `observacaoQuantidade` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `ativos`
 --
 
-INSERT INTO `ativos` (`idAtivo`, `descriçaoAtivo`, `quantidadeAtivo`, `statusAtivo`, `observaçaoAtivo`, `dataCadastro`, `usuarioCadastro`, `idMarca`, `idTipo`, `marca`, `urlImagem`, `quantidadeMinAtivo`) VALUES
-(72, 'Carregador de Notebook 19V', 5, 'S', 'carregador da 19v', '2025-02-18 20:35:27', 47, 10, 6, '', 'cadastro.ativos/img_ativo/20250219003546.png', 20),
-(73, 'notebook book 4', 5, 'S', 'notebook cinza', '2025-02-20 21:33:13', 47, 14, 7, '', 'cadastro.ativos/img_ativo/20250221013313.jpeg', 6);
+INSERT INTO `ativos` (`idAtivo`, `descriçaoAtivo`, `quantidadeAtivo`, `statusAtivo`, `observaçaoAtivo`, `dataCadastro`, `usuarioCadastro`, `idMarca`, `idTipo`, `marca`, `urlImagem`, `quantidadeMinAtivo`, `observacaoQuantidade`) VALUES
+(72, 'Carregador de Notebook 19V1', 531, 'N', 'carregador da 19v', '2025-02-18 20:35:27', 47, 10, 6, '', 'cadastro.ativos/img_ativo/20250219003546.png', 2, 'aaaaa'),
+(73, 'notebook book 4', 5, 'S', 'notebook cinza', '2025-02-20 21:33:13', 47, 14, 7, '', 'cadastro.ativos/img_ativo/20250221013313.jpeg', 6, ''),
+(78, 'teste', 53, 'S', 'carregador da 19v', '2025-03-17 19:38:29', 47, 11, 6, '', 'cadastro.ativos/img_ativo/20250317233829.jpeg', 45, ''),
+(79, 'teste', 53, 'S', 'carregador da 19v', '2025-03-17 21:17:45', 47, 10, 5, '', 'cadastro.ativos/img_ativo/20250318011745.png', 209, ''),
+(80, 'teste', 53, 'S', 'carregador da 19v', '2025-03-17 21:20:57', 47, 11, 6, '', 'cadastro.ativos/img_ativo/20250318012057.jpeg', 45, '');
 
 -- --------------------------------------------------------
 
@@ -69,7 +73,7 @@ CREATE TABLE `marca` (
 --
 
 INSERT INTO `marca` (`idMarca`, `descriçaoMarca`, `statusMarca`, `dataCadastro`, `usuarioCadastro`) VALUES
-(10, 'Lenovo', 'S', '2025-02-17 21:12:08', '21'),
+(10, 'Lenovo', 'N', '2025-02-17 21:12:08', '21'),
 (11, 'Asus', 'S', '2025-02-17 21:12:20', '21'),
 (12, 'Intel', 'S', '2025-02-17 21:12:28', '21'),
 (13, 'AMD', 'S', '2025-02-17 21:12:38', '21'),
@@ -107,6 +111,52 @@ CREATE TABLE `movimentaçao` (
 
 INSERT INTO `movimentaçao` (`idMovimentaçao`, `idUsuario`, `idAtivo`, `localOrigem`, `localDestino`, `dataMovimentaçao`, `descriçaoMovimentaçao`, `quantidadeUso`, `quantidadeMov`, `statusMov`, `tipoMovimentacao`) VALUES
 (16, 21, 72, 'ss', 'ss', '2025-02-21 19:27:28', 'ss', 2, 2, 'S', 'adicionar');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `niveisacesso`
+--
+
+CREATE TABLE `niveisacesso` (
+  `idNivel` int(11) NOT NULL,
+  `descriçaoNivel` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `niveisacesso`
+--
+
+INSERT INTO `niveisacesso` (`idNivel`, `descriçaoNivel`) VALUES
+(1, 'menu '),
+(2, 'sub_menu');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `opcoes_menu`
+--
+
+CREATE TABLE `opcoes_menu` (
+  `idOpcao` int(12) NOT NULL,
+  `descricaoOpcao` varchar(255) NOT NULL,
+  `nivelOpcao` int(2) NOT NULL,
+  `urlOpcao` varchar(255) NOT NULL,
+  `statusOpcao` varchar(1) NOT NULL DEFAULT 'S',
+  `idUsuario` int(11) NOT NULL,
+  `dataCadastroOpcao` datetime NOT NULL,
+  `idSuperior` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `opcoes_menu`
+--
+
+INSERT INTO `opcoes_menu` (`idOpcao`, `descricaoOpcao`, `nivelOpcao`, `urlOpcao`, `statusOpcao`, `idUsuario`, `dataCadastroOpcao`, `idSuperior`) VALUES
+(9, 'teste', 11, 'dsadsadadsdada', 'S', 47, '2025-03-19 18:58:47', 0),
+(10, 'teste', 0, 'dsadsadadsdada', 'S', 47, '2025-03-19 19:57:54', 0),
+(11, 'teste', 0, 'dsadsadadsdada', 'S', 47, '2025-03-19 20:00:30', 0),
+(12, 'sa', 0, 'dsadsadadsdada', 'S', 47, '2025-03-19 20:06:16', 0);
 
 -- --------------------------------------------------------
 
@@ -184,6 +234,18 @@ ALTER TABLE `movimentaçao`
   ADD KEY `idUsuario` (`idUsuario`,`idAtivo`);
 
 --
+-- Índices de tabela `niveisacesso`
+--
+ALTER TABLE `niveisacesso`
+  ADD PRIMARY KEY (`idNivel`);
+
+--
+-- Índices de tabela `opcoes_menu`
+--
+ALTER TABLE `opcoes_menu`
+  ADD PRIMARY KEY (`idOpcao`);
+
+--
 -- Índices de tabela `tipo`
 --
 ALTER TABLE `tipo`
@@ -204,7 +266,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `ativos`
 --
 ALTER TABLE `ativos`
-  MODIFY `idAtivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `idAtivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de tabela `marca`
@@ -217,6 +279,18 @@ ALTER TABLE `marca`
 --
 ALTER TABLE `movimentaçao`
   MODIFY `idMovimentaçao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de tabela `niveisacesso`
+--
+ALTER TABLE `niveisacesso`
+  MODIFY `idNivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `opcoes_menu`
+--
+ALTER TABLE `opcoes_menu`
+  MODIFY `idOpcao` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `tipo`

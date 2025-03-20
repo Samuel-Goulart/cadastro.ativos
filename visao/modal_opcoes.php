@@ -13,8 +13,15 @@
             <input type="hidden" class="form-control" id="idOpcao">
           </div>
           <div class="mb-3">
-            <label for="nivelOpcao" class="col-form-label">Nivel</label>
-            <input type="text" class="form-control" id="nivelOpcao_js">
+          <label for="nivelOpcao" class="col-form-label">cadastrar opções </label>
+          <select  id='idNivel' name='nivel' class="form-select" aria-label="Default select example">
+          <option value="">Selecione o tipo</option>
+                <?php
+                foreach ($nivel1 as $nivel2) {
+                  echo '<option value="' . $nivel2['idNivel'] . '">' . $nivel2['descriçaoNivel'] . '</option>';
+                }
+                ?>
+              </select>
           </div>
           <div class="mb-3">
             <label for="urlOpcao" class="col-form-label">Url</label>

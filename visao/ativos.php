@@ -5,12 +5,12 @@ include('../controle/funcoes.php');
 include('cabecalho.php');
 include('menu_superior.php');
 
-// Busca as informações de marcas e tipos
+
 $marcas = busca_info_bd($conexao, 'marca');
 $tipos = busca_info_bd($conexao, 'tipo');
 $ativos = busca_info_bd($conexao, 'ativos');
 
-// Consulta os dados dos ativos
+
 $sql = "SELECT 
 `idAtivo`,
 `descriçaoAtivo`,
@@ -92,10 +92,8 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                                 <div class="deletar" onclick="deletar('<?php echo $i['idAtivo']; ?>')">
                                     <i class="bi bi-trash"></i>
                                 </div>
-
-                                <!-- Botão de "Mais Informações" -->
-                                <div class="mais_informacoes" >
-                                    <i class="bi bi-info-circle"     data-bs-toggle="modal" data-bs-target="#detalhesModal_<?php echo $i['idAtivo']; ?>" data-bs-whatever="@mdo"></i> 
+                                <div class="mais_informacoes">
+                                    <i class="bi bi-info-circle" data-bs-toggle="modal" data-bs-target="#detalhesModal_<?php echo $i['idAtivo']; ?>" data-bs-whatever="@mdo"></i>
                                 </div>
                                 <?php
                                 include("tela_info_ativo.php");

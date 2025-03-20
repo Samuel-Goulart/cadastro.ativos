@@ -6,11 +6,24 @@ $info_bd = busca_info_bd($conexao, 'opcoes_menu');
 $title = "opçoes";
 include('cabecalho.php');
 include('menu_superior.php');
+$nivel1 = busca_info_bd($conexao, 'niveisacesso');
+
+
+$sql = "SELECT 
+            nivelOpcao,
+            (SELECT descriçaoNivel FROM niveisacesso m WHERE m.idNivel = a.idNivel) AS nivel
+        FROM `opcoes_menu` a WHERE 1";
+
+$result = mysqli_query($conexao, $sql) or die(false);
+$ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
+
+
+
 
 ?>
 
 <head>
-   <!-- <link rel="stylesheet" href="../css/opcoes.css">-->
+    <link rel="stylesheet" href="../css/opcoes.css">
 </head>
 <script src="../js/opcoes.js"></script>
 <style>
@@ -18,23 +31,23 @@ include('menu_superior.php');
         width: 22px;
         height: 22px;
     }
-
-    
 </style>
 
 <body> <!-- corpo da pagina -->
-    
-        <div class="centralizado">
-            <!--  <h1 class="ml-5">Marca</h1>-->
-            <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary cadastrar" data-bs-toggle="modal" data-bs-target="#modal-opcoes" data-bs-whatever="@mdo">Cadastar Marcas</button>
-        </div>
 
-   
+    <div class="centralizado">
+        <!--  <h1 class="ml-5">Marca</h1>-->
+        <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary cadastrar" data-bs-toggle="modal" data-bs-target="#modal-opcoes" data-bs-whatever="@mdo">Cadastar Opções</button>
+    </div>
+
+
 
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">opções</th>
+                <th scope="col" style="text-align:center;">nivel</th>
+                <th scope="col" style="text-align:center;">url</th>
                 <th scope="col" style="text-align:center;">Ações</th>
             </tr>
         </thead>
@@ -45,7 +58,13 @@ include('menu_superior.php');
                 <tr>
                     <td>
                         <?php echo $opcoes['descricaoOpcao']; ?>
+                    </td><?php foreach ($ativos_bd  as $opcoes) {?>
+                    <td style="text-align:center;"><?php echo $i['marca']; ?></td>
+                    <?php }?>
+                    <td>
+                        <?php echo $opcoes['urlOpcao']; ?>
                     </td>
+
                     <td width="200">
                         <div class="d-flex">
                             <div class="status mx-5" style="cursor: pointer">
@@ -75,9 +94,14 @@ include('menu_superior.php');
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                                 </svg>
+                            </div>
+                            <div class="deletar" style="display: flex; justify-content: center; align-items: center;" 
+     onclick="deletar('<?php echo $opcoes['idOpcao']; ?>')">
+    <i class="bi bi-trash"></i>
 
                             </div>
                         </div>
+
                     </td>
                 </tr>
 

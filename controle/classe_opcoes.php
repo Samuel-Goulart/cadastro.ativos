@@ -82,7 +82,7 @@ class opcoes
       $query = "UPDATE opcoes_menu
        SET descricaoOpcao = '$opcoes',
         nivelOpcao = '$nivelOpcao_js',
-         urlOpcao = '$url',
+         urlOpcao = '$url'
        WHERE idOpcao = $idOpcao";
       $result = mysqli_query($conexao, $query);
       if ($result) {

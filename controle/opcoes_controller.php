@@ -8,9 +8,9 @@ include('../modelo/conecta_banco_dados.php');
 
 $opcoes = $_POST['opcao'];
 $usuario = $_SESSION['id_user'];
-$nivelOpcao_js = $_POST['nivelOpcao_js'];
+$nivelOpcao_js = $_POST['idNivel'];
 $url = $_POST['url'];
-$status = $_POST['statusOpcao'];
+$status = $_POST['status'];
 $idOpcao = $_POST['idOpcao'];
 $acao=$_POST['acao'];
 
@@ -29,7 +29,7 @@ if($acao=='insert'){
 
     $classeOpcoes->get_info($conexao,$idOpcao);
 
-}else if($acao=='deletar_opcao'){
+}else if($acao=='deletar'){
 
     $classeOpcoes->deletar_opcao($conexao,$idOpcao);
     
