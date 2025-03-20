@@ -10,9 +10,10 @@ $nivel1 = busca_info_bd($conexao, 'niveisacesso');
 
 
 $sql = "SELECT 
-            nivelOpcao,
-            (SELECT descriçaoNivel FROM niveisacesso m WHERE m.idNivel = a.idNivel) AS nivel
-        FROM `opcoes_menu` a WHERE 1";
+    a.nivelOpcao,
+    (SELECT a.descricaoNivel FROM niveisacesso m WHERE m.idNivel = a.idNivel) AS nivel
+FROM opcoes_menu a";
+
 
 $result = mysqli_query($conexao, $sql) or die(false);
 $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);

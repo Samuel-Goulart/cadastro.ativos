@@ -4,9 +4,6 @@ include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
 include('cabecalho.php');
 include('menu_superior.php');
-
-
-
 include('../controle/funcoes.php');
 
 
@@ -37,8 +34,6 @@ $ativos_bd=$result->fetch_all(MYSQLI_ASSOC);
 
 
 <div class="centralizado">
-
-
 <script src="../js/movimentacao.js"></script>
 <!--<h1 style=" color: #ffffff">movimentaçoes</h1>-->
 
