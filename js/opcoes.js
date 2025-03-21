@@ -166,3 +166,7 @@ function limpar_modal() {
     $(".div_previer").hide(); 
     $('.modal_ativos').attr('editar','N')
   }
+  function exibirSuperior(){
+     let nivel=elemento.value
+     let nivelSuperior(superior)
+  }

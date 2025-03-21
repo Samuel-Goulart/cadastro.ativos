@@ -6,6 +6,10 @@
         <button type="button" class="btn-close fechar" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+      <div class="mb-3">
+            <label for="superior" class="col-form-label">Url</label>
+            <div class="superior" style="display: none;" onchange="exibeSuperior"
+          </div>
  
           <div class="mb-3">
             <label for="descriçaoMarca" class="col-form-label">Descrição opcao</label>
