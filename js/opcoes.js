@@ -34,7 +34,7 @@ $(document).ready(function () {
                     var data = JSON.parse(response);
                     if (data.status === 'sucesso') {
                         alert('Informação Salva');
-                       //location.reload();
+                       location.reload();
                     } else {
                         alert('Erro ao Salvar');
                     }
@@ -51,7 +51,7 @@ $(document).ready(function () {
   
     $(".editar").click(function() {
         var idOpcao = $(this).attr('data-reg');
-        $('#idOpcao').val(idOpcao);
+      
         $.ajax({
             type: "POST",
             url: "../controle/opcoes_controller.php",
@@ -68,7 +68,9 @@ $(document).ready(function () {
                     } else {
                         $('.cadastrar').click();
                         $('#descricaoOpcao').val(info[0].descricaoOpcao);
+                        $('#idNivel').val(info[0].nivelOpcao);
                         $('#url').val(info[0].urlOpcao);
+                        $('#idOpcao').val(idOpcao);
                        
                     }
                 } catch (e) {
@@ -129,8 +131,19 @@ function deletar(idOpcao) {
           idOpcao: idOpcao,
         },
         success: function (result) {
-          alert(result);
-          location.reload();
+            try {
+                var data = JSON.parse(result);
+                if (data.status === 'sucesso') {
+                    alert('Informação Salva');
+                    location.reload();
+                } else {
+                    alert('Erro ao deletar');
+                }
+            } catch (e) {
+                console.error("Erro ao analisar JSON:", e);
+                alert('Erro ao processar a resposta');
+            }
+          
         },
         error: function () {
           alert("Erro ao tentar excluir o ativo.");

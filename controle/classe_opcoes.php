@@ -25,9 +25,9 @@ class opcoes
 ";
       $result = mysqli_query($conexao, $query);
       if ($result) {
-         echo json_encode(['status' => 'sucesso']);
+         return json_encode(['status' => 'sucesso']);
       } else {
-         echo json_encode(['status' => 'erro']);
+         return  json_encode(['status' => 'erro']);
       }
    }
 
@@ -46,9 +46,9 @@ class opcoes
       $query = "UPDATE opcoes_menu SET statusOpcao = '$status' WHERE idOpcao  = $idOpcao";
       $result = mysqli_query($conexao, $query);
       if ($result) {
-         echo json_encode(['status' => 'sucesso']);
+         return json_encode(['status' => 'sucesso']);
       } else {
-         echo json_encode(['status' => 'erro']);
+         return json_encode(['status' => 'erro']);
       }
    }
 
@@ -61,7 +61,7 @@ class opcoes
       $result = mysqli_query($conexao, $query);
       if ($result) {
          $dados = $result->fetch_all(MYSQLI_ASSOC); 
-         echo json_encode($dados); 
+         return json_encode($dados); 
       }
    }
    public function deletar_opcao($conexao, $idOpcao)
@@ -72,23 +72,23 @@ class opcoes
   ";
       $result = mysqli_query($conexao, $sql);
       if ($result) {
-         echo json_encode(['status' => 'sucesso']);
+         return json_encode(['status' => 'sucesso']);
       } else {
-         echo json_encode(['status' => 'erro']);
+         return json_encode(['status' => 'erro']);
       }
    }
    public function alterar_opcao($conexao, $opcoes, $nivelOpcao_js, $url, $idOpcao)
    {
-      $query = "UPDATE opcoes_menu
+       $query = "UPDATE opcoes_menu
        SET descricaoOpcao = '$opcoes',
         nivelOpcao = '$nivelOpcao_js',
          urlOpcao = '$url'
        WHERE idOpcao = $idOpcao";
       $result = mysqli_query($conexao, $query);
       if ($result) {
-         echo json_encode(['status' => 'sucesso']); // Retorna sucesso como JSON
+         return json_encode(['status' => 'sucesso']); // Retorna sucesso como JSON
       } else {
-         echo json_encode(['status' => 'erro']); // Retorna erro como JSON
+         return json_encode(['status' => 'erro']); // Retorna erro como JSON
       }
    }
 }

@@ -19,25 +19,25 @@ $classeOpcoes= new opcoes();
 
 if($acao=='insert'){
 
-    $classeOpcoes->insert($conexao,$opcoes,$usuario,$nivelOpcao_js,$url);
+    $resultado=$classeOpcoes->insert($conexao,$opcoes,$usuario,$nivelOpcao_js,$url);
     
 }else if($acao=='alterar_status'){
    
-    $classeOpcoes->alterar_status($conexao,$idOpcao,$status);
+    $resultado=$classeOpcoes->alterar_status($conexao,$idOpcao,$status);
 
 }else if($acao=='busca_info'){
 
-    $classeOpcoes->get_info($conexao,$idOpcao);
+    $resultado=$classeOpcoes->get_info($conexao,$idOpcao);
 
 }else if($acao=='deletar'){
 
-    $classeOpcoes->deletar_opcao($conexao,$idOpcao);
+    $resultado= $classeOpcoes->deletar_opcao($conexao,$idOpcao);
     
-}else if($acao=='alterar_opcao'){
+}else if($acao=='update'){
 
-    $classeOpcoes->alterar_opcao($conexao,$opcoes,$nivelOpcao_js,$url,$idOpcao);
+    $resultado=$classeOpcoes->alterar_opcao($conexao,$opcoes,$nivelOpcao_js,$url,$idOpcao);
     
-}
+} echo $resultado;
 
 
 ?>
