@@ -60,3 +60,14 @@ if ($acao == 'insert') {
         echo json_encode(['status' => 'erro']); // Retorna erro como JSON
     }
 }
+if ($_POST['acao'] == 'deletar') {
+    $idMarca = $_POST['idMarca'];
+    $sql = "
+    DELETE FROM marca WHERE idMarca = '$idMarca'";
+
+    $result = mysqli_query($conexao, $sql) or die(false);
+    if ($result) {
+        echo "informaçoes Alteradas";
+    }
+}
+

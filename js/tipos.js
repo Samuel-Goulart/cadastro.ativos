@@ -114,3 +114,25 @@ function alterar_status(status, registro) {
       },
   });
 }
+
+function deletar(idTipo) {
+
+    if (confirm("Tem certeza que deseja excluir este ativo?")) {
+      $.ajax({
+        type: "POST",
+        url: "../controle/tipos_controller.php",
+        data: {
+          acao: "deletar",
+          idTipo: idTipo,
+        },
+        success: function (result) {
+          alert(result);
+          location.reload();
+        },
+        error: function () {
+          alert("Erro ao tentar excluir o ativo.");
+        },
+      });
+    }
+  }
+  

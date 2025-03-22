@@ -35,8 +35,10 @@ if($acao=='insert'){
     
 }else if($acao=='update'){
 
-    $resultado=$classeOpcoes->alterar_opcao($conexao,$opcoes,$nivelOpcao_js,$url,$idOpcao);
+    $resultado=$classeOpcoes->alterar_opcao($conexao,$opcoes,$nivelOpcao_js,$url,$idOpcao); 
     
+}else if($acao=='busca_superior'){
+$resultado=$classeOpcoes->busca_superior($conexao,$nivelOpcao_js);
 } echo $resultado;
 
 

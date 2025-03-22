@@ -7,8 +7,9 @@
       </div>
       <div class="modal-body">
       <div class="mb-3">
-            <label for="superior" class="col-form-label">Url</label>
-            <div class="superior" style="display: none;" onchange="exibeSuperior"
+      <div class="mb-1 divSuperior" style="display:none;">
+            <label for="recipient-name" class="col-form-label"> Superior</label>
+            <div id="select"></div>
           </div>
  
           <div class="mb-3">
@@ -18,7 +19,7 @@
           </div>
           <div class="mb-3">
           <label for="nivelOpcao" class="col-form-label">cadastrar opções </label>
-          <select  id='idNivel' name='nivel' class="form-select" aria-label="Default select example">
+          <select  id='idNivel' name='nivel' class="form-select" aria-label="Default select example" onchange="exibesuperior(this)">
           <option value="">Selecione o tipo</option>
                 <?php
                 foreach ($nivel1 as $nivel2) {

@@ -91,4 +91,15 @@ class opcoes
          return json_encode(['status' => 'erro']); // Retorna erro como JSON
       }
    }
+   public function busca_superior($conexao,$nivel)
+{
+   $sql ="
+   SELECT descricaoOpcao, idOpcao
+   FROM opcoes_menu
+   WHERE nivelOpcao = $nivel";
+
+   $result = mysqli_query($conexao, $sql) or die(false);
+   $opcoes = $result->fetch_all(MYSQLI_ASSOC);
+   return json_encode($opcoes);
+}
 }
