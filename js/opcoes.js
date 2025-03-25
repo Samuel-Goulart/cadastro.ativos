@@ -6,6 +6,7 @@ $(document).ready(function () {
   $(".salvar").click(function () {
     var opcao = $("#descricaoOpcao").val();
     var idOpcao = $("#idOpcao").val();
+    var idSuperior = $("#idSuperior").val();
     var idNivel = $("#idNivel").val();
     var url = $("#url").val();
 
@@ -25,6 +26,7 @@ $(document).ready(function () {
         idOpcao: idOpcao,
         idNivel: idNivel,
         url: url,
+        idSuperior:idSuperior,
       },
       success: function (response) {
         console.log(response);
@@ -69,6 +71,7 @@ $(document).ready(function () {
             $("#idNivel").val(info[0].nivelOpcao);
             $("#url").val(info[0].urlOpcao);
             $("#idOpcao").val(idOpcao);
+            
           }
         } catch (e) {
           console.error("Erro ao analisar JSON:", e);
@@ -176,16 +179,24 @@ function exibesuperior(elemento) {
       success: function (result) {
         // console. log(result);
         retorno = JSON.parse(result);
-        let select = `<select class="form-select" id="nivelSuperior">
+        let select = `<select class="form-select" id="idSuperior">
                     <option value="">Selecione o nivel superior </option>`;
+
         $(retorno).each(function (index, element) {
+          if(ID_SUP==element.idOpcao){
+            select += '<option value="'+element.idOpcao+'" selected>'+element.descricaoOpcao
+          }else{
+            select += '<option value="'+element.idOpcao+'">'+element.descricaoOpcao+'</'
+          }
+
+        });
           select +=
             '<option value="' +
             element.idOpcao +
             '">' +
             element.descricaoOpcao +
             "</option>";
-        });
+      
         select += "</select>";
         $("#select").html(select);
         console.log(select);

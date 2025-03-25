@@ -28,8 +28,8 @@ include('menu_superior.php');
         </div>
 
     </div>
-
-    <table class="table table-striped">
+    <!--<div class="container">-->
+    <table class="tabela_export">
         <thead>
             <tr>
                 <th scope="col">tipo</th>

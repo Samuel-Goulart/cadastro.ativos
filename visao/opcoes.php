@@ -8,12 +8,13 @@ include('cabecalho.php');
 include('menu_superior.php');
 $nivel1 = busca_info_bd($conexao, 'niveisacesso');
 
-
 $sql = "SELECT 
-o.*,  -- Seleciona todas as colunas da tabela opcoes_menu
-(SELECT na.descriçaoNivel FROM niveisacesso na WHERE na.idNivel = o.nivelOpcao) AS nomeNivel  -- Subconsulta para nomeNivel
+o.*, 
+(SELECT na.descriçaoNivel FROM niveisacesso na WHERE na.idNivel = o.nivelOpcao) AS nomeNivel,
+(SELECT na.descricaoOpcao FROM opcoes_menu na WHERE na.idOpcao = o.idSuperior) AS nomeSuperior  
 FROM 
 opcoes_menu o";
+
 
 
 

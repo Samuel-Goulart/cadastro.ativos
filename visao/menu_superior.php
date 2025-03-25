@@ -81,27 +81,27 @@
 
 
 <body>
-    <!-- Barra de navegação principal -->
+   
     <nav class="navbar navbar-expand-lg navbar-light px-5" style="background-color: #17264d;color: white;">
-        <!-- Logo do site -->
+  
         <a class="navbar-brand" href="../visao/ativos.php">
-            <img src="../css/imagens/logo-SENAC.png" width="80" class="d-inline-block align-top" alt="Logo"> <!-- Logo -->
+            <img src="../css/imagens/logo-SENAC.png" width="80" class="d-inline-block align-top" alt="Logo">
         </a>
 
-        <!-- Botão para tornar o menu acessível em telas menores (como mobile) -->
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#user_opt" aria-controls="user_opt" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Conteúdo da barra de navegação (links e menus suspensos) -->
+       
         <div class="collapse navbar-collapse" id="user_opt">
             <ul class="navbar-nav mr-auto">
-                <!-- Menu dropdown "Usuários" -->
+              
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_submenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Usuários <!-- Título do menu dropdown -->
+                        Usuários
                     </a>
-                    <!-- Itens do menu dropdown "Usuários" -->
+                  
                     <ul class="dropdown-menu" aria-labelledby="dropdown_submenu">
                         <li><a class="dropdown-item" href="listar_usuario.php">Listar </a></li> <!-- Link para listar usuários -->
                         <li><a class="dropdown-item" href="tela_cadastro_usuario.php">Cadastrar</a></li> <!-- Link para cadastrar usuário -->

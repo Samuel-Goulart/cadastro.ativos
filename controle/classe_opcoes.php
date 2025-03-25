@@ -2,7 +2,7 @@
 
 class opcoes
 {
-   public function insert($conexao, $opcoes, $usuario, $nivelOpcao_js, $url)
+   public function insert($conexao, $opcoes, $usuario, $nivelOpcao_js, $url,$idSuperior)
    {
 
       // Código para inserir a marca
@@ -12,6 +12,7 @@ class opcoes
         statusOpcao,
         nivelOpcao,
         urlOpcao,
+        idSuperior,
         dataCadastroOpcao,
         idUsuario
     ) VALUES (
@@ -19,6 +20,7 @@ class opcoes
         'S',
         '" . $nivelOpcao_js . "',
         '" . $url . "',
+        '" . $idSuperior . "',
         NOW(),
         '" . $usuario . "'
     )
@@ -77,11 +79,12 @@ class opcoes
          return json_encode(['status' => 'erro']);
       }
    }
-   public function alterar_opcao($conexao, $opcoes, $nivelOpcao_js, $url, $idOpcao)
+   public function alterar_opcao($conexao, $opcoes, $nivelOpcao_js, $url, $idOpcao,$vinculado)
    {
        $query = "UPDATE opcoes_menu
        SET descricaoOpcao = '$opcoes',
         nivelOpcao = '$nivelOpcao_js',
+        descricaoOpcao = '$vinculado',
          urlOpcao = '$url'
        WHERE idOpcao = $idOpcao";
       $result = mysqli_query($conexao, $query);

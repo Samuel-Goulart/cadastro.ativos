@@ -7,10 +7,7 @@
       </div>
       <div class="modal-body">
       <div class="mb-3">
-      <div class="mb-1 divSuperior" style="display:none;">
-            <label for="recipient-name" class="col-form-label"> Superior</label>
-            <div id="select"></div>
-          </div>
+     
  
           <div class="mb-3">
             <label for="descriçaoMarca" class="col-form-label">Descrição opcao</label>
@@ -28,6 +25,11 @@
                 ?>
               </select>
           </div>
+          <div class="mb-1 divSuperior" style="display:none;">
+            <label for="recipient-name" class="col-form-label"> Superior</label>
+            <div  id="select" id="idSuperior" name='idSuperior'></div>
+          </div>
+          
           <div class="mb-3">
             <label for="urlOpcao" class="col-form-label">Url</label>
             <input type="text" class="form-control" id="url">
