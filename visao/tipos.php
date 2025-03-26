@@ -6,6 +6,7 @@ $info_bd = busca_info_bd($conexao, 'tipo');
 $title = "tipos";
 
 include('menu_superior.php');
+include('cabecalho.php');
 
 ?>
 
@@ -28,7 +29,7 @@ include('menu_superior.php');
         </div>
 
     </div>
-    <!--<div class="container">-->
+    <div class="container">
     <table class="tabela_export">
         <thead>
             <tr>
@@ -91,7 +92,7 @@ include('menu_superior.php');
 
         </tbody>
     </table>
-    </div>
+   
 </body>
 
 </html>

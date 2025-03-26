@@ -59,7 +59,7 @@ class opcoes
 
    public function get_info($conexao, $idOpcao,)
    {
-      $query = "SELECT idOpcao, descricaoOpcao,nivelOpcao,urlOpcao FROM opcoes_menu WHERE idOpcao = $idOpcao";
+      $query = "SELECT idOpcao, descricaoOpcao,nivelOpcao,urlOpcao,idSuperior FROM opcoes_menu WHERE idOpcao = $idOpcao";
       $result = mysqli_query($conexao, $query);
       if ($result) {
          $dados = $result->fetch_all(MYSQLI_ASSOC); 
@@ -79,12 +79,12 @@ class opcoes
          return json_encode(['status' => 'erro']);
       }
    }
-   public function alterar_opcao($conexao, $opcoes, $nivelOpcao_js, $url, $idOpcao,$vinculado)
+   public function alterar_opcao($conexao, $opcoes, $nivelOpcao_js, $url, $idOpcao,$idSuperior)
    {
-       $query = "UPDATE opcoes_menu
+        $query = "UPDATE opcoes_menu
        SET descricaoOpcao = '$opcoes',
         nivelOpcao = '$nivelOpcao_js',
-        descricaoOpcao = '$vinculado',
+        idSuperior = '$idSuperior',
          urlOpcao = '$url'
        WHERE idOpcao = $idOpcao";
       $result = mysqli_query($conexao, $query);

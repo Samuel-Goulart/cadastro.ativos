@@ -71,7 +71,7 @@ $(document).ready(function () {
             $("#idNivel").val(info[0].nivelOpcao);
             $("#url").val(info[0].urlOpcao);
             $("#idOpcao").val(idOpcao);
-            
+            exibesuperior('elemento', info[0]['nivelOpcao'],info[0]['idSuperior']);
           }
         } catch (e) {
           console.error("Erro ao analisar JSON:", e);
@@ -163,11 +163,19 @@ function limpar_modal() {
   $(".div_previer").hide();
   $(".modal_ativos").attr("editar", "N");
 }
-function exibesuperior(elemento) {
-  let nivel = elemento.value;
+function exibesuperior(elemento, nivel = false, idSup = false) {
+  
+  if (nivel !== false) {
+    nivel = nivel;
+  } else {
+    nivel = elemento.value;
+  }
+
   let nivelSuperior = nivel - 1;
-  if (nivel == 1 || nivel == "") {
-    $("divSuperior").attr("style", "display:none;");
+
+ 
+  if (nivel == 1 || nivel == '') {
+    $("#divSuperior").attr("style", "display:none;");
   } else {
     $.ajax({
       type: "POST",
@@ -177,31 +185,25 @@ function exibesuperior(elemento) {
         idNivel: nivelSuperior,
       },
       success: function (result) {
-        // console. log(result);
-        retorno = JSON.parse(result);
+        let retorno = JSON.parse(result);
         let select = `<select class="form-select" id="idSuperior">
-                    <option value="">Selecione o nivel superior </option>`;
+                        <option value="">Selecione o nível superior</option>`;
 
+    
         $(retorno).each(function (index, element) {
-          if(ID_SUP==element.idOpcao){
-            select += '<option value="'+element.idOpcao+'" selected>'+element.descricaoOpcao
-          }else{
-            select += '<option value="'+element.idOpcao+'">'+element.descricaoOpcao+'</'
+          if (idSup == element.idOpcao) {
+            select += `<option value="${element.idOpcao}" selected>${element.descricaoOpcao}</option>`;
+          } else {
+            select += `<option value="${element.idOpcao}">${element.descricaoOpcao}</option>`;
           }
-
         });
-          select +=
-            '<option value="' +
-            element.idOpcao +
-            '">' +
-            element.descricaoOpcao +
-            "</option>";
-      
+
         select += "</select>";
         $("#select").html(select);
-        console.log(select);
+        console.log(select); 
       },
     });
+
     $(".divSuperior").attr("style", "display:block;");
   }
 }
