@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20/03/2025 às 00:10
+-- Tempo de geração: 27/03/2025 às 01:54
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -48,11 +48,31 @@ CREATE TABLE `ativos` (
 --
 
 INSERT INTO `ativos` (`idAtivo`, `descriçaoAtivo`, `quantidadeAtivo`, `statusAtivo`, `observaçaoAtivo`, `dataCadastro`, `usuarioCadastro`, `idMarca`, `idTipo`, `marca`, `urlImagem`, `quantidadeMinAtivo`, `observacaoQuantidade`) VALUES
-(72, 'Carregador de Notebook 19V1', 531, 'N', 'carregador da 19v', '2025-02-18 20:35:27', 47, 10, 6, '', 'cadastro.ativos/img_ativo/20250219003546.png', 2, 'aaaaa'),
-(73, 'notebook book 4', 5, 'S', 'notebook cinza', '2025-02-20 21:33:13', 47, 14, 7, '', 'cadastro.ativos/img_ativo/20250221013313.jpeg', 6, ''),
-(78, 'teste', 53, 'S', 'carregador da 19v', '2025-03-17 19:38:29', 47, 11, 6, '', 'cadastro.ativos/img_ativo/20250317233829.jpeg', 45, ''),
-(79, 'teste', 53, 'S', 'carregador da 19v', '2025-03-17 21:17:45', 47, 10, 5, '', 'cadastro.ativos/img_ativo/20250318011745.png', 209, ''),
-(80, 'teste', 53, 'S', 'carregador da 19v', '2025-03-17 21:20:57', 47, 11, 6, '', 'cadastro.ativos/img_ativo/20250318012057.jpeg', 45, '');
+(73, 'notebook book 4', 5, 'S', 'notebook cinza', '2025-02-20 21:33:13', 47, 14, 7, '', 'cadastro.ativos/img_ativo/20250221013313.jpeg', 6, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `cargo`
+--
+
+CREATE TABLE `cargo` (
+  `idCargo` int(11) NOT NULL,
+  `descricaoCargo` varchar(255) NOT NULL,
+  `statusCargo` varchar(2) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `dataCadastro` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `cargo`
+--
+
+INSERT INTO `cargo` (`idCargo`, `descricaoCargo`, `statusCargo`, `idUsuario`, `dataCadastro`) VALUES
+(1, 'aluno ', 'S', 22, '2025-03-27 00:11:24'),
+(2, 'professor', 'S', 22, '2025-03-27 00:11:24'),
+(3, 'coordenador', 'S', 22, '2025-03-27 00:12:52'),
+(4, 'diretor', 'S', 22, '2025-03-27 00:12:52');
 
 -- --------------------------------------------------------
 
@@ -73,8 +93,7 @@ CREATE TABLE `marca` (
 --
 
 INSERT INTO `marca` (`idMarca`, `descriçaoMarca`, `statusMarca`, `dataCadastro`, `usuarioCadastro`) VALUES
-(10, 'Lenovo', 'N', '2025-02-17 21:12:08', '21'),
-(11, 'Asus', 'S', '2025-02-17 21:12:20', '21'),
+(11, 'Asus', 'N', '2025-02-17 21:12:20', '21'),
 (12, 'Intel', 'S', '2025-02-17 21:12:28', '21'),
 (13, 'AMD', 'S', '2025-02-17 21:12:38', '21'),
 (14, 'Samsung', 'S', '2025-02-17 21:12:49', '21'),
@@ -129,7 +148,8 @@ CREATE TABLE `niveisacesso` (
 
 INSERT INTO `niveisacesso` (`idNivel`, `descriçaoNivel`) VALUES
 (1, 'menu '),
-(2, 'sub_menu');
+(2, 'sub_menu'),
+(3, 'ações');
 
 -- --------------------------------------------------------
 
@@ -153,10 +173,10 @@ CREATE TABLE `opcoes_menu` (
 --
 
 INSERT INTO `opcoes_menu` (`idOpcao`, `descricaoOpcao`, `nivelOpcao`, `urlOpcao`, `statusOpcao`, `idUsuario`, `dataCadastroOpcao`, `idSuperior`) VALUES
-(9, 'teste', 11, 'dsadsadadsdada', 'S', 47, '2025-03-19 18:58:47', 0),
-(10, 'teste', 0, 'dsadsadadsdada', 'S', 47, '2025-03-19 19:57:54', 0),
-(11, 'teste', 0, 'dsadsadadsdada', 'S', 47, '2025-03-19 20:00:30', 0),
-(12, 'sa', 0, 'dsadsadadsdada', 'S', 47, '2025-03-19 20:06:16', 0);
+(33, '', 1, '', 'N', 47, '2025-03-24 20:19:52', 0),
+(34, 'agrsim', 3, 'dsadsadadsdada', 'S', 47, '2025-03-24 20:20:04', 36),
+(35, 'teste', 3, '', 'S', 47, '2025-03-24 20:20:14', 36),
+(36, 'teste', 2, 'dsadsadadsdada', 'S', 47, '2025-03-25 20:24:57', 33);
 
 -- --------------------------------------------------------
 
@@ -196,6 +216,7 @@ CREATE TABLE `usuario` (
   `senhaUsuario` varchar(200) NOT NULL,
   `turmaUsuario` varchar(80) NOT NULL,
   `admin` varchar(2) NOT NULL DEFAULT 'N',
+  `idCargo` int(11) NOT NULL,
   `dataCadastro` datetime NOT NULL,
   `dataAlteracao` datetime NOT NULL,
   `usuarioAlteraçao` int(11) NOT NULL
@@ -205,9 +226,11 @@ CREATE TABLE `usuario` (
 -- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `nomeUsuario`, `usuario`, `senhaUsuario`, `turmaUsuario`, `admin`, `dataCadastro`, `dataAlteracao`, `usuarioAlteraçao`) VALUES
-(22, 'admin', 'admin', 'YWRtaW4xMjEz', '10', 'S', '2025-01-24 01:04:15', '2025-01-24 01:04:15', 0),
-(47, 'samuel', 'samuel', 'MDEyMzQ1NjdTYSU=', '13', 'N', '2025-02-21 21:27:38', '0000-00-00 00:00:00', 0);
+INSERT INTO `usuario` (`idUsuario`, `nomeUsuario`, `usuario`, `senhaUsuario`, `turmaUsuario`, `admin`, `idCargo`, `dataCadastro`, `dataAlteracao`, `usuarioAlteraçao`) VALUES
+(22, 'admin', 'admin', 'YWRtaW4xMjEz', '10', 'S', 0, '2025-01-24 01:04:15', '2025-01-24 01:04:15', 0),
+(47, 'samuel', 'samuel', 'MDEyMzQ1NjdTYSU=', '13', 'N', 0, '2025-02-21 21:27:38', '0000-00-00 00:00:00', 0),
+(48, 'teste', 'teste', 'U2VuaGExMjM0Iw==', 'teste', 'N', 1, '2025-03-26 21:27:25', '0000-00-00 00:00:00', 0),
+(49, '', '', '', '', 'N', 1, '2025-03-26 21:39:42', '0000-00-00 00:00:00', 0);
 
 --
 -- Índices para tabelas despejadas
@@ -218,6 +241,12 @@ INSERT INTO `usuario` (`idUsuario`, `nomeUsuario`, `usuario`, `senhaUsuario`, `t
 --
 ALTER TABLE `ativos`
   ADD PRIMARY KEY (`idAtivo`);
+
+--
+-- Índices de tabela `cargo`
+--
+ALTER TABLE `cargo`
+  ADD PRIMARY KEY (`idCargo`);
 
 --
 -- Índices de tabela `marca`
@@ -269,10 +298,16 @@ ALTER TABLE `ativos`
   MODIFY `idAtivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
+-- AUTO_INCREMENT de tabela `cargo`
+--
+ALTER TABLE `cargo`
+  MODIFY `idCargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de tabela `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idMarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `movimentaçao`
@@ -284,13 +319,13 @@ ALTER TABLE `movimentaçao`
 -- AUTO_INCREMENT de tabela `niveisacesso`
 --
 ALTER TABLE `niveisacesso`
-  MODIFY `idNivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idNivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `opcoes_menu`
 --
 ALTER TABLE `opcoes_menu`
-  MODIFY `idOpcao` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idOpcao` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de tabela `tipo`
@@ -302,7 +337,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
