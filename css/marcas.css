@@ -8,7 +8,7 @@
     background-color: #fff;
 }
 
-/* Estilo para as células da tabela */
+
 .tabela_export th, .tabela_export td {
     padding: 12px 15px;
     text-align: left;
@@ -16,7 +16,7 @@
     font-size: 14px;
 }
 
-/* Estilo para o cabeçalho da tabela */
+
 .tabela_export th {
     background-color: #f8f9fa;
     color: #333;
@@ -107,28 +107,27 @@
 }
 /* Estilo para o botão de cadastro */
 #btn_modal {
-    background-color: #17264d; /* Cor de fundo azul */
-    color: #fff; /* Cor do texto branco */
-    border: none; /* Remover borda padrão */
-    padding: 10px 20px; /* Espaçamento interno do botão */
-    font-size: 16px; /* Tamanho da fonte */
-    font-weight: 500; /* Deixar a fonte levemente mais forte */
-    border-radius: 5px; /* Borda arredondada */
-    cursor: pointer; /* Cursor em forma de mão para indicar que é clicável */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
-    margin-top: 20px; /* Adiciona uma margem de 20px na parte superior do botão */
-    margin-left: 101px;
+    background-color: #17264d;
+    color: #fff; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    font-weight: 500; 
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    margin-top: 20px;
 }
 
 /* Efeito de hover no botão de cadastro */
 #btn_modal:hover {
-    background-color: #08478a; /* Cor mais escura quando passar o mouse */
-    transform: translateY(-2px); /* Levanta um pouco o botão quando hover */
+    background-color: #08478a; 
+    transform: translateY(-2px); 
 }
 
-/* Efeito de foco (quando o botão é focado, como ao clicar ou usar o teclado) */
+
 #btn_modal:focus {
-    outline: none; /* Remove a borda de foco padrão */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adiciona um brilho suave ao redor */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
 

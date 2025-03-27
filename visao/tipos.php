@@ -78,8 +78,8 @@ include('cabecalho.php');
                                 </svg>
 
                             </div>
-                            <div class="deletar"
-                                onclick="deletar('<?php echo $tipo['idTipo']; ?>')">
+                            <div class="deletar"onclick="deletar('<?php echo $tipo['idTipo']; ?>')" data-toggle="tooltip" title="deletar">
+                                
                                 <i class="bi bi-trash"></i>
                             </div>
                         </div>

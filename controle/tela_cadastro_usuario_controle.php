@@ -2,30 +2,41 @@
 <?php
 include('../modelo/conecta_banco_dados.php');
 
-
+$acao = $_POST['acao'];
 $nome = $_POST['nome'];
 $senha = $_POST['senha'];
 $usuario = $_POST['usuario'];
 $turma = $_POST['turma'];
 $senhamodificada = base64_encode($senha);
-$quarry = "
+if($acao == 'mudar_status'){
+    
+    
+    
+    
+    
+    
+    
+    
+}else{$quarry = "
       INSERT INTO USUARIO (
                            nomeUsuario, 
                             usuario,
                             senhaUsuario,
                             turmaUsuario,
+                            idCargo,
                             dataCadastro
                             )values(
                             '" . $nome . "',
                             '" . $usuario . "',
                             '" . $senhamodificada . "',
                             '" . $turma . "',
+                            1,
                             NOW()
                             )
                         
 "; //manda para o banco de dados (atraves de uma pesquisa la no sql do banco) as informaçoes cadastradas nomeUsuario=$nome, senhaUsuario=$senha e assim por diante 
 $result = mysqli_query($conexao, $quarry) or die(false);
-
+}
 if ($result) {
     echo "<script> alert('usuario cadastrado'); 
     window.location.href='../visao/tela_login_usuario.php';

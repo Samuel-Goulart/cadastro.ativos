@@ -47,5 +47,8 @@ if (isset($_SESSION['controle_login']) && $_SESSION['controle_login'] == true &&
         </form>
     </div>
     <script src="../js/validaSenha.js"></script>
+    
+</form>
+
 </body>
 </html>
