@@ -187,7 +187,7 @@
 
 /* Adiciona espaço e arredonda os ícones da tabela */
 .tabela_export td img {
-    width: 50px;
+    
     height: auto;
     border-radius: 5px; /* Arredonda as imagens */
 }

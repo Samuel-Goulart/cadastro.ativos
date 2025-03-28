@@ -5,10 +5,13 @@ include('../modelo/conecta_banco_dados.php');
 $nome = $_POST['nome'];
 $turma = $_POST['turma'];
 $idUsuario = $_POST['idUsuario'];
+$cargo = $_POST['cargo'];
+
 $quarry = "
 UPDATE USUARIO
 SET
     nomeUsuario='" . $nome . "',
+    idCargo='" . $cargo . "',
     turmaUsuario='" . $turma . "',
     dataAlteracao= NOW()
     WHERE idUsuario = '" . $idUsuario . "'
@@ -19,7 +22,7 @@ SET
 
 
 
-//echo $quarry;
+ 
 
 $result = mysqli_query($conexao, $quarry);
 if ($result) {

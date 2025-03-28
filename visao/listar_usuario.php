@@ -66,14 +66,7 @@ $info_bd = busca_info_bd($conexao, 'usuario');
                             }
                             ?>
                         </td>
-                        <td>
-                            <form action="../controle/tela_cadastro_usuario_controle.php" method="POST">
-                                <input type="hidden" name="acao" value="mudar_status">
-                                <input type="hidden" name="idCargo" value="<?php echo $user['idCargo']; ?>">
-                                <button type="submit" name="submit">Clique para mudar o cargo</button>
-                            </form>
 
-                        </td>
                     </tr>
                 <?php
                 }
