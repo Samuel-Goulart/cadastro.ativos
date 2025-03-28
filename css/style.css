@@ -157,21 +157,21 @@
 
 /* Estilo para cada tipo de ícone */
 .muda_status .inativo i, .muda_status .ativo i {
-    font-size: 24px; /* Aumenta o tamanho do ícone */
+    font-size: 18px; /* Aumenta o tamanho do ícone */
 }
 
 .editar i {
-    font-size: 22px;
-    color: #007bff; /* Azul para o ícone de editar */
+    font-size: 17px;
+    
 }
 
 .deletar i {
-    font-size: 22px;
+    font-size: 17px;
     color: #e74c3c; /* Vermelho para o ícone de deletar */
 }
 
 .mais_informacoes i {
-    font-size: 22px;
+    font-size: 17px;
     color: #17a2b8; /* Azul claro para o ícone de informações */
 }
 

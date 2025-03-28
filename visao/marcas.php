@@ -11,6 +11,8 @@ include('menu_superior.php');
 
 <head>
     <link rel="stylesheet" href="../css/marcas.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
 </head>
 <script src="../js/marcas.js"></script>
 <style>
@@ -93,6 +95,13 @@ include('menu_superior.php');
         </tbody>
     </table>
     </div>
+    
+    <?php
+include('rodape.php');
+?>
+
+
+
 </body>
 
 </html>

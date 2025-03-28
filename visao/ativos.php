@@ -73,7 +73,7 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
                                     <?php
                                     if ($i['statusAtivo'] == "S") {
                                     ?>
-                                        <div class="inativo" onclick="muda_status('N','<?php echo $i['idAtivo'] ?>')">
+                                        <div data-toggle="tooltip" title="inativo" class="inativo" onclick="muda_status('N','<?php echo $i['idAtivo'] ?>')">
                                             <i class="bi bi-toggle-on"></i>
                                         </div>
                                     <?php
@@ -111,10 +111,11 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
             </tbody>
         </table>
     </div>
-
+    <?php
+include('rodape.php');
+?>
     <!-- Modal para Inserir/Editar Ativos -->
     <?php include('modal_ativos.php'); ?>
     <input type="hidden" id="idAtivo">
 </body>
 
-</body>
