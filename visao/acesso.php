@@ -1,90 +1,131 @@
 <?php
-include('menu_superior.php');
-include('../controle/funcoes.php');
 include_once('../controle/controle_session.php');
 include_once('../modelo/conecta_banco_dados.php');
-$sql = "SELECT 
-o.*, 
-(SELECT na.descriçaoNivel FROM niveisacesso na WHERE na.idNivel = o.nivelOpcao) AS nomeNivel,
-(SELECT na.descricaoOpcao FROM opcoes_menu na WHERE na.idOpcao = o.idSuperior) AS nomeSuperior  
-FROM 
-opcoes_menu o
-where nivelOpcao=3";
+include_once('../controle/funcoes.php');
+include_once('menu_superior.php');
 
+$cargos = busca_info_bd($conexao, 'cargo');
+
+$sql = "SELECT
+          idOpcao,
+          descricaoOpcao,
+          nivelOpcao,
+          urlOpcao,
+          statusOpcao,
+          (SELECT descriçaoNivel FROM niveisacesso ac WHERE ac.idNivel = a.nivelOpcao) AS descricaoNivel,
+          (SELECT usuario FROM usuario u WHERE u.idUsuario = a.idUsuario) AS usuario
+        FROM opcoes_menu a
+        WHERE  nivelOpcao = 1";
 $result = mysqli_query($conexao, $sql) or die(false);
-$info_bd = $result->fetch_all(MYSQLI_ASSOC);
-$novoarray=[];
+$opcoes = $result->fetch_all(MYSQLI_ASSOC);
 
-
-foreach ($info_bd as $row) {
-    $novoarray[$row['idOpcao']]['DESCER_OPCAO'] = $row['descricaoOpcao'];
-    $novoarray[$row['idOpcao']]['NIVEL_OPCAO'] = $row['nivelOpcao'];
-    $novoarray[$row['idOpcao']]['URL_OPCAO'] = $row['urlOpcao'];
-    $novoarray[$row['idOpcao']]['STATUS_OPCAO'] = $row['statusOpcao'];
-    $novoarray[$row['idOpcao']]['DESCRICAO_NIVEL'] = $row['nomeNivel'];
-
-    $sqlSUB = "SELECT 
-    o.*, 
-    (SELECT na.descriçaoNivel FROM niveisacesso na WHERE na.idNivel = o.nivelOpcao) AS nomeNivel,
-    (SELECT na.descricaoOpcao FROM opcoes_menu na WHERE na.idOpcao = o.idSuperior) AS nomeSuperior  
-    FROM 
-    opcoes_menu o
-    where idSuperior=" . $row['idOpcao'];
-    $result = mysqli_query($conexao, $sql) or die(false);
-    $opcoesSub = $result->fetch_all(MYSQLI_ASSOC);
-
+$novoArr = [];
+foreach ($opcoes as $row) {
+    $novoArr[$row['idOpcao']]['DESCR_OPCAO'] = $row['descricaoOpcao'];
+    $novoArr[$row['idOpcao']]['NIVEL_OPCAO'] = $row['nivelOpcao'];
+    $novoArr[$row['idOpcao']]['URL_OPCAO'] = $row['urlOpcao'];
+    $novoArr[$row['idOpcao']]['STATUS_OPCAO'] = $row['statusOpcao'];
+    $novoArr[$row['idOpcao']]['DESCR_NIVEL'] = $row['descricaoNivel'];
+    $sqlSub = "SELECT
+        idOpcao,
+        descricaoOpcao,
+        nivelOpcao,
+        urlOpcao,
+        statusOpcao,
+        (SELECT descriçaoNivel FROM niveisacesso ac WHERE ac.idNivel = a.nivelOpcao) AS descricaoNivel
+       
+      FROM opcoes_menu a
+      WHERE  idSuperior = " . $row['idOpcao'];
+    $resultSub = mysqli_query($conexao, $sqlSub) or die(false);
+    $opcoesSub = $resultSub->fetch_all(MYSQLI_ASSOC);
 
     foreach ($opcoesSub as $sub) {
-        $novoarray[$sub['idOpcao']]['DESCER_OPCAO'] = $sub['descricaoOpcao'];
-        $novoarray[$sub['idOpcao']]['NIVEL_OPCAO'] = $sub['nivelOpcao'];
-        $novoarray[$sub['idOpcao']]['URL_OPCAO'] = $sub['urlOpcao'];
-        $novoarray[$sub['idOpcao']]['STATUS_OPCAO'] = $sub['statusOpcao'];
-        $novoarray[$sub['idOpcao']]['DESCRICAO_NIVEL'] = $sub['nomeNivel'];
-        $sqlSUB = "SELECT 
-    o.*, 
-    (SELECT na.descriçaoNivel FROM niveisacesso na WHERE na.idNivel = o.nivelOpcao) AS nomeNivel,
-    (SELECT na.descricaoOpcao FROM opcoes_menu na WHERE na.idOpcao = o.idSuperior) AS nomeSuperior  
-    FROM 
-    opcoes_menu o
-    where idSuperior=" . $sub['idOpcao'];
-        $result = mysqli_query($conexao, $sql) or die(false);
-        $opcoes = $result->fetch_all(MYSQLI_ASSOC);
+        $novoArr[$sub['idOpcao']]['DESCR_OPCAO'] = $sub['descricaoOpcao'];
+        $novoArr[$sub['idOpcao']]['NIVEL_OPCAO'] = $sub['nivelOpcao'];
+        $novoArr[$sub['idOpcao']]['URL_OPCAO'] = $sub['urlOpcao'];
+        $novoArr[$sub['idOpcao']]['STATUS_OPCAO'] = $sub['statusOpcao'];
+        $novoArr[$sub['idOpcao']]['DESCR_NIVEL'] = $sub['descricaoNivel'];
 
-        foreach ($opcoes as $opcao) {
-            $novoarray[$opcao['idOpcao']]['DESCER_OPCAO'] = $opcao['descricaoOpcao'];
-            $novoarray[$opcao['idOpcao']]['NIVEL_OPCAO'] = $opcao['nivelOpcao'];
-            $novoarray[$opcao['idOpcao']]['URL_OPCAO'] = $opcao['urlOpcao'];
-            $novoarray[$opcao['idOpcao']]['DESCRICAO_NIVEL'] = $opcao['nomeNivel'];
-            $novoarray[$opcao['idOpcao']]['STATUS_OPCAO'] = $opcao['statusOpcao'];
+        $sqlOpcao = "SELECT
+        idOpcao,
+        descricaoOpcao,
+        nivelOpcao,
+        urlOpcao,
+        statusOpcao,
+        (SELECT descriçaoNivel FROM niveisacesso ac WHERE ac.idNivel = a.nivelOpcao) AS descriçaoNivel
+       
+      FROM opcoes_menu a
+      WHERE  idSuperior = " . $sub['idOpcao'];
+        $resultOpcao = mysqli_query($conexao, $sqlOpcao) or die(false);
+        $opcoesOp = $resultOpcao->fetch_all(MYSQLI_ASSOC);
+
+        foreach ($opcoesOp as $opcao) {
+            $novoArr[$opcao['idOpcao']]['DESCR_OPCAO'] = $opcao['descricaoOpcao'];
+            $novoArr[$opcao['idOpcao']]['NIVEL_OPCAO'] = $opcao['nivelOpcao'];
+            $novoArr[$opcao['idOpcao']]['URL_OPCAO'] = $opcao['urlOpcao'];
+            $novoArr[$opcao['idOpcao']]['STATUS_OPCAO'] = $opcao['statusOpcao'];
+            $novoArr[$opcao['idOpcao']]['DESCR_NIVEL'] = $opcao['descriçaoNivel'];
         }
     }
-};
-$idCargo = $user['idCargo'];
+}
+
 ?>
+<script src="../js/acesso.js"></script>
 <body>
     <div class="container">
         <div class="row">
-        <div class="col-ml-6"> 
-            <label for="cargo" class="form-label">Cargo</label>
-            <select name="cargo" class="form-control">
-            <option value="">Selecione o Cargo</option>
+            <div class="col-md-6">
+                <label for="cargo" class="form-label">Cargo Usuário</label>
+                <select name="cargo" class="form-control">
+                    <option value="">Selecione o cargo</option>
+                    <?php
+                    foreach ($cargos as $value) {
+                        if ($value['idCargo'] == $id_cargo) {
+                            echo '<option value="' . $value['idCargo'] . '" selected>' . $value['descricaoCargo'] . '</option>';
+                        } else {
+                            echo '<option value="' . $value['idCargo'] . '">' . $value['descricaoCargo'] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+
+        <?php
+        foreach ($novoArr as $idOpcao => $opcao) {
+        ?>
+            <div class="row">
+
+
             <?php
-            foreach ($cargos as $value) {
-              $selected = ($value['idCargo'] == $idCargo) ? 'selected' : '';
-              echo '<option value="' . $value['idCargo'] . '" ' . $selected . '>' . $value['descricaoCargo'] . '</option>';
+            $nivel = $opcao['NIVEL_OPCAO'];
+            if ($nivel == 1) {
+
+                $padding = '';
+            } else if ($nivel == 2) {
+                $padding = 'padding-left:30px;';
+            } else if ($nivel == 3) {
+                $padding = 'padding-left:45px;';
             }
+        }
             ?>
-          </select>
-        </div>
-        <div class="row">
-            <?php
-            foreach($novoarray as $idOpcao => $opcao){
-                ?>
-                <div class="rol md-4"<?php echo $opcao['descricaoOpcao']?>></div>
+            <div class="linha_opcao" style="<?php echo $opcao['DESCR_OPCAO']; ?>">
                 <?php
-            } 
-            ?>
-        </div>
-        </div>
+                echo $opcao['DESCR_OPCAO'];
+
+                ?>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <input class="form-check-input mt-0 check" type="checkbox" value="<?php echo $idOpcao;?>" aria-label="Checkbox for following text input">
+                    </div>
+                    <?php
+                    echo $opcao['DESCR_OPCAO'];
+
+                    ?>
+                </div>
+
+            </div>
+            </div>
+            <button type="button" class="btn btn-success salvarAcesso">salvar</button>
     </div>
 </body>
