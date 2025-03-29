@@ -5,6 +5,7 @@ include('../modelo/conecta_banco_dados.php');
 
 $title = "opçoes";
 include('cabecalho.php');
+include('rodape.php');
 include('menu_superior.php');
 $nivel1 = busca_info_bd($conexao, 'niveisacesso');
 

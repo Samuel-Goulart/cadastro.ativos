@@ -4,6 +4,7 @@ include_once('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
 include('cabecalho.php');
 include('menu_superior.php');
+include('rodape.php');
 
 
 $marcas = busca_info_bd($conexao, 'marca');
