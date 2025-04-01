@@ -76,7 +76,7 @@ foreach ($opcoes as $row) {
         <div class="row">
             <div class="col-md-6">
                 <label for="cargo" class="form-label">Cargo Usuário</label>
-                <select name="cargo" class="form-control">
+                <select id="cargo" name="cargo" onchange='busca_acesso()' class="form-control">
                     <option value="">Selecione o cargo</option>
                     <?php
                     foreach ($cargos as $value) {
@@ -116,7 +116,7 @@ foreach ($opcoes as $row) {
                 ?>
                 <div class="input-group mb-3">
                     <div class="input-group-text">
-                        <input class="form-check-input mt-0 check" type="checkbox" value="<?php echo $idOpcao;?>" aria-label="Checkbox for following text input">
+                        <input class="form-check-input mt-0 check <?php echo $idOpcao;?>" type="checkbox" value="<?php echo $idOpcao;?>" aria-label="Checkbox for following text input">
                     </div>
                     <?php
                     echo $opcao['DESCR_OPCAO'];
