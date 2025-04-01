@@ -1,3 +1,4 @@
+/* Fundo desfocado */
 .fundo-desfocado {
     position: fixed;
     top: 0;
@@ -6,32 +7,42 @@
     height: 100vh;
     background: url('../css/imagens/tela-inicio.jpg') no-repeat center center;
     background-size: cover;
-    filter: blur(10px); 
-    z-index: -1; 
+    filter: blur(8px);
+    z-index: -1;
 }
 
+/* Adicionando um overlay para melhorar a leitura */
+.fundo-desfocado::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+}
 
-.container-fluid {
+/* Container Centralizado */
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
-    position: relative;
-    z-index: 1; 
+    height: 100vh;
+    z-index: 1;
 }
 
-
+/* Cartão de Login */
 .login-card {
     display: flex;
-    width: 1150px;
-    height: 700px;
-    background: rgba(255, 255, 255, 0.8); 
-    border-radius: 10px;
+    width: 900px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-
+/* Imagem */
 .imagem-container {
     flex: 1;
     display: flex;
@@ -46,11 +57,67 @@
     object-fit: cover;
 }
 
-
+/* Formulário */
 .form-container {
     flex: 1;
     padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+}
+
+/* Tipografia */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Botão de Login */
+.btn-primary {
+    background: linear-gradient(135deg, #00856a, #17a2b8);
+    max-width: 250px;
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #007185, #003f7f);
+    transform: scale(1.02);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Link "Cadastre-se" transformado em botão secundário */
+.link-cadastro {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: #007BFF;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .login-card {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+    }
+
+    .imagem-container {
+        height: 200px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
 }

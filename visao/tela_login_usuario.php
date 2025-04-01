@@ -14,13 +14,14 @@ include_once('../modelo/conecta_banco_dados.php');
     <meta charset="UTF-8">
     <title>Login - Senac</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <link rel="stylesheet" href="../css/tela_login.css"> 
 </head>
 <body>
 
     <div class="fundo-desfocado"></div>
 
-    <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
         
         <div class="login-card">
             <div class="imagem-container">
@@ -28,8 +29,8 @@ include_once('../modelo/conecta_banco_dados.php');
             </div>
 
             <div class="form-container">
-                <h1>Bem-vindo à página de ativos do Senac</h1>
-                <p>Faça login para acessar.</p>
+                <h1 class="text-center">Bem-vindo</h1>
+                <p class="text-center">Faça login para acessar</p>
 
                 <form id="form" action="../controle/tela_login_controle.php" method="POST">
                     <div class="mb-3">
@@ -41,9 +42,11 @@ include_once('../modelo/conecta_banco_dados.php');
                         <input type="password" required name="senha" class="form-control" id="senha" placeholder="Digite sua senha">
                     </div>
 
-                    <a class="nav-link text-center" href="tela_cadastro_usuario.php">Cadastre-se</a>
+                    <div class="botoes">
+    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+    <a href="tela_cadastro_usuario.php" class="link-cadastro">Cadastre-se</a>
+</div>
 
-                    <button onclick="validarSenha()" type="button" class="btn btn-primary w-100">Entrar</button>
                 </form>
             </div>
         </div>
