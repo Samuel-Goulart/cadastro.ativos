@@ -1,62 +1,55 @@
 <?php
 session_start();
 if (isset($_GET['erro']) && $_GET['erro'] == 'sem_acesso') {
-  echo "<script>alert('usuario nao autenticado'); </script>";
+    echo "<script>alert('Usuário não autenticado');</script>";
 }
 if (isset($_GET['error_auten']) && $_GET['error_auten'] == 's') {
-  echo "<script>alert('senha ou usuario invalido'); </script>";
+    echo "<script>alert('Senha ou usuário inválido');</script>";
 }
 include_once('../modelo/conecta_banco_dados.php');
 ?>
-<DOCTYPE html>
-
-  <head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
-    <title>Estilizando o Link</title>
+    <title>Login - Senac</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/tela_login.css"> 
+</head>
+<body>
 
-    <a>
-      <img src="../css/imagens/logo-SENAC.png">
-    </a>
+    <div class="fundo-desfocado"></div>
 
-    <!--links do bootstrep-->
+    <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+        
+        <div class="login-card">
+            <div class="imagem-container">
+                <img src="../css/imagens/tela-inicio.jpg" alt="Imagem de início">
+            </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+            <div class="form-container">
+                <h1>Bem-vindo à página de ativos do Senac</h1>
+                <p>Faça login para acessar.</p>
 
-    <title>LOGIN</title>
+                <form id="form" action="../controle/tela_login_controle.php" method="POST">
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Usuário</label>
+                        <input type="text" required name="usuario" class="form-control" id="usuario" placeholder="Digite seu usuário">
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="password" required name="senha" class="form-control" id="senha" placeholder="Digite sua senha">
+                    </div>
 
-    <div class="container">
-      <h1>login</h1>
-    </div>
+                    <a class="nav-link text-center" href="tela_cadastro_usuario.php">Cadastre-se</a>
 
-  </head>
-
-  <body>
-    <div class="container">
-
-
-
-      <!--layalt da tela pre pronto do bootstrep-->
-      <form id="form" action="../controle/tela_login_controle.php" method="POST">
-        <!--(action) diz pra onde vai mandar as informaçoes da tela -->
-
-        <div class="mb-3">
-          <label for="usuario" class="form-label">usuario</label>
-          <input type="text" required name='usuario' class="form-control" id="usuario" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="senha" class="form-label">senha</label>
-          <input type="text" required name='senha' class="form-control" id="senha" class="form-control">
+                    <button onclick="validarSenha()" type="button" class="btn btn-primary w-100">Entrar</button>
+                </form>
+            </div>
         </div>
 
-        <div class="mb-3" id="erroSenha"></div>
-        <a class="nav-link" href="tela_cadastro_usuario.php">cadastre-se</a>
-
-        <button onclick="validarSenha()" type="button" class="btn btn-primary">enviar</button>
-      </form>
     </div>
+
     <script src="../js/validaSenha.js"></script>
-  </body>
-</DOCTYPE>
+</body>
+</html>
