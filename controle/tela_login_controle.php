@@ -5,11 +5,11 @@ include('../modelo/conecta_banco_dados.php');
 include('../controle/funcoes.php');
 
 
-$usuario = $_POST['usuario']; //puxa la da tela login usuario o valor inserido 
-$senha = $_POST['senha']; //puxa da tela login usuario o valor inserido 
+$usuario = $_POST['usuario']; 
+$senha = $_POST['senha'];  
 $senhaCrip = base64_encode($senha);
 $sql = "select 
-      count(*) as quantidade, idUsuario, admin  
+      count(*) as quantidade, idUsuario,idCargo, admin  
       from usuario  
       where usuario='$usuario' and senhaUsuario= '$senhaCrip'"; //CONSULTA SQL
 
@@ -20,6 +20,7 @@ if ($dados['quantidade'] > 0) {
   $_SESSION['login_ok'] = true;
   $_SESSION['controle_login'] = true;
   $_SESSION['id_user'] = $dados['idUsuario'];
+  $_SESSION['idCargo'] = $dados['idCargo'];
   if ($dados["admin"] == "S") {
     $_SESSION['admin'] = 'S';
   } else {

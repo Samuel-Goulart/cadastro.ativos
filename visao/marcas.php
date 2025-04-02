@@ -6,7 +6,6 @@ $info_bd = busca_info_bd($conexao, 'marca');
 $title = "Marcas";
 include('cabecalho.php');
 include('menu_superior.php');
-include('rodape.php');
 
 ?>
 
