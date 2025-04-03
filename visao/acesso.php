@@ -92,6 +92,7 @@ foreach ($opcoes as $row) {
         </div>
 
         <?php
+      
         foreach ($novoArr as $idOpcao => $opcao) {
         ?>
             <div class="row">
@@ -107,13 +108,10 @@ foreach ($opcoes as $row) {
             } else if ($nivel == 3) {
                 $padding = 'padding-left:45px;';
             }
-        }
+       
             ?>
-            <div class="linha_opcao" style="<?php echo $opcao['DESCR_OPCAO']; ?>">
-                <?php
-                echo $opcao['DESCR_OPCAO'];
-
-                ?>
+            <div class="linha_opcao" style="<?php echo $padding ?>">
+               
                 <div class="input-group mb-3">
                     <div class="input-group-text">
                         <input class="form-check-input mt-0 check <?php echo $idOpcao;?>" type="checkbox" value="<?php echo $idOpcao;?>" aria-label="Checkbox for following text input">
@@ -125,6 +123,10 @@ foreach ($opcoes as $row) {
                 </div>
 
             </div>
+            <?php
+               }
+
+                ?>
             </div>
             <button type="button" class="btn btn-success salvarAcesso">salvar</button>
     </div>

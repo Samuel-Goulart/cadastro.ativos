@@ -14,7 +14,7 @@ o.*,
 (SELECT na.descricaoOpcao FROM opcoes_menu na WHERE na.idOpcao = o.idSuperior) AS nomeSuperior  
 FROM 
 opcoes_menu o
-where nivelOpcao=3";
+where nivelOpcao=1";
 
 $result = mysqli_query($conexao, $sql) or die(false);
 $info_bd = $result->fetch_all(MYSQLI_ASSOC);

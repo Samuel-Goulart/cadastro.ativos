@@ -64,8 +64,8 @@ $acessos_menu = $result->fetch_all(MYSQLI_ASSOC);
             /* Margem ao redor da navbar (ajustando para ficar centralizado) */
         }
     </style>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary"style="background-color: #17264d;color: white;">
+        <div class="container-fluid"style="background-color: #17264d;color: white;">
             <a class="navbar-brand" href="#">logo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

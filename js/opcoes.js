@@ -34,7 +34,7 @@ $(document).ready(function () {
           var data = JSON.parse(response);
           if (data.status === "sucesso") {
             alert("Informação Salva");
-            location.reload();
+            //0location.reload();
           } else {
             alert("Erro ao Salvar");
           }

@@ -22,13 +22,14 @@ $array_acessos_selecionados=[];
 foreach($data['acessos'] as $infoAcesso){
     $array_acessos_selecionados[$infoAcesso['idOpcao']]=$infoAcesso['acesso'];
 }
+
 $sql = '';
-if (!empty($acesso)) {
-    foreach ($acesso as $acesso_bd) {
+if (!empty($acessos)) {
+    foreach ($acessos as $acesso_bd) {
         if (array_key_exists($acesso_bd['idOpcao'], $array_acessos_selecionados)) {
-            $sql.= "UPDATE acesso SET statusAcesso = '".$array_acessos_selecionados[$acesso_bd['idOpcao']]."' WHERE idAcesso = '".$acesso_bd['idAcesso']."'";
+            $sql.= "UPDATE acesso SET statusAcesso = '".$array_acessos_selecionados[$acesso_bd['idOpcao']]."' WHERE idAcesso = '".$acesso_bd['idAcesso']."'; ";
         } else {
-            $sql.= "UPDATE acesso SET statusAcesso = 'N' WHERE idAcesso = '".$acesso_bd['idAcesso']."'";
+            $sql.= "UPDATE acesso SET statusAcesso = 'N' WHERE idAcesso = '".$acesso_bd['idAcesso']."'; ";
         }
         unset($array_acessos_selecionados[$acesso_bd['idOpcao']]);
 
@@ -51,6 +52,7 @@ if (!empty($acesso)) {
                                     ); ";
     }
 };
+
 $sql=substr($sql,0,-2);
 $result= mysqli_multi_query($conexao,$sql) or die(false);
 if($result){

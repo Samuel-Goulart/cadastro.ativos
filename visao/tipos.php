@@ -98,9 +98,10 @@ include('cabecalho.php');
 </html>
 
 
-
+</div>
 
 <?php
 include_once('tipos_modal.php');
+include('rodape.php');
 
 ?>
