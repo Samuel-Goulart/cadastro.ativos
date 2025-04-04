@@ -34,7 +34,7 @@ if (!empty($acessos)) {
         unset($array_acessos_selecionados[$acesso_bd['idOpcao']]);
 
     }
-} else {
+} 
   
     foreach($array_acessos_selecionados as $idOpcao => $acesso_new){
         $sql.="insert into acesso(
@@ -51,7 +51,6 @@ if (!empty($acessos)) {
                                     now()
                                     ); ";
     }
-};
 
 $sql=substr($sql,0,-2);
 $result= mysqli_multi_query($conexao,$sql) or die(false);
