@@ -1,30 +1,28 @@
 <style>
     html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
 
-/* Faz com que o conteúdo principal ocupe o espaço disponível */
-.main-content {
-    flex: 1;
-}
-    /* Estilos do rodapé */
+    .main-content {
+        flex: 1;
+    }
+
     footer {
         margin-top: 80px; /* Distância entre o rodapé e o conteúdo */
         background: rgba(0, 0, 0, 0.6); /* Preto translúcido */
         backdrop-filter: blur(10px); /* Efeito vidro fosco */
         color: white;
-        padding: 50px 0; /* Espaçamento interno maior */
+        padding: 15px 0; /* Reduzindo o padding */
     }
 
-    /* Container flexível para melhor alinhamento */
     .footer-container {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between; /* Usando space-between para espaçar mais uniformemente */
         flex-wrap: wrap;
-        max-width: 1100px;
+        max-width: 900px; /* Reduzindo a largura do contêiner */
         margin: auto;
         text-align: left;
     }
@@ -32,13 +30,13 @@
     /* Seções do rodapé */
     .footer-section {
         flex: 1;
-        min-width: 250px;
-        margin: 10px;
+        min-width: 200px; /* Reduzindo o tamanho mínimo das seções */
+        margin: 5px; /* Menos espaço entre as seções */
     }
 
     .footer-section h5 {
         color: #f4a261;
-        margin-bottom: 15px;
+        margin-bottom: 10px; /* Menor margem abaixo dos títulos */
     }
 
     /* Links estilizados */
@@ -54,9 +52,9 @@
 
     /* Ícones sociais */
     .social-icons a {
-        font-size: 24px;
+        font-size: 20px; /* Reduzindo o tamanho dos ícones */
         color: white;
-        margin: 0 10px;
+        margin: 0 8px; /* Menor margem entre os ícones */
         transition: transform 0.3s, color 0.3s;
     }
 
@@ -68,7 +66,7 @@
     /* Rodapé inferior */
     .footer-bottom {
         text-align: center;
-        margin-top: 20px;
+        margin-top: 15px; /* Menor margem superior */
         font-size: 14px;
         background: rgba(0, 0, 0, 0.3);
         padding: 10px 0;

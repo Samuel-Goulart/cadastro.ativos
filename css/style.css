@@ -8,7 +8,6 @@
     background-color: #fff;
 }
 
-
 .tabela_export th, .tabela_export td {
     padding: 12px 15px;
     text-align: left;
@@ -16,48 +15,32 @@
     font-size: 14px;
 }
 
-
 .tabela_export th {
     background-color: #f8f9fa;
     color: #333;
     font-weight: bold;
 }
 
-/* Estilo para as linhas da tabela */
 .tabela_export tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Efeito de hover nas linhas */
 .tabela_export tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Estilo para os ícones de ação */
+.tabela_export td {
+    text-align: center;
+    width: 200px;
+    vertical-align: middle;
+}
+
 .tabela_export .d-flex {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-/* Estilo para o botão de cadastro */
-#btn_modal {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Efeito de hover no botão de cadastro */
-#btn_modal:hover {
-    background-color: #0056b3;
-}
-
-/* Estilo para os ícones de status */
 .tabela_export .status {
     cursor: pointer;
     display: inline-block;
@@ -70,19 +53,7 @@
     height: 24px;
 }
 
-/* Estilo para os ícones de editar 
-.tabela_export .editar {
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-}*/
-
-.tabela_export .editar:hover {
-    background-color: #f0f0f0;
-}
-
-/* Estilo para os ícones de deletar */
+.tabela_export .editar, 
 .tabela_export .deletar {
     cursor: pointer;
     padding: 5px;
@@ -90,22 +61,77 @@
     transition: background-color 0.3s ease;
 }
 
+.tabela_export .editar:hover {
+    background-color: #f0f0f0;
+}
+
+.tabela_export .deletar {
+    transition: background-color 0.3s ease;
+}
+
 .tabela_export .deletar:hover {
     background-color: #f8d7da;
 }
 
-/* Estilo para o ícone de lixeira (deletar) */
 .tabela_export .bi-trash {
     color: #dc3545;
     font-size: 18px;
 }
 
-/* Estilo para as células de ações */
-.tabela_export td {
-    text-align: center;
-    width: 200px;
+.muda_status, 
+.editar, 
+.deletar, 
+.mais_informacoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px; /* Borda arredondada */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out; /* Transições suaves */
 }
-/* Estilo para o botão de cadastro */
+
+.muda_status:hover, 
+.editar:hover, 
+.deletar:hover, 
+.mais_informacoes:hover {
+    background-color: #f0f0f0; /* Fundo suave ao passar o mouse */
+    transform: scale(1.1); /* Aumenta o tamanho do ícone */
+}
+
+.muda_status .inativo i, 
+.muda_status .ativo i {
+    font-size: 18px;
+}
+
+.editar i,
+.deletar i,
+.mais_informacoes i {
+    font-size: 17px;
+}
+
+.deletar i {
+    color: #e74c3c; 
+}
+
+.mais_informacoes i {
+    color: #17a2b8; 
+}
+
+.ativo i {
+    color: #28a745; 
+}
+
+.inativo i {
+    color: #dc3545; 
+}
+
+
+.tabela_export td img {
+    height: auto;
+    border-radius: 5px;
+}
+
 #btn_modal {
     background-color: #17264d;
     color: #fff; 
@@ -119,18 +145,16 @@
     margin-top: 20px;
 }
 
-/* Efeito de hover no botão de cadastro */
 #btn_modal:hover {
     background-color: #08478a; 
     transform: translateY(-2px); 
 }
 
-
 #btn_modal:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
-/* Container das ações */
+
 .acoes {
     display: flex;
     justify-content: space-between;
@@ -138,79 +162,49 @@
     gap: 15px; /* Espaço entre os ícones */
 }
 
-/* Estilo para os ícones das ações */
-.muda_status, .editar, .deletar, .mais_informacoes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-radius: 8px; /* Borda arredondada */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s ease-in-out; /* Transições suaves */
-}
-
-/* Efeito de hover para cada ícone */
-.muda_status:hover, .editar:hover, .deletar:hover, .mais_informacoes:hover {
-    background-color: #f0f0f0; /* Fundo suave ao passar o mouse */
-    transform: scale(1.1); /* Aumenta o tamanho do ícone */
-}
-
-/* Estilo para cada tipo de ícone */
-.muda_status .inativo i, .muda_status .ativo i {
-    font-size: 18px; /* Aumenta o tamanho do ícone */
-}
-
-.editar i {
-    font-size: 17px;
-    
-}
-
-.deletar i {
-    font-size: 17px;
-    color: #e74c3c; /* Vermelho para o ícone de deletar */
-}
-
-.mais_informacoes i {
-    font-size: 17px;
-    color: #17a2b8; /* Azul claro para o ícone de informações */
-}
-
-/* Ícone de status ativo */
-.ativo i {
-    color: #28a745; /* Verde para o ícone ativo */
-}
-
-/* Ícone de status inativo */
-.inativo i {
-    color: #dc3545; /* Vermelho para o ícone inativo */
-}
-
-/* Adiciona espaço e arredonda os ícones da tabela */
-.tabela_export td img {
-    
-    height: auto;
-    border-radius: 5px; /* Arredonda as imagens */
-}
-
-/* Ajusta o alinhamento do conteúdo das células da tabela */
-.tabela_export td {
-    text-align: center;
-    vertical-align: middle; /* Centraliza os ícones */
-}
-
-/* Ajustes responsivos para garantir boa visualização em dispositivos móveis */
 @media (max-width: 768px) {
+    /* Estilo para a tabela */
+    .tabela_export th, .tabela_export td {
+        font-size: 12px; 
+        padding: 10px; 
+    }
+
     .acoes {
         flex-direction: column; /* Exibe os ícones em coluna em telas pequenas */
         gap: 10px;
     }
 
-    .muda_status, .editar, .deletar, .mais_informacoes {
+    .muda_status, 
+    .editar, 
+    .deletar, 
+    .mais_informacoes {
         padding: 8px;
     }
 
-    .muda_status i, .editar i, .deletar i, .mais_informacoes i {
-        font-size: 18px; /* Diminui o tamanho do ícone em telas pequenas */
+    .muda_status i, 
+    .editar i, 
+    .deletar i, 
+    .mais_informacoes i {
+        font-size: 18px; 
+    }
+
+    .tabela_export td {
+        width: auto; 
+    }
+
+    #btn_modal {
+        font-size: 14px;
+        padding: 8px 16px;
     }
 }
 
+@media (max-width: 480px) {
+    .tabela_export th, .tabela_export td {
+        font-size: 10px; 
+    }
+
+    #btn_modal {
+        width: 100%;
+        padding: 12px; 
+    }
+}

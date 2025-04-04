@@ -40,6 +40,7 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap;
 }
 
 /* Imagem */
@@ -49,6 +50,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    min-height: 400px;
 }
 
 .imagem-container img {
@@ -77,6 +79,7 @@ body {
 .btn-primary {
     background: linear-gradient(135deg, #00856a, #17a2b8);
     max-width: 250px;
+    width: 100%;
     border: none;
     padding: 12px;
     font-weight: 600;
@@ -102,22 +105,62 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-
-
-
 /* Responsividade */
 @media (max-width: 768px) {
     .login-card {
-        flex-direction: column;
-        width: 90%;
-        height: auto;
+        flex-direction: column !important;
+        width: 95% !important; 
+        height: auto !important;
+        margin: 0 auto !important; 
+        padding: 20px !important;
+        
     }
 
     .imagem-container {
-        height: 200px;
+        height: 200px !important;
+        max-height: 250px; 
     }
 
     .form-container {
-        padding: 20px;
+        padding: 30px !important; 
+    }
+
+    .btn-primary {
+        max-width: 100% !important; /* Garante que o botão ocupe 100% da largura */
+        padding: 15px !important; /* Ajusta o padding do botão para mais espaçamento */
+    }
+
+    .link-cadastro {
+        margin-top: 10px !important;
+        font-size: 14px !important;
+        padding: 5px !important; /* Adiciona padding ao link para torná-lo mais acessível */
+    }
+
+    /* Aumentar a tipografia para melhorar a legibilidade */
+    .form-container h1 {
+        font-size: 28px !important;
+    }
+
+    .form-container p {
+        font-size: 16px !important;
+    }
+}
+
+/* Responsividade para dispositivos muito pequenos */
+@media (max-width: 480px) {
+    .login-card {
+        width: 95%;
+    }
+
+    .imagem-container img {
+        object-position: center top; /* Ajusta a imagem para foco superior */
+    }
+
+    .form-container h1 {
+        font-size: 22px;
+    }
+
+    .form-container p {
+        font-size: 14px;
     }
 }

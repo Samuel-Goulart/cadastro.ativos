@@ -5,11 +5,40 @@ include('../controle/funcoes.php');
 
 if (isset($_SESSION['controle_login']) && $_SESSION['controle_login'] == true && isset($_SESSION['login_ok']) && $_SESSION['login_ok'] == true) {
     include('menu_superior.php');
+    $escondefundo='';
+}else{
+    $escondefundo='../css/imagens/tela-inicio.jpg';
 }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
+
+<style>
+    /* Fundo desfocado (mesmo do login) */
+.fundo-desfocado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('<?php echo $escondefundo; ?>') no-repeat center center;
+    background-size: cover;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.fundo-desfocado::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+}
+</style>
     <meta charset="UTF-8">
     <title>Cadastro</title>
     
@@ -19,7 +48,7 @@ if (isset($_SESSION['controle_login']) && $_SESSION['controle_login'] == true &&
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
 </head>
 
-<body>
+<body class="<?php $escondefundo ?>">
 
     <div class="fundo-desfocado"></div> <!-- Fundo desfocado igual ao login -->
 
