@@ -168,6 +168,9 @@
         font-size: 12px; 
         padding: 10px; 
     }
+    .oculta{
+        display: none;
+    }
 
     .acoes {
         flex-direction: column; /* Exibe os ícones em coluna em telas pequenas */
