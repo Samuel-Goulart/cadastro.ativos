@@ -37,6 +37,9 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
             border: none;
             border-collapse: collapse;
         }
+        .oculta{
+            display: block;
+        }
     </style>
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -53,9 +56,9 @@ $ativos_bd = $result->fetch_all(MYSQLI_ASSOC);
             <thead>
                 <tr>
                     <th style="text-align:center;">Descrição do Ativo</th>
-                    <th style="text-align:center;">Quantidade</th>
-                    <th style="text-align:center;">Marca</th>
-                    <th style="text-align:center;">Ações</th>
+                    <th class="oculta" style="text-align:center;">Quantidade</th>
+                    <th class="oculta" style="text-align:center;">Marca</th>
+                    <th class="oculta" style="text-align:center;">Ações</th>
                     <th scope="col">Imagem</th>
                 </tr>
             </thead>
