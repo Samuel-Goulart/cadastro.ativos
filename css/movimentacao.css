@@ -1,202 +1,80 @@
-/* Resetando estilos básicos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Corpo da página */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #383c3d;
-    color: #333;
-}
-
-/* Container principal */
-.container {
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ddd9d9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Cabeçalho */
-h1 {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-/* Tabela */
-.table {
+/* === Estilo para a Tabela de Movimentações === */
+.tabela_export {
     width: 100%;
-    margin: 20px auto;
     border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.table thead {
-    background-color: #007bff;
-    color: #fff;
-    text-align: left;
-}
-
-.table th,
-.table td {
-    padding: 12px;
-    font-size: 14px;
-    border: 2px solid #f4f4f4;
-    background-color: #ddd9d9;
-}
-
-.table tr:nth-child(even) {
-    background-color: #110072;
-}
-
-.table tr:hover {
-    background-color: #040a64;
-    cursor: pointer;
-}
-
-/* Botões */
-.btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary {
-    background-color: #ff2600;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-/* Ícones de ação */
-.bi {
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/* Ícones de mudar status */
-.muda_status {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ativo, .inativo {
-    cursor: pointer;
-    font-size: 20px;
-    transition: color 0.3s;
-}
-
-.ativo {
-    color: #a72828;
-}
-
-.ativo:hover {
-    color: #218838;
-}
-
-.inativo {
-    color: #64dc35;
-}
-
-.inativo:hover {
-    color: #c82333;
-}
-
-/* Modal - Tamanho e estilo */
-.modal-content {
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.modal-header {
+.tabela_export th,
+.tabela_export td {
+    padding: 12px 15px;
+    text-align: center;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
-}
-
-.modal-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding-top: 15px;
-}
-
-.modal-footer button {
-    border-radius: 5px;
-    padding: 8px 20px;
     font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    vertical-align: middle;
 }
 
-/*.modal-footer .btn-primary {
-    background-color: #007bff;
-    color: #fff;
+.tabela_export th {
+    background-color: #f8f9fa;
+    color: #333333;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
-.modal-footer .btn-primary:hover {
-    background-color: #0056b3;
-}
-*/
-/* Estilo para os ícones de editar e status */
-.status, .editar {
-    cursor: pointer;
-    transition: transform 0.3s ease;
+.tabela_export tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.status:hover, .editar:hover {
-    transform: scale(1.05);
-}
-/* Garante que o contêiner ocupe a altura necessária */
-html, body {
-    height: 100%; /* A altura do html e body continua a mesma */
-    margin: 0;    /* Remove qualquer margem */
+.tabela_export tr:hover {
+    background-color: #f1f1f1;
 }
 
-/* Garante que o contêiner ocupe toda a altura da tela */
-html, body {
-    height: 100%;  /* Certifique-se de que o body e html tenham 100% da altura da tela */
-    margin: 0;     /* Remove qualquer margem */
-}
-
-.centralizado {
-    display: flex;
-    justify-content: center;  /* Centraliza horizontalmente */
-    align-items: center;      /* Centraliza verticalmente */
-    height: auto;             /* Altura automática para que o conteúdo não ocupe a tela inteira */
-   /* padding: 10px;            /* Diminui o espaço ao redor */
-}
-
-.btn-primary {
+/* === Botão de Cadastro === */
+#btn_modal {
     background-color: #17264d;
     color: #fff;
-    padding: 15px 60px;    /* Ajusta o tamanho do botão */
-    font-size: 14px;        /* Tamanho da fonte */
     border: none;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(247, 247, 247, 0.699);
-    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 10px 24px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-primary:hover {
-    background-color: #ccc6c6;
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+#btn_modal:hover {
+    background-color: #08478a;
+    transform: translateY(-2px);
+}
+
+/* === Responsividade === */
+@media (max-width: 768px) {
+    .tabela_export th,
+    .tabela_export td {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    #btn_modal {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabela_export th,
+    .tabela_export td {
+        font-size: 11px;
+        padding: 8px;
+    }
+
+    #btn_modal {
+        font-size: 13px;
+        padding: 10px;
+    }
 }

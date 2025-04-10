@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ERROR);
 include_once('../controle/controle_session.php');
 include_once('../controle/funcoes.php');
 include('../modelo/conecta_banco_dados.php');

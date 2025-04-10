@@ -36,7 +36,7 @@ $info_bd = $result->fetch_all(MYSQLI_ASSOC);
     </div>
 
     <div class="container">
-        <table class="table">
+        <table class="tabela_export">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>

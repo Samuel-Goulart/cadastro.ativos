@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('cabecalho.php');
 include('../modelo/conecta_banco_dados.php');
 $cargo = $_SESSION['idCargo'];
@@ -64,6 +65,8 @@ $acessos_menu = $result->fetch_all(MYSQLI_ASSOC);
             /* Margem ao redor da navbar (ajustando para ficar centralizado) */
         }
     </style>
+    </head>
+    <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary"style="background-color: #17264d;color: white;">
         <div class="container-fluid"style="background-color: #17264d;color: white;">
             <a class="navbar-brand" href="#">logo</a>
@@ -122,7 +125,8 @@ $acessos_menu = $result->fetch_all(MYSQLI_ASSOC);
             </div>
         </div>
     </nav>
-
+    </body>
+    </html>
 
     <!--
     <html lang="pt-BR">
