@@ -14,7 +14,7 @@
         margin-top: 80px; /* Distância entre o rodapé e o conteúdo */
         background: rgba(0, 0, 0, 0.6); /* Preto translúcido */
         backdrop-filter: blur(10px); /* Efeito vidro fosco */
-        color: white;
+        color: #17264d;
         padding: 15px 0; /* Reduzindo o padding */
     }
 
